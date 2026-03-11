@@ -810,8 +810,7 @@ async function getAIResponse() {
       })
     });
     const data = await response.json();
-    let reply = data.output || data.message || data.response || "I'm having a moment — try again in a sec!";
-
+    let reply = (data.output && data.output[0] && data.output[0].content) || "I'm having a moment — try again in a sec!";
     showTyping(false);
     appendMessage('bot', reply);
     chatHistory.push({ role: 'assistant', content: reply });
@@ -821,7 +820,6 @@ async function getAIResponse() {
     console.error(err);
   }
 }
-
 function getSessionId() {
   if (!window._vapiSession) window._vapiSession = 'islays-' + Date.now();
   return window._vapiSession;
