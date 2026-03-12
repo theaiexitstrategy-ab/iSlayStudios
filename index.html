@@ -336,9 +336,9 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
       "Created to develop a space for clients looking for an upscale experience."
     </p>
     <div class="hero-cta-row reveal d4">
-      <button class="btn-gold" onclick="event.preventDefault(); openVapi();">
+      <a href="#team" class="btn-gold">
         Find Your Artist
-      </button>
+      </a>
       <a href="#team" class="btn-ghost">Meet the Team</a>
     </div>
     <div class="hero-stats reveal d5">
@@ -594,36 +594,6 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
 </div>
 
 <script>
-// ══ VAPI AI — @vapi-ai/web inline SDK ══
-var vapiReady = false;
-var vapiInstance = null;
-var VAPI_ASSISTANT_ID = "a04cb686-85ce-4b37-b529-6f5dfb812edf";
-
-// Load @vapi-ai/web from npm via jsdelivr ESM
-(function() {
-  var script = document.createElement('script');
-  script.type = 'module';
-  script.textContent = [
-    "import Vapi from 'https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/+esm';",
-    "var vapi = new Vapi('5f410705-fa13-400b-8d60-2d9a50335bd1');",
-    "window.vapiInstance = vapi;",
-    "window.vapiReady = true;",
-    "console.log('[iSlay] Vapi SDK initialized and ready');"
-  ].join('\n');
-  document.head.appendChild(script);
-})();
-
-// ══ SAFE VAPI TRIGGER ══
-function openVapi() {
-  if (window.vapiReady && window.vapiInstance) {
-    console.log('[iSlay] vapi.start() called — launching AI assistant');
-    window.vapiInstance.start(VAPI_ASSISTANT_ID);
-  } else {
-    console.log('[iSlay] Vapi not ready yet, retrying in 300ms...');
-    setTimeout(openVapi, 300);
-  }
-}
-
 // ══ NAV SCROLL ══
 const navEl = document.getElementById('nav');
 window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', window.scrollY > 60));
@@ -749,6 +719,34 @@ function handleLeadSubmit(e) {
     <a onclick="closeScrollPopup();" style="font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:400;color:rgba(240,237,232,0.4);cursor:pointer;text-decoration:none;letter-spacing:1px;">No thanks</a>
   </div>
 </div>
+
+<script>
+  var vapiInstance = null;
+
+  function openVapi() {
+    if (vapiInstance) {
+      vapiInstance.open();
+    } else {
+      setTimeout(openVapi, 300);
+    }
+  }
+
+  (function (d, t) {
+    var g = document.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    g.src = "https://cdn.vapi.ai/dashboard/dist/vapi.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g, s);
+    g.onload = function () {
+      vapiInstance = window.vapiSDK.run({
+        apiKey: "30ff52b9-71d7-4f9f-9630-eb919da9387a",
+        assistant: "a04cb686-85ce-4b37-b529-6f5dfb812edf",
+        config: {},
+      });
+    };
+  })(document, "script");
+</script>
 
 </body>
 </html>
