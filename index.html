@@ -336,7 +336,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
       "Created to develop a space for clients looking for an upscale experience."
     </p>
     <div class="hero-cta-row reveal d4">
-      <button class="btn-gold" onclick="document.getElementById('team').scrollIntoView({behavior:'smooth'})">
+      <button class="btn-gold" onclick="event.preventDefault(); openVapi();">
         Find Your Artist
       </button>
       <a href="#team" class="btn-ghost">Meet the Team</a>
@@ -594,33 +594,32 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
 </div>
 
 <script>
-// ══ VAPI AI EMBED ══
+// ══ VAPI AI — @vapi-ai/web inline SDK ══
+var vapiReady = false;
 var vapiInstance = null;
-const assistant = "a04cb686-85ce-4b37-b529-6f5dfb812edf";
-const apiKey = "30ff52b9-71d7-4f9f-9630-eb919da9387a";
-const buttonConfig = {};
+var VAPI_ASSISTANT_ID = "a04cb686-85ce-4b37-b529-6f5dfb812edf";
 
-(function (d, t) {
-  var g = document.createElement(t),
-    s = d.getElementsByTagName(t)[0];
-  g.src = "https://cdn.vapi.ai/dashboard/dist/vapi.js";
-  g.defer = true;
-  g.async = true;
-  s.parentNode.insertBefore(g, s);
-  g.onload = function () {
-    vapiInstance = window.vapiSDK.run({
-      apiKey: apiKey,
-      assistant: assistant,
-      config: buttonConfig,
-    });
-  };
-})(document, "script");
+// Load @vapi-ai/web from npm via jsdelivr ESM
+(function() {
+  var script = document.createElement('script');
+  script.type = 'module';
+  script.textContent = [
+    "import Vapi from 'https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/+esm';",
+    "var vapi = new Vapi('5f410705-fa13-400b-8d60-2d9a50335bd1');",
+    "window.vapiInstance = vapi;",
+    "window.vapiReady = true;",
+    "console.log('[iSlay] Vapi SDK initialized and ready');"
+  ].join('\n');
+  document.head.appendChild(script);
+})();
 
 // ══ SAFE VAPI TRIGGER ══
 function openVapi() {
-  if (vapiInstance) {
-    vapiInstance.open();
+  if (window.vapiReady && window.vapiInstance) {
+    console.log('[iSlay] vapi.start() called — launching AI assistant');
+    window.vapiInstance.start(VAPI_ASSISTANT_ID);
   } else {
+    console.log('[iSlay] Vapi not ready yet, retrying in 300ms...');
     setTimeout(openVapi, 300);
   }
 }
@@ -714,7 +713,7 @@ function handleLeadSubmit(e) {
   sessionStorage.setItem('islay_lead_phone', phone);
 
   // Send to webhook (fire and forget)
-  fetch('WEBHOOK_URL_PLACEHOLDER', {
+  fetch('https://hook.us2.make.com/ymfx3vozs1sk1wa803abeg4wu76re4n2', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name: name, phone: phone })
