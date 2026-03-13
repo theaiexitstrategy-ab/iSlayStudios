@@ -201,8 +201,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
 #islay-ai-btn{position:fixed;bottom:28px;right:28px;z-index:8000;width:64px;height:64px;background:var(--black);border:1px solid var(--gold);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,168,76,0.4),inset 0 0 20px rgba(201,168,76,0.05);transition:all 0.3s;padding:0;overflow:hidden;}
 #islay-ai-btn:hover{border-color:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 36px rgba(201,168,76,0.5),inset 0 0 30px rgba(201,168,76,0.08);}
 #islay-ai-btn img{width:48px;height:48px;object-fit:contain;border-radius:50%;}
-/* Hide Vapi's default idle button — we use our own. Keep call UI visible. */
-button.vapi-btn{width:0 !important;height:0 !important;overflow:hidden !important;opacity:0 !important;pointer-events:none !important;padding:0 !important;border:none !important;position:fixed !important;bottom:0 !important;right:0 !important;}
+/* Hide Vapi's default idle button — we use our own. Keep it in DOM for click. */
+button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;position:fixed !important;bottom:0 !important;right:0 !important;pointer-events:none !important;}
 
 /* ── PROACTIVE CHAT BUBBLE ── */
 #slay-bubble{display:none;position:fixed;bottom:102px;right:28px;z-index:8001;width:300px;background:#0d0d0d;border:1px solid rgba(201,168,76,0.35);box-shadow:0 8px 36px rgba(0,0,0,0.6),0 0 20px rgba(201,168,76,0.1);font-family:'Montserrat',sans-serif;animation:bubbleIn 0.35s ease;}
@@ -291,7 +291,7 @@ button.vapi-btn{width:0 !important;height:0 !important;overflow:hidden !importan
       "Created to develop a space for clients looking for an upscale experience."
     </p>
     <div class="hero-cta-row reveal d4">
-      <a href="#team" class="btn-gold">
+      <a href="#team" class="btn-gold" onclick="setTimeout(startVapiChat, 600)">
         Find Your Artist
       </a>
       <a href="#team" class="btn-ghost">Meet the Team</a>
@@ -693,8 +693,13 @@ function handleLeadSubmit(e) {
   function startVapiChat() {
     hideBubble();
     sessionStorage.setItem('slay_bubble_dismissed', '1');
-    if (vapiInstance) {
-      vapiInstance.open();
+    // The HTML script tag SDK has no open/start method —
+    // we programmatically click Vapi's own button to trigger the call.
+    var vapiBtn = document.querySelector('.vapi-btn');
+    if (vapiBtn) {
+      vapiBtn.style.pointerEvents = 'auto';
+      vapiBtn.click();
+      vapiBtn.style.pointerEvents = 'none';
     }
   }
 
