@@ -197,6 +197,13 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
 .foot-links a:hover{color:var(--gold);}
 .foot-copy{font-size:0.5rem;color:#252525;letter-spacing:1px;}
 
+/* ── FLOATING AI BUTTON ── */
+#islay-ai-btn{position:fixed;bottom:28px;right:28px;z-index:8000;width:64px;height:64px;background:var(--black);border:1px solid var(--gold);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,168,76,0.4),inset 0 0 20px rgba(201,168,76,0.05);transition:all 0.3s;padding:0;overflow:hidden;}
+#islay-ai-btn:hover{border-color:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 36px rgba(201,168,76,0.5),inset 0 0 30px rgba(201,168,76,0.08);}
+#islay-ai-btn img{width:48px;height:48px;object-fit:contain;border-radius:50%;}
+/* Hide Vapi's default button — we use our own */
+.vapi-btn{display:none !important;}
+
 /* ── ARTIST CARD EXPANDED (click-to-open bio) ── */
 .ac-img img{cursor:pointer;}
 .artist-card.expanded .ac-tag{opacity:1;transform:translateY(0);}
@@ -624,6 +631,11 @@ function handleLeadSubmit(e) {
   </div>
 </div>
 
+<!-- ══ FLOATING AI BUTTON — iSlay logo ══ -->
+<button id="islay-ai-btn" onclick="openVapi()" aria-label="Open AI Concierge">
+  <img src="islay-logo.png" alt="iSlay Studios AI" width="48" height="48">
+</button>
+
 <script
   src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"
   defer
@@ -634,7 +646,7 @@ function handleLeadSubmit(e) {
 
   function openVapi() {
     if (vapiInstance) {
-      vapiInstance.open();
+      vapiInstance.start();
     }
   }
 
