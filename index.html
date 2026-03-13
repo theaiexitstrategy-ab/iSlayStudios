@@ -204,6 +204,17 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
 /* Hide Vapi's default button — we use our own */
 .vapi-btn{display:none !important;}
 
+/* ── PROACTIVE CHAT BUBBLE ── */
+#slay-bubble{display:none;position:fixed;bottom:102px;right:28px;z-index:8001;width:300px;background:#0d0d0d;border:1px solid rgba(201,168,76,0.35);box-shadow:0 8px 36px rgba(0,0,0,0.6),0 0 20px rgba(201,168,76,0.1);font-family:'Montserrat',sans-serif;animation:bubbleIn 0.35s ease;}
+@keyframes bubbleIn{from{opacity:0;transform:translateY(10px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+#slay-bubble::after{content:'';position:absolute;bottom:-8px;right:24px;width:14px;height:14px;background:#0d0d0d;border-right:1px solid rgba(201,168,76,0.35);border-bottom:1px solid rgba(201,168,76,0.35);transform:rotate(45deg);}
+#slay-bubble .sb-msg{padding:18px 18px 14px;font-size:0.75rem;font-weight:400;line-height:1.65;color:rgba(240,237,232,0.85);}
+#slay-bubble .sb-actions{padding:0 18px 16px;display:flex;align-items:center;gap:12px;}
+#slay-bubble .sb-cta{background:var(--gold);color:var(--black);border:none;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;}
+#slay-bubble .sb-cta:hover{background:var(--gold-light);box-shadow:0 4px 16px rgba(201,168,76,0.3);}
+#slay-bubble .sb-dismiss{background:none;border:none;color:rgba(240,237,232,0.35);font-size:0.85rem;cursor:pointer;padding:4px 6px;transition:color 0.2s;}
+#slay-bubble .sb-dismiss:hover{color:rgba(240,237,232,0.7);}
+
 /* ── ARTIST CARD EXPANDED (click-to-open bio) ── */
 .ac-img img{cursor:pointer;}
 .artist-card.expanded .ac-tag{opacity:1;transform:translateY(0);}
@@ -631,8 +642,17 @@ function handleLeadSubmit(e) {
   </div>
 </div>
 
+<!-- ══ PROACTIVE CHAT BUBBLE ══ -->
+<div id="slay-bubble">
+  <div class="sb-msg">Hey! 👋 Looking to book an appointment or have questions about our artists? I'm Slay, your iSlay Studios concierge!</div>
+  <div class="sb-actions">
+    <button class="sb-cta" onclick="startVapiChat()">Let's Chat! 💈</button>
+    <button class="sb-dismiss" onclick="dismissBubble()" aria-label="Dismiss">✕</button>
+  </div>
+</div>
+
 <!-- ══ FLOATING AI BUTTON — iSlay logo ══ -->
-<button id="islay-ai-btn" onclick="openVapi()" aria-label="Open AI Concierge">
+<button id="islay-ai-btn" onclick="toggleBubble()" aria-label="Open AI Concierge">
   <img src="islay-logo.png" alt="iSlay Studios AI" width="48" height="48">
 </button>
 
@@ -643,11 +663,41 @@ function handleLeadSubmit(e) {
 ></script>
 <script>
   var vapiInstance = null;
+  var bubbleOpen = false;
 
-  function openVapi() {
+  function showBubble() {
+    var bubble = document.getElementById('slay-bubble');
+    if (bubble) { bubble.style.display = 'block'; bubbleOpen = true; }
+  }
+
+  function hideBubble() {
+    var bubble = document.getElementById('slay-bubble');
+    if (bubble) { bubble.style.display = 'none'; bubbleOpen = false; }
+  }
+
+  function dismissBubble() {
+    hideBubble();
+    sessionStorage.setItem('slay_bubble_dismissed', '1');
+  }
+
+  function toggleBubble() {
+    if (bubbleOpen) {
+      hideBubble();
+    } else {
+      showBubble();
+    }
+  }
+
+  function startVapiChat() {
+    hideBubble();
+    sessionStorage.setItem('slay_bubble_dismissed', '1');
     if (vapiInstance) {
       vapiInstance.start();
     }
+  }
+
+  function openVapi() {
+    startVapiChat();
   }
 
   window.addEventListener('load', function() {
@@ -658,6 +708,13 @@ function handleLeadSubmit(e) {
         position: "bottom-right"
       }
     });
+
+    // Auto-show bubble after 7s, once per session
+    if (!sessionStorage.getItem('slay_bubble_dismissed')) {
+      setTimeout(function() {
+        if (!bubbleOpen) { showBubble(); }
+      }, 7000);
+    }
   });
 </script>
 
