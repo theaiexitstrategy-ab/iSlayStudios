@@ -204,16 +204,27 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
 /* Hide Vapi's default idle button — we use our own. Keep it in DOM for click. */
 button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;position:fixed !important;bottom:0 !important;right:0 !important;pointer-events:none !important;}
 
-/* ── PROACTIVE CHAT BUBBLE ── */
-#slay-bubble{display:none;position:fixed;bottom:102px;right:28px;z-index:8001;width:300px;background:#0d0d0d;border:1px solid rgba(201,168,76,0.35);box-shadow:0 8px 36px rgba(0,0,0,0.6),0 0 20px rgba(201,168,76,0.1);font-family:'Montserrat',sans-serif;animation:bubbleIn 0.35s ease;}
+/* ── CHAT WIDGET ── */
+#slay-chat{display:none;position:fixed;bottom:102px;right:28px;z-index:8001;width:360px;max-height:520px;background:#0d0d0d;border:1px solid rgba(201,168,76,0.35);box-shadow:0 8px 36px rgba(0,0,0,0.6),0 0 20px rgba(201,168,76,0.1);font-family:'Montserrat',sans-serif;animation:bubbleIn 0.35s ease;display:none;flex-direction:column;border-radius:4px;overflow:hidden;}
 @keyframes bubbleIn{from{opacity:0;transform:translateY(10px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
-#slay-bubble::after{content:'';position:absolute;bottom:-8px;right:24px;width:14px;height:14px;background:#0d0d0d;border-right:1px solid rgba(201,168,76,0.35);border-bottom:1px solid rgba(201,168,76,0.35);transform:rotate(45deg);}
-#slay-bubble .sb-msg{padding:18px 18px 14px;font-size:0.75rem;font-weight:400;line-height:1.65;color:rgba(240,237,232,0.85);}
-#slay-bubble .sb-actions{padding:0 18px 16px;display:flex;align-items:center;gap:12px;}
-#slay-bubble .sb-cta{background:var(--gold);color:var(--black);border:none;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;}
-#slay-bubble .sb-cta:hover{background:var(--gold-light);box-shadow:0 4px 16px rgba(201,168,76,0.3);}
-#slay-bubble .sb-dismiss{background:none;border:none;color:rgba(240,237,232,0.35);font-size:0.85rem;cursor:pointer;padding:4px 6px;transition:color 0.2s;}
-#slay-bubble .sb-dismiss:hover{color:rgba(240,237,232,0.7);}
+#slay-chat .sc-header{padding:14px 18px;background:rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:space-between;}
+#slay-chat .sc-header span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--gold);}
+#slay-chat .sc-close{background:none;border:none;color:rgba(240,237,232,0.4);font-size:1.1rem;cursor:pointer;padding:4px 6px;transition:color 0.2s;}
+#slay-chat .sc-close:hover{color:rgba(240,237,232,0.7);}
+#slay-chat .sc-messages{flex:1;overflow-y:auto;padding:16px;min-height:280px;max-height:360px;display:flex;flex-direction:column;gap:10px;}
+#slay-chat .sc-msg{max-width:85%;padding:10px 14px;font-size:0.72rem;line-height:1.6;border-radius:4px;word-wrap:break-word;}
+#slay-chat .sc-msg.assistant{align-self:flex-start;background:rgba(201,168,76,0.1);color:rgba(240,237,232,0.9);border:1px solid rgba(201,168,76,0.15);}
+#slay-chat .sc-msg.user{align-self:flex-end;background:var(--gold);color:var(--black);font-weight:500;}
+#slay-chat .sc-msg .sc-book-btn{display:inline-block;margin-top:8px;padding:8px 16px;background:var(--gold);color:var(--black);font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.25s;}
+#slay-chat .sc-msg .sc-book-btn:hover{background:var(--gold-light);box-shadow:0 4px 16px rgba(201,168,76,0.3);}
+#slay-chat .sc-typing{align-self:flex-start;padding:10px 14px;font-size:0.72rem;color:rgba(240,237,232,0.4);font-style:italic;}
+#slay-chat .sc-input-row{display:flex;border-top:1px solid rgba(201,168,76,0.2);background:rgba(255,255,255,0.03);}
+#slay-chat .sc-input{flex:1;padding:12px 16px;background:transparent;border:none;color:#F0EDE8;font-family:'Montserrat',sans-serif;font-size:0.75rem;outline:none;}
+#slay-chat .sc-input::placeholder{color:rgba(240,237,232,0.3);}
+#slay-chat .sc-send{background:var(--gold);color:var(--black);border:none;padding:12px 18px;font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;}
+#slay-chat .sc-send:hover{background:var(--gold-light);}
+#slay-chat .sc-send:disabled{opacity:0.5;cursor:default;}
+@media(max-width:480px){#slay-chat{width:calc(100vw - 24px);right:12px;bottom:96px;max-height:70vh;}}
 
 /* ── ARTIST CARD EXPANDED (click-to-open bio) ── */
 .ac-img img{cursor:pointer;}
@@ -510,7 +521,7 @@ button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;
   </div>
   <div class="loc-item">
     <div class="loc-label">Book with AI</div>
-    <div class="loc-val"><a style="color:var(--gold);cursor:pointer;" onclick="openVapi()">Book with AI Now &rarr;</a></div>
+    <div class="loc-val"><a style="color:var(--gold);cursor:pointer;" onclick="openPromoGeneric()">Book with AI Now &rarr;</a></div>
   </div>
   <div class="loc-item">
     <div class="loc-label">Instagram</div>
@@ -532,7 +543,7 @@ button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;
     <a href="#about">About</a>
     <a href="#location">Location</a>
     <a href="https://www.instagram.com/islaystudiosllc" target="_blank">Instagram</a>
-    <a style="cursor:pointer;" onclick="openVapi()">Book with AI Now &rarr;</a>
+    <a style="cursor:pointer;" onclick="openPromoGeneric()">Book with AI Now &rarr;</a>
   </div>
   <div class="foot-copy">© 2025 iSlay Studios LLC · Bridgeton, MO</div>
 </footer>
@@ -642,19 +653,21 @@ function handleLeadSubmit(e) {
   </div>
 </div>
 
-<!-- ══ PROACTIVE CHAT BUBBLE ══ -->
-<div id="slay-bubble">
-  <div class="sb-msg">Hey! 👋 Looking to book an appointment or have questions about our artists? I'm Slay, your iSlay Studios concierge!</div>
-  <div class="sb-actions">
-    <button class="sb-cta" onclick="startVapiChat()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Let's Chat! 💈
-    </button>
-    <button class="sb-dismiss" onclick="dismissBubble()" aria-label="Dismiss">✕</button>
+<!-- ══ CHAT WIDGET — Claude-powered ══ -->
+<div id="slay-chat">
+  <div class="sc-header">
+    <span>Slay — AI Concierge</span>
+    <button class="sc-close" onclick="toggleChat()" aria-label="Close chat">✕</button>
+  </div>
+  <div class="sc-messages" id="sc-messages"></div>
+  <div class="sc-input-row">
+    <input class="sc-input" id="sc-input" type="text" placeholder="Ask about our artists, services..." autocomplete="off">
+    <button class="sc-send" id="sc-send" onclick="scSend()">Send</button>
   </div>
 </div>
 
 <!-- ══ FLOATING AI BUTTON — iSlay logo ══ -->
-<button id="islay-ai-btn" onclick="toggleBubble()" aria-label="Open AI Concierge">
+<button id="islay-ai-btn" onclick="toggleChat()" aria-label="Open AI Concierge">
   <img src="islay-logo.png" alt="iSlay Studios AI" width="48" height="48">
 </button>
 
@@ -664,65 +677,290 @@ function handleLeadSubmit(e) {
   async
 ></script>
 <script>
-  var vapiInstance = null;
-  var bubbleOpen = false;
+  var chatOpen = false;
+  var chatHistory = [];
+  var chatBusy = false;
 
-  function showBubble() {
-    var bubble = document.getElementById('slay-bubble');
-    if (bubble) { bubble.style.display = 'block'; bubbleOpen = true; }
-  }
-
-  function hideBubble() {
-    var bubble = document.getElementById('slay-bubble');
-    if (bubble) { bubble.style.display = 'none'; bubbleOpen = false; }
-  }
-
-  function dismissBubble() {
-    hideBubble();
-    sessionStorage.setItem('slay_bubble_dismissed', '1');
-  }
-
-  function toggleBubble() {
-    if (bubbleOpen) {
-      hideBubble();
+  function toggleChat() {
+    var chat = document.getElementById('slay-chat');
+    if (!chat) return;
+    if (chatOpen) {
+      chat.style.display = 'none';
+      chatOpen = false;
     } else {
-      showBubble();
-    }
-  }
-
-  function startVapiChat() {
-    hideBubble();
-    sessionStorage.setItem('slay_bubble_dismissed', '1');
-    // The HTML script tag SDK has no open/start method —
-    // we programmatically click Vapi's own button to trigger the call.
-    var vapiBtn = document.querySelector('.vapi-btn');
-    if (vapiBtn) {
-      vapiBtn.style.pointerEvents = 'auto';
-      vapiBtn.click();
-      vapiBtn.style.pointerEvents = 'none';
-    }
-  }
-
-  function openVapi() {
-    startVapiChat();
-  }
-
-  window.addEventListener('load', function() {
-    vapiInstance = window.vapiSDK.run({
-      apiKey: "5f410705-fa13-400b-8d60-2d9a50335bd1",
-      assistant: "a04cb686-85ce-4b37-b529-6f5dfb812edf",
-      config: {
-        position: "bottom-right"
+      chat.style.display = 'flex';
+      chatOpen = true;
+      if (chatHistory.length === 0) {
+        scAppend('assistant', "Hey! 👋 I'm Slay, your iSlay Studios concierge. What kind of service are you looking for today?");
       }
-    });
+      document.getElementById('sc-input').focus();
+    }
+  }
 
-    // Auto-show bubble after 7s, once per session
-    if (!sessionStorage.getItem('slay_bubble_dismissed')) {
-      setTimeout(function() {
-        if (!bubbleOpen) { showBubble(); }
-      }, 7000);
+  // Keep openVapi/startVapiChat as aliases so existing onclick handlers work
+  function openVapi() { toggleChat(); }
+  function startVapiChat() { toggleChat(); }
+
+  function scAppend(role, text) {
+    var container = document.getElementById('sc-messages');
+    var div = document.createElement('div');
+    div.className = 'sc-msg ' + role;
+    div.innerHTML = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function scSend() {
+    if (chatBusy) return;
+    var input = document.getElementById('sc-input');
+    var text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    scAppend('user', scEscape(text));
+    chatHistory.push({ role: 'user', content: text });
+
+    // Show typing indicator
+    var container = document.getElementById('sc-messages');
+    var typing = document.createElement('div');
+    typing.className = 'sc-typing';
+    typing.id = 'sc-typing';
+    typing.textContent = 'Slay is typing...';
+    container.appendChild(typing);
+    container.scrollTop = container.scrollHeight;
+
+    chatBusy = true;
+    document.getElementById('sc-send').disabled = true;
+
+    var msgs = chatHistory.slice(-20);
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: msgs })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var t = document.getElementById('sc-typing');
+      if (t) t.remove();
+      var reply = data.reply || 'Sorry, something went wrong. Please try again.';
+      chatHistory.push({ role: 'assistant', content: reply });
+
+      // Check for ###LEAD:{...}### pattern
+      var leadMatch = reply.match(/###LEAD:([\s\S]*?)###/);
+      if (leadMatch) {
+        try {
+          var lead = JSON.parse(leadMatch[1]);
+          // POST lead to webhook (fire-and-forget)
+          fetch('https://hook.us2.make.com/bfk75pqcufkxj3muvtruhn2va4o2v3cy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: lead.name,
+              phone: lead.phone,
+              artist: lead.artist,
+              bookingUrl: lead.bookingUrl,
+              source: 'islay-chat-widget',
+              timestamp: new Date().toISOString()
+            })
+          }).catch(function() {});
+
+          // Strip the LEAD block from displayed message
+          reply = reply.replace(/###LEAD:[\s\S]*?###\n?/, '').trim();
+
+          // Add a styled booking button
+          if (lead.bookingUrl) {
+            reply += '<br><a href="' + scEscape(lead.bookingUrl) + '" target="_blank" class="sc-book-btn">Book ' + scEscape(lead.artist) + ' →</a>';
+          }
+        } catch(e) {}
+      }
+
+      scAppend('assistant', reply);
+    })
+    .catch(function() {
+      var t = document.getElementById('sc-typing');
+      if (t) t.remove();
+      scAppend('assistant', 'Sorry, something went wrong. Please try again.');
+    })
+    .finally(function() {
+      chatBusy = false;
+      document.getElementById('sc-send').disabled = false;
+    });
+  }
+
+  function scEscape(str) {
+    var d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  // Send on Enter key
+  document.addEventListener('DOMContentLoaded', function() {
+    var input = document.getElementById('sc-input');
+    if (input) {
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          scSend();
+        }
+      });
     }
   });
+
+  // Keep Vapi SDK loaded for inbound phone calls
+  window.addEventListener('load', function() {
+    if (window.vapiSDK) {
+      window.vapiSDK.run({
+        apiKey: "5f410705-fa13-400b-8d60-2d9a50335bd1",
+        assistant: "a04cb686-85ce-4b37-b529-6f5dfb812edf",
+        config: { position: "bottom-right" }
+      });
+    }
+  });
+</script>
+
+<!-- ══ PROMO INTERCEPT POPUP ══ -->
+<style>
+.promo-modal-overlay{display:none;position:fixed;inset:0;z-index:9600;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;opacity:0;transition:opacity 0.3s;}
+.promo-modal-overlay.active{display:flex;opacity:1;}
+.promo-modal{background:#060606;border:1px solid var(--gold);padding:40px 32px;max-width:420px;width:90%;text-align:center;position:relative;box-shadow:0 8px 40px rgba(201,168,76,0.3);animation:bubbleIn 0.35s ease;}
+.promo-modal .pm-close{position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(240,237,232,0.4);font-size:1.2rem;cursor:pointer;transition:color 0.2s;}
+.promo-modal .pm-close:hover{color:rgba(240,237,232,0.7);}
+.promo-modal h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);margin-bottom:10px;line-height:1.2;}
+.promo-modal .pm-sub{font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:400;color:rgba(240,237,232,0.6);margin-bottom:22px;line-height:1.6;}
+.promo-modal input{width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.25);color:#F0EDE8;font-family:'Montserrat',sans-serif;font-size:0.75rem;outline:none;margin-bottom:12px;box-sizing:border-box;}
+.promo-modal input:focus{border-color:var(--gold);}
+.promo-modal .pm-error{font-size:0.6rem;color:#E8200A;margin-bottom:10px;display:none;}
+.promo-modal .pm-btn{display:block;width:100%;background:var(--gold);color:#060606;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.25s;margin-bottom:14px;}
+.promo-modal .pm-btn:hover{background:var(--gold-light);box-shadow:0 4px 16px rgba(201,168,76,0.3);}
+.promo-modal .pm-fine{font-family:'Montserrat',sans-serif;font-size:0.55rem;font-weight:400;color:rgba(240,237,232,0.35);letter-spacing:0.5px;}
+.promo-modal .pm-success h3{color:var(--gold);}
+.promo-modal .pm-success p{font-family:'Montserrat',sans-serif;font-size:0.8rem;color:rgba(240,237,232,0.7);margin-top:10px;}
+</style>
+
+<div class="promo-modal-overlay" id="promo-overlay">
+  <div class="promo-modal">
+    <button class="pm-close" id="pm-close" aria-label="Close promo popup">✕</button>
+    <div id="pm-form-view">
+      <h3>Get $10 Off Your First Visit</h3>
+      <p class="pm-sub">Drop your info and we'll text you the promo code + your booking link</p>
+      <input type="text" id="pm-name" placeholder="Your Name" autocomplete="name">
+      <input type="tel" id="pm-phone" placeholder="Your Phone Number" autocomplete="tel">
+      <div class="pm-error" id="pm-error">Please enter your name and a valid 10-digit phone number.</div>
+      <button class="pm-btn" id="pm-submit">Claim My $10 Off →</button>
+      <div class="pm-fine">No spam. Just your code and link.</div>
+    </div>
+    <div id="pm-success-view" style="display:none;">
+      <h3>✓ Code Sent!</h3>
+      <p class="pm-sub">Redirecting you to book...</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var promoArtist = '';
+  var promoUrl = '';
+
+  var artistMap = {
+    'Nathan': 'Nathan Slay',
+    'Beanz': 'Beanz',
+    'Fresh': 'Fresh',
+    'Q': 'Q',
+    'Sherry J': 'Sherry J',
+    'Sabrina Young': 'Sabrina Young',
+    'Eboni': 'Eboni',
+    'Faith': 'Faith'
+  };
+
+  function parseArtistFromText(txt) {
+    txt = txt.replace(/^Book\s+/i, '').replace(/\s*[→&].*$/, '').replace(/\s*rarr.*$/, '').trim();
+    return artistMap[txt] || txt;
+  }
+
+  // Intercept all ac-book links
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a.ac-book');
+    if (!link) return;
+    e.preventDefault();
+    var btnText = link.textContent.trim();
+    promoArtist = parseArtistFromText(btnText);
+    promoUrl = link.getAttribute('href') || 'https://www.inathanslay.com/appointments-3';
+    openPromo();
+  });
+
+  // Generic "Book Now" / footer links — no specific artist
+  window.openPromoGeneric = function() {
+    promoArtist = 'No Preference';
+    promoUrl = 'https://www.inathanslay.com/appointments-3';
+    openPromo();
+  };
+
+  function openPromo() {
+    document.getElementById('pm-form-view').style.display = '';
+    document.getElementById('pm-success-view').style.display = 'none';
+    document.getElementById('pm-name').value = '';
+    document.getElementById('pm-phone').value = '';
+    document.getElementById('pm-error').style.display = 'none';
+    var overlay = document.getElementById('promo-overlay');
+    overlay.style.display = 'flex';
+    requestAnimationFrame(function() { overlay.classList.add('active'); });
+  }
+
+  function closePromo(redirect) {
+    var overlay = document.getElementById('promo-overlay');
+    overlay.classList.remove('active');
+    setTimeout(function() { overlay.style.display = 'none'; }, 300);
+    if (redirect && promoUrl) {
+      window.open(promoUrl, '_blank');
+    }
+  }
+
+  document.getElementById('pm-close').addEventListener('click', function() {
+    closePromo(true);
+  });
+
+  document.getElementById('promo-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closePromo(true);
+  });
+
+  document.getElementById('pm-submit').addEventListener('click', function() {
+    var name = document.getElementById('pm-name').value.trim();
+    var phone = document.getElementById('pm-phone').value.trim().replace(/\D/g, '');
+    var errEl = document.getElementById('pm-error');
+
+    if (!name || phone.length !== 10) {
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    // POST to webhook
+    fetch('https://hook.us2.make.com/bfk75pqcufkxj3muvtruhn2va4o2v3cy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        artist: promoArtist,
+        bookingUrl: promoUrl,
+        source: 'islay-site-promo',
+        timestamp: new Date().toISOString()
+      })
+    }).catch(function() {});
+
+    // Fire gtag event
+    if (typeof gtag === 'function') {
+      gtag('event', 'promo_claim', { artist_name: promoArtist, phone_captured: true });
+    }
+
+    // Show success state
+    document.getElementById('pm-form-view').style.display = 'none';
+    document.getElementById('pm-success-view').style.display = '';
+
+    setTimeout(function() {
+      closePromo(true);
+    }, 2500);
+  });
+})();
 </script>
 
 </body>

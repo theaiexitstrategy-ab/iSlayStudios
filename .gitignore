@@ -5,3 +5,5 @@
 !islay_faith.jpeg
 !islay-logo.png
 !.gitignore
+!api/
+!api/chat.js
