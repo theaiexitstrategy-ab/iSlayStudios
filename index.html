@@ -945,7 +945,11 @@ function handleLeadSubmit(e) {
         source: 'islay-site-promo',
         timestamp: new Date().toISOString()
       })
-    }).catch(function() {});
+    }).then(function(resp) {
+      console.log('[Promo Webhook] Status:', resp.status, resp.statusText);
+    }).catch(function(err) {
+      console.error('[Promo Webhook] Failed:', err);
+    });
 
     // Fire gtag event
     if (typeof gtag === 'function') {
