@@ -620,11 +620,11 @@ function handleLeadSubmit(e) {
   sessionStorage.setItem('islay_lead_name', name);
   sessionStorage.setItem('islay_lead_phone', phone);
 
-  // Send to webhook (fire and forget)
-  fetch('https://hook.us2.make.com/ymfx3vozs1sk1wa803abeg4wu76re4n2', {
+  // Send to Supabase inbound-lead (fire and forget)
+  fetch('https://uouoczmxigizkqszagdl.supabase.co/functions/v1/inbound-lead', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: name, phone: phone })
+    body: JSON.stringify({ full_name: name, phone: phone, lead_source: 'Book & Claim Popup', client_id: 'islay_studios' })
   }).catch(function() {});
 
   // Close modal and launch Vapi
@@ -749,17 +749,17 @@ function handleLeadSubmit(e) {
       if (leadMatch) {
         try {
           var lead = JSON.parse(leadMatch[1]);
-          // POST lead to webhook (fire-and-forget)
-          fetch('https://hook.us2.make.com/bfk75pqcufkxj3muvtruhn2va4o2v3cy', {
+          // POST lead to Supabase inbound-lead (fire-and-forget)
+          fetch('https://uouoczmxigizkqszagdl.supabase.co/functions/v1/inbound-lead', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              name: lead.name,
+              full_name: lead.name,
               phone: lead.phone,
-              artist: lead.artist,
-              bookingUrl: lead.bookingUrl,
-              source: 'islay-chat-widget',
-              timestamp: new Date().toISOString()
+              email: lead.email || '',
+              artist_selected: lead.artist,
+              lead_source: 'AI Chat Widget',
+              client_id: 'islay_studios'
             })
           }).catch(function() {});
 
@@ -933,17 +933,16 @@ function handleLeadSubmit(e) {
     }
     errEl.style.display = 'none';
 
-    // POST to webhook
-    fetch('https://hook.us2.make.com/bfk75pqcufkxj3muvtruhn2va4o2v3cy', {
+    // POST to Supabase inbound-lead
+    fetch('https://uouoczmxigizkqszagdl.supabase.co/functions/v1/inbound-lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: name,
+        full_name: name,
         phone: phone,
-        artist: promoArtist,
-        bookingUrl: promoUrl,
-        source: 'islay-site-promo',
-        timestamp: new Date().toISOString()
+        artist_selected: promoArtist,
+        lead_source: 'Book & Claim Popup',
+        client_id: 'islay_studios'
       })
     }).catch(function() {});
 
