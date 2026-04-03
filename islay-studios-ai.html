@@ -600,7 +600,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.04);paddi
 // ══════════════════════════════════════════════
 // CONFIG — Nathan fills these in
 // ══════════════════════════════════════════════
-const GOELEV8_WEBHOOK = 'https://YOUR_GOELEV8_WEBHOOK_HERE';
+const GOELEV8_WEBHOOK = 'https://hook.us2.make.com/bfk75pqcufkxj3muvtruhn2va4o2v3cy';
 
 // ── ARTIST ROSTER ──────────────────────────────
 // For each artist:
@@ -842,7 +842,7 @@ async function fireWebhook(lead) {
   if (!GOELEV8_WEBHOOK || GOELEV8_WEBHOOK.includes('YOUR_')) return;
   try {
     await fetch(GOELEV8_WEBHOOK, {
-      method: 'POST', mode: 'no-cors',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         source: 'iSlay Studios AI Concierge',
