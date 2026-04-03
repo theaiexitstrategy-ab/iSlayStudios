@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { messages } = req.body;
+  const { messages, system } = req.body;
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'messages array required' });
   }
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'API key not configured' });
   }
 
-  const systemPrompt = `You are Slay, the AI concierge for iSlay Studios — a luxury barbershop and hair salon in Bridgeton, MO. You help customers find the right artist and get them booked.
+  const defaultSystemPrompt = `You are Slay, the AI concierge for iSlay Studios — a luxury barbershop and hair salon in Bridgeton, MO. You help customers find the right artist and get them booked.
 
 THE ARTISTS:
 - Nathan Slay (Owner) — Master Barber. Fades, tapers, beard sculpting. Booking: https://www.inathanslay.com/appointments-3
@@ -39,6 +39,8 @@ RULES:
 - Keep responses concise — this is a chat widget, not an essay
 - If they ask about calling, tell them they can reach the studio directly and Slay (the AI) also handles calls`;
 
+  const systemPrompt = (typeof system === 'string' && system.length > 0) ? system : defaultSystemPrompt;
+
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -49,7 +51,7 @@ RULES:
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 512,
+        max_tokens: 1000,
         system: systemPrompt,
         messages: messages.slice(-20)
       })
