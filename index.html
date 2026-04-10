@@ -602,11 +602,11 @@ function handleLeadSubmit(e) {
   sessionStorage.setItem('islay_lead_name', name);
   sessionStorage.setItem('islay_lead_phone', phone);
 
-  // Send to webhook (fire and forget)
-  fetch('https://hook.us2.make.com/ymfx3vozs1sk1wa803abeg4wu76re4n2', {
+  // Send to GoElev8 portal webhook (fire and forget)
+  fetch('https://portal.goelev8.ai/api/webhooks/lead', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: name, phone: phone })
+    body: JSON.stringify({ slug: 'islay-studios', name: name, phone: phone, source: 'islaystudiosllc.com', funnel: 'main' })
   }).catch(function() {});
 
   // Close modal and launch Vapi
@@ -659,6 +659,8 @@ function handleLeadSubmit(e) {
   async
 ></script>
 <script>
+  var SUPABASE_ANON_KEY = (window.__ENV && window.__ENV.SUPABASE_ANON_KEY) || '';
+  var GOELEV8_WEBHOOK = 'https://portal.goelev8.ai/api/webhooks/lead';
   var chatOpen = false;
   var chatHistory = [];
   var chatBusy = false;
@@ -731,17 +733,18 @@ function handleLeadSubmit(e) {
       if (leadMatch) {
         try {
           var lead = JSON.parse(leadMatch[1]);
-          // POST lead to webhook (fire-and-forget)
-          fetch('https://hook.us2.make.com/bfk75pqcufkxj3muvtruhn2va4o2v3cy', {
+          // POST lead to GoElev8 backend
+          var webhookHeaders = { 'Content-Type': 'application/json' };
+          if (SUPABASE_ANON_KEY) webhookHeaders['Authorization'] = 'Bearer ' + SUPABASE_ANON_KEY;
+          fetch(GOELEV8_WEBHOOK, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+              slug: 'islay-studios',
               name: lead.name,
               phone: lead.phone,
-              artist: lead.artist,
-              bookingUrl: lead.bookingUrl,
               source: 'islay-chat-widget',
-              timestamp: new Date().toISOString()
+              funnel: 'chat'
             })
           }).catch(function() {});
 
@@ -915,17 +918,16 @@ function handleLeadSubmit(e) {
     }
     errEl.style.display = 'none';
 
-    // POST to webhook
-    fetch('https://hook.us2.make.com/bfk75pqcufkxj3muvtruhn2va4o2v3cy', {
+    // POST to GoElev8 portal webhook
+    fetch('https://portal.goelev8.ai/api/webhooks/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        slug: 'islay-studios',
         name: name,
         phone: phone,
-        artist: promoArtist,
-        bookingUrl: promoUrl,
         source: 'islay-site-promo',
-        timestamp: new Date().toISOString()
+        funnel: 'promo'
       })
     }).catch(function() {});
 
