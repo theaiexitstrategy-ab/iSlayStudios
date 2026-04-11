@@ -661,6 +661,23 @@ function handleLeadSubmit(e) {
 <script>
   var SUPABASE_ANON_KEY = (window.__ENV && window.__ENV.SUPABASE_ANON_KEY) || '';
   var GOELEV8_WEBHOOK = 'https://portal.goelev8.ai/api/webhooks/lead';
+
+  // Fire funnel view tracking on page load
+  (function trackView(){
+    try {
+      var payload = JSON.stringify({
+        slug: 'islay-studios',
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent
+      });
+      var url = 'https://portal.goelev8.ai/api/track/view';
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(url, new Blob([payload], {type:'application/json'}));
+      } else {
+        fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:payload, keepalive:true}).catch(function(){});
+      }
+    } catch(e){}
+  })();
   var chatOpen = false;
   var chatHistory = [];
   var chatBusy = false;
