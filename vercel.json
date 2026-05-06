@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/members", "destination": "/membership-hero-tiers.html" },
+    { "source": "/beard", "destination": "/beard-oil.html" }
+  ]
+}
