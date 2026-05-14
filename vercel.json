@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/members", "destination": "/membership-hero-tiers.html" },
     { "source": "/beard", "destination": "/beard-oil.html" },
-    { "source": "/apply", "destination": "/apply.html" }
+    { "source": "/apply", "destination": "/apply.html" },
+    { "source": "/recruitment", "destination": "/recruitment.html" }
   ]
 }
