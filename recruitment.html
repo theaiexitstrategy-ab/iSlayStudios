@@ -1,0 +1,852 @@
+<!-- © 2026 GoElev8.ai | Aaron Bryant. All rights reserved. Unauthorized use prohibited. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join The iSlay Family — Artist Recruitment | iSlay Studios</title>
+<meta name="description" content="Join the iSlay Studios artist team in St. Louis, MO. Built-in clientele, flexible scheduling, competitive commission. Apply now.">
+<link rel="canonical" href="https://www.islaystudiosllc.com/recruitment">
+<link rel="icon" href="/islay-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-deep: #060606;
+  --card: #101010;
+  --card-2: #161616;
+  --gold: #C9A84C;
+  --gold-light: #E2C068;
+  --gold-dim: rgba(201,168,76,0.14);
+  --purple: #6b21a8;
+  --purple-glow: rgba(107,33,168,0.22);
+  --text: #F0EDE8;
+  --muted: #807a72;
+  --white: #ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Montserrat',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+body::after {
+  content:''; position:fixed; inset:0; z-index:9000; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4; mix-blend-mode:overlay;
+}
+
+img { display:block; max-width:100%; height:auto; }
+a { color:inherit; text-decoration:none; }
+
+.eyebrow {
+  font-family:'Montserrat',sans-serif;
+  font-size:0.6rem;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.h-display {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  line-height:1.05;
+  letter-spacing:-0.5px;
+  color:var(--white);
+}
+.h-display em { color:var(--gold); font-style:italic; font-weight:400; }
+
+/* ─── HERO ─── */
+.hero {
+  position:relative;
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:120px 24px 80px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse at 30% 20%, var(--purple-glow), transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(201,168,76,0.10), transparent 55%);
+}
+.hero-grid {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+.hero-inner {
+  position:relative; z-index:1;
+  max-width:760px;
+}
+.hero-logo {
+  width:78px; height:78px;
+  margin:0 auto 28px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  padding:14px;
+  background:rgba(6,6,6,0.6);
+  box-shadow:0 0 40px rgba(201,168,76,0.15);
+}
+.hero-logo img { width:100%; height:100%; object-fit:contain; }
+.hero-eyebrow { margin-bottom:22px; }
+.hero h1 {
+  font-size:clamp(2.6rem, 7vw, 4.8rem);
+  margin-bottom:24px;
+}
+.hero-sub {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(1.05rem, 2vw, 1.3rem);
+  color:var(--muted);
+  max-width:560px;
+  margin:0 auto 44px;
+  line-height:1.6;
+}
+.gold-line {
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  max-width:200px; margin:0 auto 44px;
+}
+.gold-line span { flex:1; height:1px; background:var(--gold-dim); }
+.gold-line em {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:0.7rem;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.btn-gold {
+  display:inline-block;
+  background:var(--gold);
+  color:var(--bg-deep);
+  border:none;
+  padding:18px 44px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.7rem;
+  font-weight:700;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all 0.25s ease;
+  text-align:center;
+}
+.btn-gold:hover {
+  background:var(--gold-light);
+  transform:translateY(-2px);
+  box-shadow:0 10px 32px rgba(201,168,76,0.28);
+}
+.btn-gold:disabled { opacity:0.55; cursor:not-allowed; transform:none; }
+
+/* ─── SECTIONS ─── */
+section { padding:90px 24px; position:relative; }
+.container { max-width:1100px; margin:0 auto; }
+.section-head { text-align:center; margin-bottom:60px; }
+.section-head .eyebrow { display:block; margin-bottom:14px; }
+.section-head h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:500;
+  color:var(--white);
+  line-height:1.1;
+}
+.section-head h2 em { color:var(--gold); font-style:italic; font-weight:400; }
+.section-head p {
+  margin:18px auto 0;
+  max-width:580px;
+  font-size:0.95rem;
+  color:var(--muted);
+  line-height:1.7;
+  letter-spacing:0.3px;
+}
+
+/* ─── WHY ─── */
+.why-grid {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+.why-card {
+  background:var(--card);
+  border:1px solid var(--gold-dim);
+  padding:44px 32px;
+  transition:border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position:relative;
+}
+.why-card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:0; transition:opacity 0.3s;
+}
+.why-card:hover {
+  border-color:rgba(201,168,76,0.35);
+  transform:translateY(-4px);
+  box-shadow:0 16px 50px rgba(0,0,0,0.6);
+}
+.why-card:hover::before { opacity:1; }
+.why-icon {
+  width:54px; height:54px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.6rem;
+  background:rgba(201,168,76,0.08);
+  border:1px solid var(--gold-dim);
+  border-radius:50%;
+  margin-bottom:24px;
+}
+.why-card h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;
+  font-weight:500;
+  color:var(--white);
+  margin-bottom:14px;
+}
+.why-card p {
+  font-size:0.88rem;
+  color:var(--muted);
+  line-height:1.65;
+  letter-spacing:0.3px;
+}
+
+/* ─── WHO ─── */
+.who-wrap {
+  background:linear-gradient(180deg, var(--bg) 0%, #0d0d0d 100%);
+}
+.who-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:center;
+}
+.who-intro p {
+  font-size:1rem;
+  color:var(--text);
+  line-height:1.75;
+  letter-spacing:0.3px;
+  opacity:0.85;
+}
+.who-list { list-style:none; padding:0; }
+.who-list li {
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:18px 0;
+  border-bottom:1px solid var(--gold-dim);
+  font-size:0.92rem;
+  line-height:1.55;
+  color:var(--text);
+  letter-spacing:0.3px;
+}
+.who-list li:last-child { border-bottom:none; }
+.who-check {
+  flex-shrink:0;
+  width:24px; height:24px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold);
+  font-size:0.7rem;
+  font-weight:700;
+  margin-top:2px;
+}
+
+/* ─── TEAM ─── */
+.team-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:24px;
+}
+.artist-card {
+  background:var(--card);
+  border:1px solid var(--gold-dim);
+  padding:36px 24px 30px;
+  text-align:center;
+  transition:border-color 0.3s, transform 0.3s;
+}
+.artist-card:hover {
+  border-color:rgba(201,168,76,0.35);
+  transform:translateY(-3px);
+}
+.artist-photo {
+  width:130px; height:130px;
+  margin:0 auto 22px;
+  border-radius:50%;
+  overflow:hidden;
+  border:1px solid var(--gold);
+  background:var(--bg-deep);
+  position:relative;
+  box-shadow:0 0 28px rgba(201,168,76,0.08);
+}
+.artist-photo img {
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
+.artist-photo.monogram {
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;
+  font-weight:400;
+  font-style:italic;
+  color:var(--gold);
+  background:linear-gradient(135deg, rgba(201,168,76,0.05), rgba(107,33,168,0.08));
+}
+.artist-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;
+  font-weight:500;
+  color:var(--white);
+  margin-bottom:6px;
+}
+.artist-title {
+  font-size:0.6rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+}
+
+/* ─── FORM ─── */
+.form-wrap {
+  background:#0d0d0d;
+  border-top:1px solid var(--gold-dim);
+  border-bottom:1px solid var(--gold-dim);
+  padding:90px 24px;
+}
+.form-shell {
+  max-width:680px;
+  margin:0 auto;
+  background:var(--card);
+  border:1px solid var(--gold-dim);
+  padding:56px 48px;
+  position:relative;
+}
+.form-shell::before {
+  content:'';
+  position:absolute; top:-1px; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.field { margin-bottom:24px; }
+.field-label {
+  display:block;
+  font-size:0.6rem;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.65);
+  margin-bottom:10px;
+}
+.field-label .req { color:var(--gold); margin-left:2px; }
+.input, .select, .textarea {
+  width:100%;
+  background:var(--bg-deep);
+  border:1px solid var(--gold-dim);
+  color:var(--text);
+  font-family:'Montserrat',sans-serif;
+  font-size:0.88rem;
+  padding:14px 16px;
+  outline:none;
+  transition:border-color 0.2s, background 0.2s;
+  border-radius:0;
+}
+.input:focus, .select:focus, .textarea:focus {
+  border-color:var(--gold);
+  background:#080808;
+}
+.input::placeholder, .textarea::placeholder { color:rgba(255,255,255,0.25); }
+.textarea { resize:vertical; min-height:130px; line-height:1.6; }
+.select {
+  appearance:none; -webkit-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23C9A84C' d='M6 8L0 0h12z'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 18px center;
+  padding-right:42px;
+  cursor:pointer;
+}
+.radio-row {
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+.radio-item {
+  flex:1; min-width:140px;
+  display:flex; align-items:center; gap:12px;
+  padding:13px 16px;
+  background:var(--bg-deep);
+  border:1px solid var(--gold-dim);
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.radio-item:hover { border-color:rgba(201,168,76,0.4); }
+.radio-item input { accent-color:var(--gold); cursor:pointer; width:16px; height:16px; flex-shrink:0; }
+.radio-item label { font-size:0.8rem; color:var(--text); cursor:pointer; flex:1; letter-spacing:0.5px; }
+.radio-item.checked { border-color:var(--gold); background:rgba(201,168,76,0.06); }
+
+.err-msg {
+  display:none;
+  font-size:0.66rem; color:#e57373;
+  margin-top:8px;
+  letter-spacing:0.8px;
+}
+.field.has-error .err-msg { display:block; }
+.field.has-error .input,
+.field.has-error .select,
+.field.has-error .textarea { border-color:#e57373; }
+
+.btn-submit {
+  display:block; width:100%;
+  background:var(--gold); color:var(--bg-deep);
+  border:none; padding:22px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.7rem; font-weight:700;
+  letter-spacing:5px; text-transform:uppercase;
+  cursor:pointer; transition:all 0.25s;
+  margin-top:14px;
+}
+.btn-submit:hover:not(:disabled) {
+  background:var(--gold-light); transform:translateY(-1px);
+  box-shadow:0 10px 36px rgba(201,168,76,0.28);
+}
+.btn-submit:disabled { opacity:0.55; cursor:not-allowed; }
+
+.form-error {
+  display:none;
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(229,115,115,0.08);
+  border:1px solid rgba(229,115,115,0.4);
+  color:#e57373;
+  font-size:0.78rem;
+  letter-spacing:0.5px;
+  line-height:1.5;
+}
+.form-error.show { display:block; }
+
+.success-banner {
+  display:none;
+  text-align:center;
+  padding:80px 40px;
+  background:var(--card);
+  border:1px solid var(--gold);
+  box-shadow:0 0 60px rgba(201,168,76,0.15);
+}
+.success-banner.show { display:block; }
+.success-icon {
+  width:66px; height:66px;
+  margin:0 auto 28px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold);
+  font-size:1.7rem;
+}
+.success-banner h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.1rem;
+  font-weight:500;
+  color:var(--white);
+  margin-bottom:16px;
+}
+.success-banner h3 em { color:var(--gold); font-style:italic; }
+.success-banner p {
+  font-size:0.95rem; color:var(--muted);
+  max-width:440px; margin:0 auto;
+  line-height:1.7;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding:48px 24px 36px;
+  border-top:1px solid var(--gold-dim);
+  text-align:center;
+}
+.foot-logo {
+  width:46px; height:46px;
+  margin:0 auto 22px;
+  opacity:0.5;
+}
+.foot-logo img { width:100%; height:100%; object-fit:contain; }
+.foot-links {
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+.foot-links a {
+  font-size:0.55rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--muted);
+  transition:color 0.2s;
+}
+.foot-links a:hover { color:var(--gold); }
+.foot-copy {
+  font-size:0.55rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.foot-power {
+  font-size:0.52rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  opacity:0.7;
+}
+.foot-power a { color:var(--gold); transition:color 0.2s; }
+.foot-power a:hover { color:var(--gold-light); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .why-grid { grid-template-columns:1fr; gap:20px; }
+  .who-grid { grid-template-columns:1fr; gap:36px; }
+  .team-grid { grid-template-columns:repeat(2, 1fr); gap:18px; }
+}
+@media (max-width: 560px) {
+  section { padding:70px 20px; }
+  .form-wrap { padding:70px 20px; }
+  .form-shell { padding:40px 26px; }
+  .team-grid { grid-template-columns:1fr 1fr; }
+  .artist-photo { width:108px; height:108px; }
+  .why-card { padding:36px 26px; }
+  .btn-gold { width:100%; padding:18px 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-logo"><img src="./islay-logo.png" alt="iSlay Studios"></div>
+    <div class="eyebrow hero-eyebrow">Artist Recruitment</div>
+    <h1 class="h-display">Join The <em>iSlay</em> Family</h1>
+    <p class="hero-sub">We're always looking for elite artists who are ready to grow, get booked, and build their brand.</p>
+    <div class="gold-line"><span></span><em>✦</em><span></span></div>
+    <a href="#apply" class="btn-gold">Apply Now</a>
+  </div>
+</section>
+
+<!-- ─── WHY iSLAY ─── -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why iSlay</span>
+      <h2>A Studio Built <em>For Artists</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎤</div>
+        <h3>Built-In Clientele</h3>
+        <p>Walk into a studio that already markets for you. We send leads directly to your chair.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📅</div>
+        <h3>Flexible Scheduling</h3>
+        <p>Set your own hours. We handle the booking system so you can focus on your craft.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3>Competitive Commission</h3>
+        <p>Keep more of what you make. Our structure is designed to help you win.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHO ─── -->
+<section class="who-wrap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Standard</span>
+      <h2>Who We're <em>Looking For</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-intro">
+        <p>iSlay isn't just a place to rent a chair — it's a brand. We're building a team of artists who treat every client like the V.I.P. they are, show up consistently, and care about the craft just as much as the culture. If that sounds like you, keep reading.</p>
+      </div>
+      <ul class="who-list">
+        <li><span class="who-check">✓</span><span>Licensed cosmetologist or active student in final semester</span></li>
+        <li><span class="who-check">✓</span><span>Specializes in at least one: braids, natural hair, silk press, weave, locs, or makeup</span></li>
+        <li><span class="who-check">✓</span><span>Professional, reliable, and client-focused</span></li>
+        <li><span class="who-check">✓</span><span>Based in or near St. Louis, MO</span></li>
+        <li><span class="who-check">✓</span><span>Ready to be part of a team, not just rent a chair</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEAM ─── -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Roster</span>
+      <h2>You'd Be Working <em>Alongside:</em></h2>
+    </div>
+    <div class="team-grid">
+      <!-- Faith — uses the real image file already in the repo -->
+      <div class="artist-card">
+        <div class="artist-photo"><img src="./islay_faith.jpeg" alt="Faith — Hairstylist at iSlay Studios"></div>
+        <div class="artist-name">Faith</div>
+        <div class="artist-title">Hairstylist</div>
+      </div>
+      <!-- Other artists use monogram avatars (no separate image files exist in repo yet). -->
+      <!-- To swap in a real photo, drop an image into the repo root and change the .artist-photo block to use an <img> as shown in Faith's card. -->
+      <div class="artist-card">
+        <div class="artist-photo monogram">S</div>
+        <div class="artist-name">Sabrina Young</div>
+        <div class="artist-title">Cosmetologist</div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-photo monogram">E</div>
+        <div class="artist-name">Eboni</div>
+        <div class="artist-title">Cosmetologist</div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-photo monogram">N</div>
+        <div class="artist-name">Nathan Slay</div>
+        <div class="artist-title">Master Barber</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── APPLICATION FORM ─── -->
+<div class="form-wrap" id="apply">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Apply Now</span>
+      <h2>Ready to <em>Apply?</em></h2>
+      <p>Fill out the form below and we'll be in touch within 48 hours.</p>
+    </div>
+
+    <div class="form-shell" id="form-shell">
+      <form id="apply-form" novalidate>
+        <div class="field">
+          <label class="field-label" for="full_name">Full Name <span class="req">*</span></label>
+          <input class="input" id="full_name" name="full_name" type="text" autocomplete="name" required>
+          <div class="err-msg">Please enter your full name.</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
+          <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(314) 555-0000" required>
+          <div class="err-msg">Please enter your phone number.</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="email">Email Address <span class="req">*</span></label>
+          <input class="input" id="email" name="email" type="email" autocomplete="email" required>
+          <div class="err-msg">Please enter a valid email address.</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="specialty">Specialty <span class="req">*</span></label>
+          <select class="select" id="specialty" name="specialty" required>
+            <option value="">— Select —</option>
+            <option>Braids</option>
+            <option>Natural Hair</option>
+            <option>Silk Press</option>
+            <option>Weave/Extensions</option>
+            <option>Locs</option>
+            <option>Makeup</option>
+            <option>Other</option>
+          </select>
+          <div class="err-msg">Please choose a specialty.</div>
+        </div>
+
+        <div class="field" id="field-licensed">
+          <label class="field-label">Are you currently licensed? <span class="req">*</span></label>
+          <div class="radio-row">
+            <div class="radio-item"><input type="radio" id="lic-yes" name="licensed" value="Yes"><label for="lic-yes">Yes</label></div>
+            <div class="radio-item"><input type="radio" id="lic-student" name="licensed" value="No — Student"><label for="lic-student">No — Student</label></div>
+          </div>
+          <div class="err-msg">Please let us know your license status.</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="about">Tell us about yourself <span class="req">*</span></label>
+          <textarea class="textarea" id="about" name="about" rows="4" placeholder="Years of experience, your vibe, what you're looking for..." required></textarea>
+          <div class="err-msg">Please tell us a bit about yourself.</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="referral">How did you hear about us? <span class="req">*</span></label>
+          <select class="select" id="referral" name="referral" required>
+            <option value="">— Select —</option>
+            <option>Instagram</option>
+            <option>Google</option>
+            <option>Word of Mouth</option>
+            <option>Existing Artist</option>
+            <option>Other</option>
+          </select>
+          <div class="err-msg">Please tell us how you heard about us.</div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">Submit My Application →</button>
+        <div class="form-error" id="form-error"></div>
+      </form>
+
+      <div class="success-banner" id="success-banner">
+        <div class="success-icon">✓</div>
+        <h3><em>You're in motion.</em></h3>
+        <p id="success-text"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="foot-logo"><img src="./islay-logo.png" alt="iSlay Studios"></div>
+  <div class="foot-links">
+    <a href="https://www.islaystudiosllc.com" target="_blank" rel="noopener">islaystudiosllc.com</a>
+    <a href="#apply">Apply</a>
+  </div>
+  <div class="foot-copy">© 2026 iSlay Studios LLC. All rights reserved.</div>
+  <div class="foot-power">Powered by <a href="https://goelev8.ai" target="_blank" rel="noopener">GoElev8.ai</a></div>
+</footer>
+
+<script>
+(function() {
+  // ─────────────────────────────────────────────────────────
+  // ⚠️  REPLACE THIS PLACEHOLDER WITH THE PRODUCTION WEBHOOK URL
+  // The form POSTs the application payload as JSON to this endpoint.
+  // ─────────────────────────────────────────────────────────
+  var RECRUITMENT_WEBHOOK = 'RECRUITMENT_WEBHOOK_PLACEHOLDER';
+
+  // Highlight selected radio
+  document.querySelectorAll('.radio-item input').forEach(function(el) {
+    el.addEventListener('change', function() {
+      document.querySelectorAll('input[name="' + el.name + '"]').forEach(function(r) {
+        r.closest('.radio-item').classList.toggle('checked', r.checked);
+      });
+      var f = el.closest('.field');
+      if (f) f.classList.remove('has-error');
+    });
+  });
+
+  // Clear error on input
+  document.querySelectorAll('.input, .select, .textarea').forEach(function(el) {
+    el.addEventListener('input', function() {
+      var f = el.closest('.field');
+      if (f) f.classList.remove('has-error');
+    });
+  });
+
+  function val(id) { var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
+  function markErr(id) {
+    var el = document.getElementById(id);
+    if (el) { var f = el.closest('.field'); if (f) f.classList.add('has-error'); }
+  }
+
+  document.getElementById('apply-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Reset prior errors
+    document.querySelectorAll('.field.has-error').forEach(function(el) { el.classList.remove('has-error'); });
+    var formErr = document.getElementById('form-error');
+    formErr.classList.remove('show');
+    formErr.textContent = '';
+
+    var hasError = false;
+
+    // Required text fields
+    ['full_name', 'phone', 'about'].forEach(function(id) {
+      if (!val(id)) { markErr(id); hasError = true; }
+    });
+
+    // Email validity
+    var emailV = val('email');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailV)) { markErr('email'); hasError = true; }
+
+    // Required selects
+    ['specialty', 'referral'].forEach(function(id) {
+      if (!val(id)) { markErr(id); hasError = true; }
+    });
+
+    // Licensed radio
+    var lic = document.querySelector('input[name="licensed"]:checked');
+    if (!lic) { document.getElementById('field-licensed').classList.add('has-error'); hasError = true; }
+
+    if (hasError) {
+      var firstErr = document.querySelector('.field.has-error');
+      if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
+      return;
+    }
+
+    var payload = {
+      full_name: val('full_name'),
+      phone: val('phone'),
+      email: emailV,
+      specialty: val('specialty'),
+      licensed: lic.value,
+      about: val('about'),
+      referral: val('referral'),
+      submitted_at: new Date().toISOString(),
+      source: 'islaystudiosllc.com/recruitment'
+    };
+
+    var btn = document.getElementById('submit-btn');
+    var origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    var firstName = payload.full_name.split(/\s+/)[0] || payload.full_name;
+
+    function showSuccess() {
+      document.getElementById('apply-form').style.display = 'none';
+      document.getElementById('success-text').textContent =
+        "Thanks, " + firstName + "! We'll be reaching out to your phone within 48 hours. 🎤";
+      var sb = document.getElementById('success-banner');
+      sb.classList.add('show');
+      sb.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+
+    function showError(msg) {
+      formErr.textContent = msg;
+      formErr.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = origText;
+    }
+
+    // If the webhook hasn't been wired up yet, still show success on the client
+    // (so the page is demo-able) but log a warning so the dev knows.
+    if (!RECRUITMENT_WEBHOOK || RECRUITMENT_WEBHOOK === 'RECRUITMENT_WEBHOOK_PLACEHOLDER') {
+      console.warn('[recruitment] RECRUITMENT_WEBHOOK is not configured. Payload:', payload);
+      showSuccess();
+      return;
+    }
+
+    fetch(RECRUITMENT_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed (' + res.status + ')');
+      showSuccess();
+    })
+    .catch(function(err) {
+      showError("Something went wrong submitting your application. Please try again, or text us directly. (" + (err && err.message ? err.message : 'Network error') + ")");
+    });
+  });
+})();
+</script>
+</body>
+</html>
