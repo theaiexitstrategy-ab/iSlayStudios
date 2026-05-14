@@ -295,15 +295,6 @@ section { padding:90px 24px; position:relative; }
   object-fit:cover;
   display:block;
 }
-.artist-photo.monogram {
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Cormorant Garamond',serif;
-  font-size:3rem;
-  font-weight:400;
-  font-style:italic;
-  color:var(--gold);
-  background:linear-gradient(135deg, rgba(201,168,76,0.05), rgba(107,33,168,0.08));
-}
 .artist-name {
   font-family:'Cormorant Garamond',serif;
   font-size:1.35rem;
@@ -319,151 +310,37 @@ section { padding:90px 24px; position:relative; }
   font-weight:600;
 }
 
-/* ─── FORM ─── */
-.form-wrap {
-  background:#0d0d0d;
+/* ─── GALLERY ─── */
+.gallery-wrap {
+  background:linear-gradient(180deg, #0d0d0d 0%, var(--bg) 100%);
   border-top:1px solid var(--gold-dim);
   border-bottom:1px solid var(--gold-dim);
-  padding:90px 24px;
 }
-.form-shell {
-  max-width:680px;
-  margin:0 auto;
-  background:var(--card);
-  border:1px solid var(--gold-dim);
-  padding:56px 48px;
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+}
+.gallery-item {
   position:relative;
-}
-.form-shell::before {
-  content:'';
-  position:absolute; top:-1px; left:0; right:0; height:2px;
-  background:linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.field { margin-bottom:24px; }
-.field-label {
-  display:block;
-  font-size:0.6rem;
-  font-weight:600;
-  letter-spacing:2.5px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.65);
-  margin-bottom:10px;
-}
-.field-label .req { color:var(--gold); margin-left:2px; }
-.input, .select, .textarea {
-  width:100%;
-  background:var(--bg-deep);
+  aspect-ratio:4 / 5;
+  overflow:hidden;
   border:1px solid var(--gold-dim);
-  color:var(--text);
-  font-family:'Montserrat',sans-serif;
-  font-size:0.88rem;
-  padding:14px 16px;
-  outline:none;
-  transition:border-color 0.2s, background 0.2s;
-  border-radius:0;
-}
-.input:focus, .select:focus, .textarea:focus {
-  border-color:var(--gold);
-  background:#080808;
-}
-.input::placeholder, .textarea::placeholder { color:rgba(255,255,255,0.25); }
-.textarea { resize:vertical; min-height:130px; line-height:1.6; }
-.select {
-  appearance:none; -webkit-appearance:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23C9A84C' d='M6 8L0 0h12z'/></svg>");
-  background-repeat:no-repeat;
-  background-position:right 18px center;
-  padding-right:42px;
-  cursor:pointer;
-}
-.radio-row {
-  display:flex; gap:12px; flex-wrap:wrap;
-}
-.radio-item {
-  flex:1; min-width:140px;
-  display:flex; align-items:center; gap:12px;
-  padding:13px 16px;
   background:var(--bg-deep);
-  border:1px solid var(--gold-dim);
-  cursor:pointer;
-  transition:all 0.2s;
+  margin:0;
+  transition:border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
-.radio-item:hover { border-color:rgba(201,168,76,0.4); }
-.radio-item input { accent-color:var(--gold); cursor:pointer; width:16px; height:16px; flex-shrink:0; }
-.radio-item label { font-size:0.8rem; color:var(--text); cursor:pointer; flex:1; letter-spacing:0.5px; }
-.radio-item.checked { border-color:var(--gold); background:rgba(201,168,76,0.06); }
-
-.err-msg {
-  display:none;
-  font-size:0.66rem; color:#e57373;
-  margin-top:8px;
-  letter-spacing:0.8px;
+.gallery-item img {
+  width:100%; height:100%;
+  object-fit:cover;
+  transition:transform 0.6s ease;
 }
-.field.has-error .err-msg { display:block; }
-.field.has-error .input,
-.field.has-error .select,
-.field.has-error .textarea { border-color:#e57373; }
-
-.btn-submit {
-  display:block; width:100%;
-  background:var(--gold); color:var(--bg-deep);
-  border:none; padding:22px;
-  font-family:'Montserrat',sans-serif;
-  font-size:0.7rem; font-weight:700;
-  letter-spacing:5px; text-transform:uppercase;
-  cursor:pointer; transition:all 0.25s;
-  margin-top:14px;
+.gallery-item:hover {
+  border-color:rgba(201,168,76,0.45);
+  transform:translateY(-3px);
+  box-shadow:0 18px 50px rgba(0,0,0,0.6);
 }
-.btn-submit:hover:not(:disabled) {
-  background:var(--gold-light); transform:translateY(-1px);
-  box-shadow:0 10px 36px rgba(201,168,76,0.28);
-}
-.btn-submit:disabled { opacity:0.55; cursor:not-allowed; }
-
-.form-error {
-  display:none;
-  margin-top:18px;
-  padding:16px 20px;
-  background:rgba(229,115,115,0.08);
-  border:1px solid rgba(229,115,115,0.4);
-  color:#e57373;
-  font-size:0.78rem;
-  letter-spacing:0.5px;
-  line-height:1.5;
-}
-.form-error.show { display:block; }
-
-.success-banner {
-  display:none;
-  text-align:center;
-  padding:80px 40px;
-  background:var(--card);
-  border:1px solid var(--gold);
-  box-shadow:0 0 60px rgba(201,168,76,0.15);
-}
-.success-banner.show { display:block; }
-.success-icon {
-  width:66px; height:66px;
-  margin:0 auto 28px;
-  border:1px solid var(--gold);
-  border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  color:var(--gold);
-  font-size:1.7rem;
-}
-.success-banner h3 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:2.1rem;
-  font-weight:500;
-  color:var(--white);
-  margin-bottom:16px;
-}
-.success-banner h3 em { color:var(--gold); font-style:italic; }
-.success-banner p {
-  font-size:0.95rem; color:var(--muted);
-  max-width:440px; margin:0 auto;
-  line-height:1.7;
-}
+.gallery-item:hover img { transform:scale(1.05); }
 
 /* ─── FOOTER ─── */
 footer {
@@ -514,11 +391,10 @@ footer {
   .why-grid { grid-template-columns:1fr; gap:20px; }
   .who-grid { grid-template-columns:1fr; gap:36px; }
   .team-grid { grid-template-columns:repeat(2, 1fr); gap:18px; }
+  .gallery-grid { grid-template-columns:1fr; gap:14px; }
 }
 @media (max-width: 560px) {
   section { padding:70px 20px; }
-  .form-wrap { padding:70px 20px; }
-  .form-shell { padding:40px 26px; }
   .team-grid { grid-template-columns:1fr 1fr; }
   .artist-photo { width:108px; height:108px; }
   .why-card { padding:36px 26px; }
@@ -538,7 +414,7 @@ footer {
     <h1 class="h-display">Join The <em>iSlay</em> Family</h1>
     <p class="hero-sub">We're always looking for elite artists who are ready to grow, get booked, and build their brand.</p>
     <div class="gold-line"><span></span><em>✦</em><span></span></div>
-    <a href="#apply" class="btn-gold">Apply Now</a>
+    <a href="/apply" class="btn-gold">Apply Now</a>
   </div>
 </section>
 
@@ -599,26 +475,23 @@ footer {
       <h2>You'd Be Working <em>Alongside:</em></h2>
     </div>
     <div class="team-grid">
-      <!-- Faith — uses the real image file already in the repo -->
       <div class="artist-card">
         <div class="artist-photo"><img src="./islay_faith.jpeg" alt="Faith — Hairstylist at iSlay Studios"></div>
         <div class="artist-name">Faith</div>
         <div class="artist-title">Hairstylist</div>
       </div>
-      <!-- Other artists use monogram avatars (no separate image files exist in repo yet). -->
-      <!-- To swap in a real photo, drop an image into the repo root and change the .artist-photo block to use an <img> as shown in Faith's card. -->
       <div class="artist-card">
-        <div class="artist-photo monogram">S</div>
+        <div class="artist-photo"><img src="./Sabrina.jpg" alt="Sabrina Young — Cosmetologist at iSlay Studios"></div>
         <div class="artist-name">Sabrina Young</div>
         <div class="artist-title">Cosmetologist</div>
       </div>
       <div class="artist-card">
-        <div class="artist-photo monogram">E</div>
-        <div class="artist-name">Eboni</div>
-        <div class="artist-title">Cosmetologist</div>
+        <div class="artist-photo"><img src="./SherryJ.jpg" alt="Sherry J — Licensed Hairstylist at iSlay Studios"></div>
+        <div class="artist-name">Slayed by Sherry J</div>
+        <div class="artist-title">Licensed Hairstylist</div>
       </div>
       <div class="artist-card">
-        <div class="artist-photo monogram">N</div>
+        <div class="artist-photo"><img src="./nate.jpg" alt="Nathan Slay — Master Barber and owner at iSlay Studios"></div>
         <div class="artist-name">Nathan Slay</div>
         <div class="artist-title">Master Barber</div>
       </div>
@@ -626,227 +499,32 @@ footer {
   </div>
 </section>
 
-<!-- ─── APPLICATION FORM ─── -->
-<div class="form-wrap" id="apply">
+<!-- ─── STUDIO GALLERY ─── -->
+<section class="gallery-wrap" id="gallery">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Apply Now</span>
-      <h2>Ready to <em>Apply?</em></h2>
-      <p>Fill out the form below and we'll be in touch within 48 hours.</p>
+      <span class="eyebrow">The Space</span>
+      <h2>Inside the <em>Studio</em></h2>
+      <p>A closer look at where the magic happens.</p>
     </div>
-
-    <div class="form-shell" id="form-shell">
-      <form id="apply-form" novalidate>
-        <div class="field">
-          <label class="field-label" for="full_name">Full Name <span class="req">*</span></label>
-          <input class="input" id="full_name" name="full_name" type="text" autocomplete="name" required>
-          <div class="err-msg">Please enter your full name.</div>
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
-          <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(314) 555-0000" required>
-          <div class="err-msg">Please enter your phone number.</div>
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="email">Email Address <span class="req">*</span></label>
-          <input class="input" id="email" name="email" type="email" autocomplete="email" required>
-          <div class="err-msg">Please enter a valid email address.</div>
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="specialty">Specialty <span class="req">*</span></label>
-          <select class="select" id="specialty" name="specialty" required>
-            <option value="">— Select —</option>
-            <option>Braids</option>
-            <option>Natural Hair</option>
-            <option>Silk Press</option>
-            <option>Weave/Extensions</option>
-            <option>Locs</option>
-            <option>Makeup</option>
-            <option>Other</option>
-          </select>
-          <div class="err-msg">Please choose a specialty.</div>
-        </div>
-
-        <div class="field" id="field-licensed">
-          <label class="field-label">Are you currently licensed? <span class="req">*</span></label>
-          <div class="radio-row">
-            <div class="radio-item"><input type="radio" id="lic-yes" name="licensed" value="Yes"><label for="lic-yes">Yes</label></div>
-            <div class="radio-item"><input type="radio" id="lic-student" name="licensed" value="No — Student"><label for="lic-student">No — Student</label></div>
-          </div>
-          <div class="err-msg">Please let us know your license status.</div>
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="about">Tell us about yourself <span class="req">*</span></label>
-          <textarea class="textarea" id="about" name="about" rows="4" placeholder="Years of experience, your vibe, what you're looking for..." required></textarea>
-          <div class="err-msg">Please tell us a bit about yourself.</div>
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="referral">How did you hear about us? <span class="req">*</span></label>
-          <select class="select" id="referral" name="referral" required>
-            <option value="">— Select —</option>
-            <option>Instagram</option>
-            <option>Google</option>
-            <option>Word of Mouth</option>
-            <option>Existing Artist</option>
-            <option>Other</option>
-          </select>
-          <div class="err-msg">Please tell us how you heard about us.</div>
-        </div>
-
-        <button type="submit" class="btn-submit" id="submit-btn">Submit My Application →</button>
-        <div class="form-error" id="form-error"></div>
-      </form>
-
-      <div class="success-banner" id="success-banner">
-        <div class="success-icon">✓</div>
-        <h3><em>You're in motion.</em></h3>
-        <p id="success-text"></p>
-      </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item"><img src="./IMG_3243.JPEG" alt="iSlay Studios interior" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="./IMG_3244.JPEG" alt="iSlay Studios interior" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="./IMG_3245.JPEG" alt="iSlay Studios interior" loading="lazy"></figure>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="foot-logo"><img src="./islay-logo.png" alt="iSlay Studios"></div>
   <div class="foot-links">
     <a href="https://www.islaystudiosllc.com" target="_blank" rel="noopener">islaystudiosllc.com</a>
-    <a href="#apply">Apply</a>
+    <a href="/apply">Apply</a>
   </div>
   <div class="foot-copy">© 2026 iSlay Studios LLC. All rights reserved.</div>
   <div class="foot-power">Powered by <a href="https://goelev8.ai" target="_blank" rel="noopener">GoElev8.ai</a></div>
 </footer>
 
-<script>
-(function() {
-  // ─────────────────────────────────────────────────────────
-  // ⚠️  REPLACE THIS PLACEHOLDER WITH THE PRODUCTION WEBHOOK URL
-  // The form POSTs the application payload as JSON to this endpoint.
-  // ─────────────────────────────────────────────────────────
-  var RECRUITMENT_WEBHOOK = 'RECRUITMENT_WEBHOOK_PLACEHOLDER';
-
-  // Highlight selected radio
-  document.querySelectorAll('.radio-item input').forEach(function(el) {
-    el.addEventListener('change', function() {
-      document.querySelectorAll('input[name="' + el.name + '"]').forEach(function(r) {
-        r.closest('.radio-item').classList.toggle('checked', r.checked);
-      });
-      var f = el.closest('.field');
-      if (f) f.classList.remove('has-error');
-    });
-  });
-
-  // Clear error on input
-  document.querySelectorAll('.input, .select, .textarea').forEach(function(el) {
-    el.addEventListener('input', function() {
-      var f = el.closest('.field');
-      if (f) f.classList.remove('has-error');
-    });
-  });
-
-  function val(id) { var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
-  function markErr(id) {
-    var el = document.getElementById(id);
-    if (el) { var f = el.closest('.field'); if (f) f.classList.add('has-error'); }
-  }
-
-  document.getElementById('apply-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Reset prior errors
-    document.querySelectorAll('.field.has-error').forEach(function(el) { el.classList.remove('has-error'); });
-    var formErr = document.getElementById('form-error');
-    formErr.classList.remove('show');
-    formErr.textContent = '';
-
-    var hasError = false;
-
-    // Required text fields
-    ['full_name', 'phone', 'about'].forEach(function(id) {
-      if (!val(id)) { markErr(id); hasError = true; }
-    });
-
-    // Email validity
-    var emailV = val('email');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailV)) { markErr('email'); hasError = true; }
-
-    // Required selects
-    ['specialty', 'referral'].forEach(function(id) {
-      if (!val(id)) { markErr(id); hasError = true; }
-    });
-
-    // Licensed radio
-    var lic = document.querySelector('input[name="licensed"]:checked');
-    if (!lic) { document.getElementById('field-licensed').classList.add('has-error'); hasError = true; }
-
-    if (hasError) {
-      var firstErr = document.querySelector('.field.has-error');
-      if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
-      return;
-    }
-
-    var payload = {
-      full_name: val('full_name'),
-      phone: val('phone'),
-      email: emailV,
-      specialty: val('specialty'),
-      licensed: lic.value,
-      about: val('about'),
-      referral: val('referral'),
-      submitted_at: new Date().toISOString(),
-      source: 'islaystudiosllc.com/recruitment'
-    };
-
-    var btn = document.getElementById('submit-btn');
-    var origText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Submitting...';
-
-    var firstName = payload.full_name.split(/\s+/)[0] || payload.full_name;
-
-    function showSuccess() {
-      document.getElementById('apply-form').style.display = 'none';
-      document.getElementById('success-text').textContent =
-        "Thanks, " + firstName + "! We'll be reaching out to your phone within 48 hours. 🎤";
-      var sb = document.getElementById('success-banner');
-      sb.classList.add('show');
-      sb.scrollIntoView({ behavior:'smooth', block:'center' });
-    }
-
-    function showError(msg) {
-      formErr.textContent = msg;
-      formErr.classList.add('show');
-      btn.disabled = false;
-      btn.textContent = origText;
-    }
-
-    // If the webhook hasn't been wired up yet, still show success on the client
-    // (so the page is demo-able) but log a warning so the dev knows.
-    if (!RECRUITMENT_WEBHOOK || RECRUITMENT_WEBHOOK === 'RECRUITMENT_WEBHOOK_PLACEHOLDER') {
-      console.warn('[recruitment] RECRUITMENT_WEBHOOK is not configured. Payload:', payload);
-      showSuccess();
-      return;
-    }
-
-    fetch(RECRUITMENT_WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(function(res) {
-      if (!res.ok) throw new Error('Submission failed (' + res.status + ')');
-      showSuccess();
-    })
-    .catch(function(err) {
-      showError("Something went wrong submitting your application. Please try again, or text us directly. (" + (err && err.message ? err.message : 'Network error') + ")");
-    });
-  });
-})();
-</script>
 </body>
 </html>
