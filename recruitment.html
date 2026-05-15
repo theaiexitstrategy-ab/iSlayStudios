@@ -266,8 +266,8 @@ section { padding:90px 24px; position:relative; }
 /* ─── TEAM ─── */
 .team-grid {
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:24px;
+  grid-template-columns:repeat(5, 1fr);
+  gap:20px;
 }
 .artist-card {
   background:var(--card);
@@ -439,12 +439,31 @@ footer {
 }
 .foot-power a { color:var(--gold); transition:color 0.2s; }
 .foot-power a:hover { color:var(--gold-light); }
+.foot-disclosure {
+  max-width:680px;
+  margin:0 auto 22px;
+  padding:18px 22px;
+  border:1px solid var(--gold-dim);
+  background:rgba(255,255,255,0.02);
+  font-size:0.7rem;
+  line-height:1.65;
+  color:var(--muted);
+  letter-spacing:0.3px;
+  text-transform:none;
+  text-align:left;
+}
+.foot-disclosure strong { color:var(--text); font-weight:600; }
+.foot-disclosure a { color:var(--gold); }
+.foot-disclosure a:hover { color:var(--gold-light); }
 
 /* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .team-grid { grid-template-columns:repeat(3, 1fr); }
+}
 @media (max-width: 900px) {
   .why-grid { grid-template-columns:1fr; gap:20px; }
   .who-grid { grid-template-columns:1fr; gap:36px; }
-  .team-grid { grid-template-columns:repeat(2, 1fr); gap:18px; }
+  .team-grid { grid-template-columns:repeat(3, 1fr); gap:18px; }
   .gallery-grid { grid-template-columns:1fr; gap:14px; }
 }
 @media (max-width: 560px) {
@@ -549,6 +568,11 @@ footer {
         <div class="artist-name">Nathan Slay</div>
         <div class="artist-title">Master Barber</div>
       </div>
+      <div class="artist-card">
+        <div class="artist-photo"><img src="./Eboni.png" alt="Eboni — Cosmetologist at iSlay Studios"></div>
+        <div class="artist-name">Eboni</div>
+        <div class="artist-title">Cosmetologist</div>
+      </div>
     </div>
   </div>
 </section>
@@ -594,9 +618,14 @@ footer {
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="foot-logo"><img src="./islay-logo.png" alt="iSlay Studios"></div>
+  <div class="foot-disclosure">
+    <strong>iSlay Studios LLC</strong> sends transactional and promotional SMS messages only to applicants and customers who have explicitly opted in on a form that displays SMS consent language. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for help. <strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> See our <a href="/privacy">Privacy Policy</a> and <a href="/sms-terms">SMS Terms</a>.
+  </div>
   <div class="foot-links">
     <a href="https://www.islaystudiosllc.com" target="_blank" rel="noopener">islaystudiosllc.com</a>
     <a href="/apply">Apply</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/sms-terms">SMS Terms</a>
   </div>
   <div class="foot-copy">© 2026 iSlay Studios LLC. All rights reserved.</div>
   <div class="foot-power">Powered by <a href="https://goelev8.ai" target="_blank" rel="noopener">GoElev8.ai</a></div>

@@ -3,6 +3,8 @@
     { "source": "/members", "destination": "/membership-hero-tiers.html" },
     { "source": "/beard", "destination": "/beard-oil.html" },
     { "source": "/apply", "destination": "/apply.html" },
-    { "source": "/recruitment", "destination": "/recruitment.html" }
+    { "source": "/recruitment", "destination": "/recruitment.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/sms-terms", "destination": "/sms-terms.html" }
   ]
 }
