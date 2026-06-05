@@ -5,6 +5,7 @@
     { "source": "/apply", "destination": "/apply.html" },
     { "source": "/recruitment", "destination": "/recruitment.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/sms-terms", "destination": "/sms-terms.html" }
+    { "source": "/sms-terms", "destination": "/sms-terms.html" },
+    { "source": "/merch", "destination": "/merch.html" }
   ]
 }

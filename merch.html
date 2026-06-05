@@ -1,0 +1,483 @@
+<!-- © 2026 GoElev8.ai | Aaron Bryant. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merch | iSlay Studios</title>
+<meta name="description" content="iSlay Studios beard oil, shampoo, and conditioner — salon-grade product, finished in Bridgeton, MO.">
+<link rel="canonical" href="https://www.islaystudiosllc.com/merch">
+<link rel="icon" href="/islay-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#0a0a0a;
+  --bg-deep:#060606;
+  --card:#101010;
+  --card-2:#161616;
+  --gold:#C9A84C;
+  --gold-light:#E2C068;
+  --gold-dim:rgba(201,168,76,0.14);
+  --text:#F0EDE8;
+  --muted:#807a72;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+body::after{
+  content:''; position:fixed; inset:0; z-index:9000; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4; mix-blend-mode:overlay;
+}
+img{display:block;max-width:100%;height:auto;}
+a{color:inherit;text-decoration:none;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,6,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--gold-dim);}
+.nav-logo-img{display:inline-flex;align-items:center;}
+.nav-logo-img img{height:42px;width:auto;display:block;}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:0.58rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{display:flex;align-items:center;background:var(--gold);color:var(--bg-deep);padding:9px 20px;font-size:0.56rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;transition:all 0.25s;margin-left:12px;}
+.nav-cta:hover{background:var(--gold-light);}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  padding:140px 24px 60px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 20%, rgba(201,168,76,0.12), transparent 60%);
+}
+.hero-inner{position:relative; z-index:1; max-width:760px; margin:0 auto;}
+.eyebrow{font-size:0.6rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.6rem,6vw,4.6rem);
+  font-weight:600;line-height:1.05;color:var(--white);
+  letter-spacing:-0.5px;margin-bottom:22px;
+}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:400;}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.1rem;color:var(--muted);
+  max-width:540px;margin:0 auto;line-height:1.6;
+}
+.divider-mark{display:flex;align-items:center;justify-content:center;gap:14px;max-width:200px;margin:36px auto 0;}
+.divider-mark span{flex:1;height:1px;background:var(--gold-dim);}
+.divider-mark em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
+
+/* ── SECTION ── */
+section{padding:60px 24px 80px;}
+.container{max-width:1180px;margin:0 auto;}
+
+/* ── GRID + CARDS ── */
+.merch-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  max-width:1100px;
+  margin:0 auto;
+  align-items:stretch;
+}
+.merch-card{
+  background:var(--card);
+  border:1px solid var(--gold-dim);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  transition:border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.merch-card:hover{
+  border-color:rgba(201,168,76,0.4);
+  transform:translateY(-3px);
+  box-shadow:0 18px 50px rgba(0,0,0,0.55);
+}
+.merch-image{
+  aspect-ratio:1 / 1;
+  background:linear-gradient(135deg, #0c0c0c 0%, #161410 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--gold-dim);
+}
+.merch-image img{
+  width:100%;height:100%;object-fit:cover;
+}
+.merch-image-placeholder{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  color:var(--gold);
+  font-size:1.7rem;
+  letter-spacing:1px;
+  text-align:center;
+  padding:24px;
+  opacity:0.5;
+}
+.merch-body{
+  padding:30px 28px 28px;
+  display:flex;flex-direction:column;
+  flex:1;
+}
+.merch-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;
+  font-weight:500;
+  color:var(--white);
+  letter-spacing:0.2px;
+  margin-bottom:10px;
+}
+.merch-name em{color:var(--gold);font-style:italic;}
+.merch-desc{
+  font-size:0.84rem;
+  color:var(--muted);
+  line-height:1.6;
+  letter-spacing:0.2px;
+  margin-bottom:22px;
+  min-height:3.2em;
+}
+.merch-price-row{
+  display:flex;align-items:baseline;gap:12px;
+  margin-bottom:24px;padding-bottom:22px;
+  border-bottom:1px dashed rgba(201,168,76,0.12);
+}
+.merch-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;
+  font-weight:500;
+  color:var(--white);
+  line-height:1;
+  letter-spacing:-0.5px;
+}
+.merch-price-was{
+  font-size:0.88rem;
+  color:var(--muted);
+  text-decoration:line-through;
+  font-style:italic;
+}
+.merch-cta{
+  display:block;text-align:center;
+  background:var(--gold);
+  color:var(--bg-deep);
+  padding:16px 22px;
+  font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;
+  font-weight:700;
+  transition:all 0.25s;
+  margin-top:auto;
+}
+.merch-cta:hover{
+  background:var(--gold-light);
+  transform:translateY(-1px);
+  box-shadow:0 10px 30px rgba(201,168,76,0.25);
+}
+
+/* ── STATES ── */
+.merch-loading,
+.merch-empty,
+.merch-error{
+  max-width:560px;margin:0 auto;
+  padding:50px 30px;
+  border:1px solid var(--gold-dim);
+  background:var(--card);
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.6;
+}
+.merch-error a,
+.merch-empty a{color:var(--gold);font-style:normal;font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;}
+.merch-error a:hover,
+.merch-empty a:hover{color:var(--gold-light);}
+
+/* ── INFO STRIP ── */
+.info-strip{
+  background:linear-gradient(180deg, var(--bg) 0%, #0d0d0d 100%);
+  border-top:1px solid var(--gold-dim);
+  border-bottom:1px solid var(--gold-dim);
+  padding:48px 24px;
+}
+.info-strip .info-inner{
+  max-width:760px;margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  text-align:center;
+}
+.info-strip .info-item{padding:8px 14px;}
+.info-strip .info-item .info-icon{
+  width:36px;height:36px;
+  margin:0 auto 14px;
+  border:1px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:0.9rem;
+}
+.info-strip .info-item .info-label{
+  font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);font-weight:600;margin-bottom:6px;
+}
+.info-strip .info-item .info-text{
+  font-size:0.78rem;color:var(--muted);line-height:1.55;
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:48px 24px 36px;
+  border-top:1px solid var(--gold-dim);
+  text-align:center;
+}
+.foot-logo{width:46px;height:46px;margin:0 auto 22px;opacity:0.5;}
+.foot-logo img{width:100%;height:100%;object-fit:contain;}
+.foot-disclosure{
+  max-width:680px;margin:0 auto 22px;
+  padding:18px 22px;
+  border:1px solid var(--gold-dim);
+  background:rgba(255,255,255,0.02);
+  font-size:0.7rem;line-height:1.65;
+  color:var(--muted);letter-spacing:0.3px;
+  text-align:left;
+}
+.foot-disclosure strong{color:var(--text);font-weight:600;}
+.foot-disclosure a{color:var(--gold);}
+.foot-disclosure a:hover{color:var(--gold-light);}
+.foot-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:18px;}
+.foot-links a{font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+.foot-links a:hover{color:var(--gold);}
+.foot-copy{font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.foot-power{font-size:0.52rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);opacity:0.7;}
+.foot-power a{color:var(--gold);transition:color 0.2s;}
+.foot-power a:hover{color:var(--gold-light);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .merch-grid{grid-template-columns:repeat(2,1fr);max-width:760px;}
+}
+@media(max-width:680px){
+  .merch-grid{grid-template-columns:1fr;max-width:420px;}
+  .info-strip .info-inner{grid-template-columns:1fr;gap:30px;}
+}
+@media(max-width:560px){
+  nav{padding:14px 24px;}
+  .nav-links{display:none;}
+  .hero{padding:120px 22px 50px;}
+  section{padding:50px 22px 70px;}
+  .merch-body{padding:24px 22px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="/" class="nav-logo-img" aria-label="iSlay Studios Home">
+    <img src="/islay-logo.png" alt="iSlay Studios">
+  </a>
+  <div class="nav-links">
+    <a href="/#team">The Team</a>
+    <a href="/members">Memberships</a>
+    <a href="/recruitment">Join the Team</a>
+  </div>
+  <a href="/#team" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">iSlay Studios Merch</div>
+    <h1>Crafted for <em>the Cut</em></h1>
+    <p class="hero-sub">Salon-grade product for at-home upkeep — beard oil, shampoo, and conditioner. Finished in Bridgeton, Missouri.</p>
+    <div class="divider-mark"><span></span><em>✦</em><span></span></div>
+  </div>
+</header>
+
+<!-- ── PRODUCTS ── -->
+<section>
+  <div class="container">
+    <div id="merch-root">
+      <div class="merch-loading">Loading the shelf…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INFO STRIP ── -->
+<div class="info-strip">
+  <div class="info-inner">
+    <div class="info-item">
+      <div class="info-icon">✦</div>
+      <div class="info-label">Salon Grade</div>
+      <div class="info-text">The same product we use on you in the chair.</div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">✦</div>
+      <div class="info-label">Ships from Bridgeton</div>
+      <div class="info-text">Orders fulfilled from the iSlay Studios floor.</div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">✦</div>
+      <div class="info-label">Always Fresh</div>
+      <div class="info-text">Small batches, never warehoused.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-logo"><img src="/islay-logo.png" alt="iSlay Studios"></div>
+  <div class="foot-disclosure">
+    <strong>iSlay Studios LLC</strong> sends transactional and promotional SMS messages only to applicants and customers who have explicitly opted in on a form that displays SMS consent language. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for help. <strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> See our <a href="/privacy">Privacy Policy</a> and <a href="/sms-terms">SMS Terms</a>.
+  </div>
+  <div class="foot-links">
+    <a href="https://www.islaystudiosllc.com">Home</a>
+    <a href="/members">Memberships</a>
+    <a href="/recruitment">Join the Team</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/sms-terms">SMS Terms</a>
+  </div>
+  <div class="foot-copy">© 2026 iSlay Studios LLC. All rights reserved.</div>
+  <div class="foot-power">Powered by <a href="https://goelev8.ai" target="_blank" rel="noopener">GoElev8.ai</a></div>
+</footer>
+
+<script>
+(function() {
+  // The portal serves the iSlay catalog (name, description, price,
+  // image, sort order) from this public endpoint. Nate edits any of
+  // it via the portal's merch tab and the change shows up here on
+  // the next page load — no deploy needed.
+  var PRODUCTS_URL = 'https://portal.goelev8.ai/api/external/products?slug=islay-studios';
+
+  // Where the Buy button sends shoppers. The portal hosts the actual
+  // Stripe checkout for iSlay's storefront — change this URL if the
+  // public store path on the portal moves.
+  var STORE_URL = 'https://portal.goelev8.ai/f/islay-studios/store';
+
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === 'class') node.className = attrs[k];
+      else if (k === 'html') node.innerHTML = attrs[k];
+      else node.setAttribute(k, attrs[k]);
+    }
+    if (children) (Array.isArray(children) ? children : [children]).forEach(function(c) {
+      if (c == null) return;
+      node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return node;
+  }
+
+  function escapeHtml(s) {
+    var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML;
+  }
+
+  function fmtPrice(cents) {
+    if (cents == null) return '—';
+    var dollars = cents / 100;
+    return '$' + dollars.toFixed(2);
+  }
+
+  function placeholderInitial(name) {
+    if (!name) return '✦';
+    var t = name.replace(/^iSlay\s+Studios?\s+/i, '').trim();
+    return t.split(/\s+/).map(function(w) { return w[0]; }).join('').slice(0,2).toUpperCase() || '✦';
+  }
+
+  function renderProductCard(p) {
+    var card = el('article', { class: 'merch-card' });
+
+    var image = el('div', { class: 'merch-image' });
+    if (p.image_url) {
+      image.appendChild(el('img', { src: p.image_url, alt: p.name || 'iSlay Studios product', loading: 'lazy' }));
+    } else {
+      image.appendChild(el('div', {
+        class: 'merch-image-placeholder',
+        html: '<div style="font-size:2.2rem;letter-spacing:6px;margin-bottom:10px;">' + escapeHtml(placeholderInitial(p.name)) + '</div>' +
+              '<div style="font-size:0.55rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);font-style:normal;font-family:Montserrat,sans-serif;">Image coming soon</div>'
+      }));
+    }
+    card.appendChild(image);
+
+    var body = el('div', { class: 'merch-body' });
+    body.appendChild(el('div', { class: 'merch-name' }, p.name || 'Untitled'));
+    body.appendChild(el('div', { class: 'merch-desc' }, p.description || ''));
+
+    var priceRow = el('div', { class: 'merch-price-row' });
+    priceRow.appendChild(el('div', { class: 'merch-price' }, fmtPrice(p.price_cents)));
+    if (p.compare_at_price_cents && p.compare_at_price_cents > (p.price_cents || 0)) {
+      priceRow.appendChild(el('div', { class: 'merch-price-was' }, fmtPrice(p.compare_at_price_cents)));
+    }
+    body.appendChild(priceRow);
+
+    var cta = el('a', {
+      class: 'merch-cta',
+      href: STORE_URL + (p.key ? '#' + encodeURIComponent(p.key) : ''),
+      target: '_blank',
+      rel: 'noopener'
+    }, 'Buy Now →');
+    body.appendChild(cta);
+
+    card.appendChild(body);
+    return card;
+  }
+
+  function renderProducts(products) {
+    var root = document.getElementById('merch-root');
+    root.innerHTML = '';
+
+    if (!products || products.length === 0) {
+      var empty = el('div', { class: 'merch-empty' },
+        'No product live yet — Nate is restocking the shelf. '
+      );
+      empty.appendChild(el('br'));
+      empty.appendChild(el('br'));
+      empty.appendChild(el('a', { href: STORE_URL, target: '_blank', rel: 'noopener' }, 'Visit the store →'));
+      root.appendChild(empty);
+      return;
+    }
+
+    var grid = el('div', { class: 'merch-grid' });
+    products.forEach(function(p) { grid.appendChild(renderProductCard(p)); });
+    root.appendChild(grid);
+  }
+
+  function renderError(msg) {
+    var root = document.getElementById('merch-root');
+    root.innerHTML = '';
+    var err = el('div', { class: 'merch-error' });
+    err.appendChild(document.createTextNode(msg || 'We had trouble loading the catalog.'));
+    err.appendChild(el('br'));
+    err.appendChild(el('br'));
+    err.appendChild(el('a', { href: STORE_URL, target: '_blank', rel: 'noopener' }, 'Visit the store →'));
+    root.appendChild(err);
+  }
+
+  fetch(PRODUCTS_URL, { headers: { 'Accept': 'application/json' }})
+    .then(function(res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function(json) {
+      var list = (json && json.products) || [];
+      renderProducts(list);
+    })
+    .catch(function() {
+      renderError('We had trouble loading the catalog.');
+    });
+})();
+</script>
+</body>
+</html>
