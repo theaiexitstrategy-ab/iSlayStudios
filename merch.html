@@ -184,6 +184,18 @@ section{padding:60px 24px 80px;}
   transform:translateY(-1px);
   box-shadow:0 10px 30px rgba(201,168,76,0.25);
 }
+.merch-cta.is-disabled{
+  background:transparent;
+  color:var(--muted);
+  border:1px solid var(--gold-dim);
+  cursor:default;
+  pointer-events:none;
+}
+.merch-cta.is-disabled:hover{
+  background:transparent;
+  transform:none;
+  box-shadow:none;
+}
 
 /* ── STATES ── */
 .merch-loading,
@@ -356,15 +368,14 @@ footer{
 <script>
 (function() {
   // The portal serves the iSlay catalog (name, description, price,
-  // image, sort order) from this public endpoint. Nate edits any of
-  // it via the portal's merch tab and the change shows up here on
-  // the next page load — no deploy needed.
+  // image, sort order, payment_link) from this public endpoint. Nate
+  // edits any of it via the portal's merch tab and the change shows
+  // up here on the next page load — no deploy needed.
   var PRODUCTS_URL = 'https://portal.goelev8.ai/api/external/products?slug=islay-studios';
 
-  // Where the Buy button sends shoppers. The portal hosts the actual
-  // Stripe checkout for iSlay's storefront — change this URL if the
-  // public store path on the portal moves.
-  var STORE_URL = 'https://portal.goelev8.ai/f/islay-studios/store';
+  // Fallback URL when a product has no Stripe Payment Link configured
+  // yet — sends shoppers to iSlay's main site rather than to a 404.
+  var FALLBACK_URL = 'https://www.islaystudiosllc.com';
 
   function el(tag, attrs, children) {
     var node = document.createElement(tag);
@@ -422,12 +433,21 @@ footer{
     }
     body.appendChild(priceRow);
 
-    var cta = el('a', {
-      class: 'merch-cta',
-      href: STORE_URL + (p.key ? '#' + encodeURIComponent(p.key) : ''),
-      target: '_blank',
-      rel: 'noopener'
-    }, 'Buy Now →');
+    // Each product carries its own Stripe Payment Link. When present,
+    // Buy routes the shopper straight to Stripe-hosted checkout. When
+    // missing, we render a disabled "Coming soon" chip so the page
+    // never sends anyone to a dead URL.
+    var cta;
+    if (p.payment_link) {
+      cta = el('a', {
+        class: 'merch-cta',
+        href: p.payment_link,
+        target: '_blank',
+        rel: 'noopener'
+      }, 'Buy Now →');
+    } else {
+      cta = el('div', { class: 'merch-cta is-disabled' }, 'Coming Soon');
+    }
     body.appendChild(cta);
 
     card.appendChild(body);
@@ -444,7 +464,7 @@ footer{
       );
       empty.appendChild(el('br'));
       empty.appendChild(el('br'));
-      empty.appendChild(el('a', { href: STORE_URL, target: '_blank', rel: 'noopener' }, 'Visit the store →'));
+      empty.appendChild(el('a', { href: FALLBACK_URL, target: '_blank', rel: 'noopener' }, 'Back to islaystudiosllc.com →'));
       root.appendChild(empty);
       return;
     }
@@ -461,7 +481,7 @@ footer{
     err.appendChild(document.createTextNode(msg || 'We had trouble loading the catalog.'));
     err.appendChild(el('br'));
     err.appendChild(el('br'));
-    err.appendChild(el('a', { href: STORE_URL, target: '_blank', rel: 'noopener' }, 'Visit the store →'));
+    err.appendChild(el('a', { href: FALLBACK_URL, target: '_blank', rel: 'noopener' }, 'Back to islaystudiosllc.com →'));
     root.appendChild(err);
   }
 
