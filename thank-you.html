@@ -1,0 +1,341 @@
+<!-- © 2026 GoElev8.ai | Aaron Bryant. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You for Your Order | iSlay Studios</title>
+<meta name="description" content="Your iSlay Studios order is in. We ship within 72 hours; USPS typically delivers in 1–2 weeks.">
+<link rel="canonical" href="https://www.islaystudiosllc.com/thank-you">
+<link rel="icon" href="/islay-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+:root {
+  --bg:#0a0a0a; --bg-deep:#060606; --card:#101010;
+  --gold:#C9A84C; --gold-light:#E2C068; --gold-dim:rgba(201,168,76,0.14);
+  --text:#F0EDE8; --muted:#807a72; --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--bg); color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+body::after{
+  content:''; position:fixed; inset:0; z-index:9000; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4; mix-blend-mode:overlay;
+}
+img{display:block;max-width:100%;height:auto;}
+a{color:var(--gold);text-decoration:none;transition:color 0.2s;}
+a:hover{color:var(--gold-light);}
+
+.hero{
+  position:relative;
+  padding:120px 24px 60px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.18), transparent 60%);
+}
+.hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.mark{
+  width:88px;height:88px;
+  margin:0 auto 30px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:2.4rem;font-weight:300;
+  box-shadow:0 0 60px rgba(201,168,76,0.2);
+}
+.eyebrow{
+  font-size:0.62rem;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:18px;font-weight:600;
+}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,6vw,4.6rem);
+  font-weight:600;line-height:1.05;color:var(--white);
+  letter-spacing:-0.5px;margin-bottom:24px;
+}
+h1 em{color:var(--gold);font-style:italic;font-weight:400;}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.15rem;color:var(--muted);
+  max-width:520px;margin:0 auto 22px;line-height:1.65;
+}
+.order-ref{
+  display:inline-block;
+  margin-top:6px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--muted);
+  padding:8px 16px;
+  border:1px solid var(--gold-dim);
+  background:rgba(255,255,255,0.02);
+}
+.order-ref code{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.78rem;text-transform:none;letter-spacing:0;
+  color:var(--text);
+}
+
+.divider-mark{display:flex;align-items:center;justify-content:center;gap:14px;max-width:200px;margin:36px auto 0;}
+.divider-mark span{flex:1;height:1px;background:var(--gold-dim);}
+.divider-mark em{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);
+}
+
+/* ── WHAT HAPPENS NEXT ── */
+section.next{
+  padding:30px 24px 80px;
+}
+.next-inner{max-width:880px;margin:0 auto;}
+.next-header{text-align:center;margin-bottom:46px;}
+.next-header .small-eyebrow{
+  display:block;font-size:0.58rem;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;font-weight:600;
+}
+.next-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:500;color:var(--white);line-height:1.1;
+}
+.next-header h2 em{color:var(--gold);font-style:italic;}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.step{
+  background:var(--card);
+  border:1px solid var(--gold-dim);
+  padding:36px 28px 32px;
+  position:relative;
+  display:flex;flex-direction:column;
+}
+.step-num{
+  position:absolute;top:14px;right:18px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.6rem;color:var(--gold);
+  opacity:0.55;line-height:1;
+}
+.step-icon{
+  width:46px;height:46px;
+  border:1px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:1.05rem;
+  margin-bottom:20px;
+}
+.step h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:500;color:var(--white);
+  margin-bottom:10px;
+}
+.step p{
+  font-size:0.85rem;color:var(--text);
+  line-height:1.65;letter-spacing:0.2px;
+  opacity:0.85;
+}
+.step p strong{color:var(--gold);font-weight:600;}
+
+/* ── HEADS UP CALLOUT (SMS) ── */
+.heads-up{
+  max-width:680px;margin:46px auto 0;
+  background:var(--card);
+  border:1px solid var(--gold-dim);
+  border-left:2px solid var(--gold);
+  padding:24px 28px;
+  display:flex;align-items:flex-start;gap:18px;
+}
+.heads-up-icon{
+  width:36px;height:36px;flex-shrink:0;
+  border:1px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:0.9rem;
+}
+.heads-up-text{
+  font-size:0.88rem;color:var(--text);
+  line-height:1.65;letter-spacing:0.2px;
+}
+.heads-up-text strong{color:var(--white);font-weight:600;}
+
+/* ── CTA ── */
+.cta-row{text-align:center;margin-top:46px;}
+.btn-gold{
+  display:inline-block;
+  background:var(--gold);color:var(--bg-deep);
+  padding:18px 44px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.66rem;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;
+  text-decoration:none;
+  transition:all 0.25s;
+}
+.btn-gold:hover{
+  background:var(--gold-light);
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(201,168,76,0.28);
+  color:var(--bg-deep);
+}
+.btn-ghost{
+  display:inline-block;margin-left:14px;
+  padding:18px 32px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.62rem;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--gold-dim);
+  text-decoration:none;transition:all 0.25s;
+}
+.btn-ghost:hover{color:var(--gold);border-color:var(--gold);}
+
+/* ── FOOTER ── */
+footer{
+  padding:48px 24px 36px;
+  border-top:1px solid var(--gold-dim);
+  text-align:center;
+  margin-top:20px;
+}
+.foot-logo{width:46px;height:46px;margin:0 auto 22px;opacity:0.5;}
+.foot-logo img{width:100%;height:100%;object-fit:contain;}
+.foot-disclosure{
+  max-width:680px;margin:0 auto 22px;
+  padding:18px 22px;
+  border:1px solid var(--gold-dim);
+  background:rgba(255,255,255,0.02);
+  font-size:0.7rem;line-height:1.65;
+  color:var(--muted);letter-spacing:0.3px;
+  text-align:left;
+}
+.foot-disclosure strong{color:var(--text);font-weight:600;}
+.foot-disclosure a{color:var(--gold);}
+.foot-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:18px;}
+.foot-links a{font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.foot-links a:hover{color:var(--gold);}
+.foot-copy{font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.foot-power{font-size:0.52rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);opacity:0.7;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .steps{grid-template-columns:1fr;gap:16px;}
+}
+@media(max-width:560px){
+  .hero{padding:90px 22px 50px;}
+  section.next{padding:20px 22px 70px;}
+  .btn-ghost{display:block;margin:14px auto 0;max-width:300px;}
+  .btn-gold{display:block;max-width:300px;margin:0 auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="mark">✓</div>
+    <div class="eyebrow">Order Received</div>
+    <h1>Thank <em>You</em></h1>
+    <p class="hero-sub">Your iSlay Studios order is in. A confirmation email from Stripe is on its way with your receipt and order details.</p>
+    <div id="order-ref-wrap" style="display:none;">
+      <div class="order-ref">Order Reference · <code id="order-ref-code"></code></div>
+    </div>
+    <div class="divider-mark"><span></span><em>✦</em><span></span></div>
+  </div>
+</section>
+
+<!-- ── WHAT HAPPENS NEXT ── -->
+<section class="next">
+  <div class="next-inner">
+    <div class="next-header">
+      <span class="small-eyebrow">What Happens Next</span>
+      <h2>From the <em>Shop</em> to Your Door</h2>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="step-num">01</span>
+        <div class="step-icon">📦</div>
+        <h3>Shipped Within 72 Hours</h3>
+        <p>We hand-pack your order at the shop in Bridgeton and drop it at USPS within <strong>72 hours</strong> of your purchase.</p>
+      </article>
+
+      <article class="step">
+        <span class="step-num">02</span>
+        <div class="step-icon">✉</div>
+        <h3>Tracking by Email</h3>
+        <p>Once your label is created, USPS sends a tracking number straight to the email address on your order.</p>
+      </article>
+
+      <article class="step">
+        <span class="step-num">03</span>
+        <div class="step-icon">🏠</div>
+        <h3>Delivered in 1–2 Weeks</h3>
+        <p>USPS typically delivers within <strong>1–2 weeks</strong>. Exact timing depends on your location and USPS service speed.</p>
+      </article>
+    </div>
+
+    <div class="heads-up">
+      <div class="heads-up-icon">💬</div>
+      <div class="heads-up-text">
+        <strong>Heads up:</strong> we just texted you a confirmation from the iSlay Studios number. If anything goes sideways with your order — wrong address, never arrived, swapped item — just <strong>reply to that text</strong>. It goes straight to the shop and we'll sort it out.
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="/merch" class="btn-gold">Shop More Merch →</a>
+      <a href="https://www.islaystudiosllc.com" class="btn-ghost">Back to iSlay Studios</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-logo"><img src="/islay-logo.png" alt="iSlay Studios"></div>
+  <div class="foot-disclosure">
+    <strong>iSlay Studios LLC</strong> sends transactional SMS (order updates) and promotional SMS to customers who have explicitly opted in. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for help. <strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> See our <a href="/privacy">Privacy Policy</a> and <a href="/sms-terms">SMS Terms</a>.
+  </div>
+  <div class="foot-links">
+    <a href="https://www.islaystudiosllc.com">Home</a>
+    <a href="/merch">Merch</a>
+    <a href="/members">Memberships</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/sms-terms">SMS Terms</a>
+  </div>
+  <div class="foot-copy">© 2026 iSlay Studios LLC. All rights reserved.</div>
+  <div class="foot-power">Powered by <a href="https://goelev8.ai" target="_blank" rel="noopener">GoElev8.ai</a></div>
+</footer>
+
+<script>
+(function() {
+  // Stripe puts the Checkout Session id in the success_url query.
+  // Show a stable order reference so the customer can quote it in
+  // a reply if anything goes wrong. Strips the 'cs_' prefix and the
+  // long random tail down to something legible.
+  var params = new URLSearchParams(location.search);
+  var sid = params.get('session_id') || '';
+  if (sid) {
+    var ref = sid.replace(/^cs_(test|live)_/i, '').slice(0, 12).toUpperCase();
+    var code = document.getElementById('order-ref-code');
+    var wrap = document.getElementById('order-ref-wrap');
+    if (code && wrap) {
+      code.textContent = ref;
+      wrap.style.display = 'block';
+    }
+  }
+})();
+</script>
+</body>
+</html>
