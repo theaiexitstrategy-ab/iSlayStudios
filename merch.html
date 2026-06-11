@@ -170,19 +170,27 @@ section{padding:60px 24px 80px;}
   font-style:italic;
 }
 .merch-cta{
-  display:block;text-align:center;
+  display:block;width:100%;text-align:center;
   background:var(--gold);
   color:var(--bg-deep);
   padding:16px 22px;
+  font-family:'Montserrat',sans-serif;
   font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;
   font-weight:700;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
   transition:all 0.25s;
   margin-top:auto;
 }
-.merch-cta:hover{
+.merch-cta:hover:not(:disabled):not(.is-disabled){
   background:var(--gold-light);
   transform:translateY(-1px);
   box-shadow:0 10px 30px rgba(201,168,76,0.25);
+}
+.merch-cta:disabled{
+  background:rgba(201,168,76,0.4);
+  cursor:wait;
 }
 .merch-cta.is-disabled{
   background:transparent;
@@ -191,10 +199,13 @@ section{padding:60px 24px 80px;}
   cursor:default;
   pointer-events:none;
 }
-.merch-cta.is-disabled:hover{
-  background:transparent;
-  transform:none;
-  box-shadow:none;
+.merch-cta-err{
+  margin-top:10px;
+  font-size:0.66rem;
+  color:#e57373;
+  letter-spacing:0.5px;
+  line-height:1.5;
+  min-height:0;
 }
 
 /* ── STATES ── */
@@ -373,8 +384,16 @@ footer{
   // up here on the next page load — no deploy needed.
   var PRODUCTS_URL = 'https://portal.goelev8.ai/api/external/products?slug=islay-studios';
 
-  // Fallback URL when a product has no Stripe Payment Link configured
-  // yet — sends shoppers to iSlay's main site rather than to a 404.
+  // The portal also creates ad-hoc Stripe Checkout Sessions for us so
+  // Nate can change the price in the portal without having to keep a
+  // Stripe Product in sync. Every Buy click POSTs here, gets back a
+  // one-shot session URL, and redirects. If a product has its own
+  // payment_link set in the portal, we use that override instead.
+  var CHECKOUT_URL = 'https://portal.goelev8.ai/api/external/checkout';
+  var CLIENT_SLUG  = 'islay-studios';
+
+  // Where to send shoppers when no catalog is available at all (empty
+  // or error state).
   var FALLBACK_URL = 'https://www.islaystudiosllc.com';
 
   function el(tag, attrs, children) {
@@ -433,11 +452,16 @@ footer{
     }
     body.appendChild(priceRow);
 
-    // Each product carries its own Stripe Payment Link. When present,
-    // Buy routes the shopper straight to Stripe-hosted checkout. When
-    // missing, we render a disabled "Coming soon" chip so the page
-    // never sends anyone to a dead URL.
-    var cta;
+    // Buy flow:
+    //   - If the operator pasted a Stripe Payment Link override in
+    //     the portal, link straight to it (price locked to whatever
+    //     the Payment Link was built with).
+    //   - Otherwise POST to the portal's /api/external/checkout to
+    //     mint a one-shot Stripe Checkout Session at the *current*
+    //     portal price, then redirect. Editing the price in the
+    //     portal takes effect on the next click — no Stripe Product
+    //     to maintain.
+    var cta, errSlot;
     if (p.payment_link) {
       cta = el('a', {
         class: 'merch-cta',
@@ -446,12 +470,59 @@ footer{
         rel: 'noopener'
       }, 'Buy Now →');
     } else {
-      cta = el('div', { class: 'merch-cta is-disabled' }, 'Coming Soon');
+      cta = el('button', { class: 'merch-cta', type: 'button' }, 'Buy Now →');
+      errSlot = el('div', { class: 'merch-cta-err' });
+      cta.addEventListener('click', function() {
+        startCheckout(p, cta, errSlot);
+      });
     }
     body.appendChild(cta);
+    if (errSlot) body.appendChild(errSlot);
 
     card.appendChild(body);
     return card;
+  }
+
+  function startCheckout(p, btn, errSlot) {
+    if (btn.disabled) return;
+    var original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Loading…';
+    errSlot.textContent = '';
+
+    fetch(CHECKOUT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        slug:        CLIENT_SLUG,
+        product_key: p.key,
+        quantity:    1,
+        success_url: location.origin + '/merch?paid=1&session_id={CHECKOUT_SESSION_ID}',
+        cancel_url:  location.origin + '/merch'
+      })
+    })
+    .then(function(res) {
+      return res.json().catch(function() { return {}; }).then(function(data) {
+        return { ok: res.ok, status: res.status, data: data };
+      });
+    })
+    .then(function(r) {
+      if (r.ok && r.data && r.data.url) {
+        location.href = r.data.url;
+        return;
+      }
+      // Surface the portal's friendly error message when we have one
+      // (e.g. "This storefront is not connected to Stripe yet…").
+      var msg = (r.data && (r.data.message || r.data.error)) || 'Checkout unavailable. Please try again.';
+      errSlot.textContent = msg;
+      btn.disabled = false;
+      btn.textContent = original;
+    })
+    .catch(function() {
+      errSlot.textContent = 'Network error. Please try again.';
+      btn.disabled = false;
+      btn.textContent = original;
+    });
   }
 
   function renderProducts(products) {
