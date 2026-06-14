@@ -172,6 +172,61 @@ nav.scrolled{background:rgba(6,6,6,0.96);backdrop-filter:blur(16px);border-botto
 .ac-ai-chip:hover{background:rgba(201,168,76,0.15);}
 
 /* ── ABOUT STRIP ── */
+/* MERCH SECTION */
+.merch-section{padding:90px 60px 100px;background:var(--dark);border-top:1px solid rgba(255,255,255,0.03);}
+.merch-head{max-width:1180px;margin:0 auto 50px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.merch-head-text{max-width:560px;}
+.merch-head .sec-h2{margin-top:4px;}
+.merch-head-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(240,237,232,0.55);line-height:1.6;margin-top:14px;}
+.merch-head-cta{display:flex;gap:10px;align-items:center;}
+.merch-bundle{max-width:1180px;margin:0 auto 22px;background:var(--card);border:1px solid rgba(201,168,76,0.35);position:relative;display:grid;grid-template-columns:1fr 1.2fr;overflow:hidden;box-shadow:0 0 60px rgba(201,168,76,0.08);}
+.merch-bundle::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.bundle-image{background:linear-gradient(135deg,#0c0c0c 0%,#181410 100%);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden;border-right:1px solid var(--border);}
+.bundle-image img{width:100%;height:100%;object-fit:cover;}
+.bundle-image-placeholder{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:5.5rem;opacity:0.35;letter-spacing:4px;}
+.bundle-body{padding:46px 50px 44px;display:flex;flex-direction:column;justify-content:center;}
+.bundle-badge{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:6px 14px;background:rgba(201,168,76,0.12);border:1px solid var(--gold);color:var(--gold);font-size:0.5rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;}
+.bundle-badge .pulse{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+.bundle-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:500;color:var(--white);line-height:1.1;margin-bottom:8px;letter-spacing:-0.4px;}
+.bundle-name em{color:var(--gold);font-style:italic;font-weight:400;}
+.bundle-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(240,237,232,0.6);line-height:1.6;margin-bottom:26px;}
+.bundle-price-row{display:flex;align-items:baseline;gap:18px;margin-bottom:14px;}
+.bundle-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:500;color:var(--white);line-height:1;letter-spacing:-0.5px;}
+.bundle-price-was{font-size:1.1rem;color:rgba(240,237,232,0.4);text-decoration:line-through;font-style:italic;font-family:'Cormorant Garamond',serif;}
+.bundle-savings{font-size:0.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:30px;}
+.bundle-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.bundle-cta{background:var(--gold);color:var(--black);border:none;padding:18px 38px;font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;}
+.bundle-cta:hover:not(:disabled){background:var(--gold-light);transform:translateY(-1px);box-shadow:0 10px 32px rgba(201,168,76,0.32);}
+.bundle-cta:disabled{opacity:0.6;cursor:wait;}
+.bundle-cta-err{display:none;margin-top:14px;font-size:0.7rem;color:#e57373;letter-spacing:0.5px;line-height:1.5;}
+.bundle-cta-err.show{display:block;}
+.merch-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.merch-card{background:var(--card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.3s,transform 0.3s;}
+.merch-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-3px);}
+.merch-card-image{aspect-ratio:1/1;background:linear-gradient(135deg,#0c0c0c 0%,#161410 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.merch-card-image img{width:100%;height:100%;object-fit:cover;}
+.merch-card-ph{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:2.6rem;opacity:0.35;letter-spacing:3px;}
+.merch-card-body{padding:24px 24px 22px;display:flex;flex-direction:column;flex:1;}
+.merch-card-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--white);line-height:1.2;margin-bottom:8px;letter-spacing:0.2px;}
+.merch-card-price{display:flex;align-items:baseline;gap:10px;}
+.merch-card-price .now{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--gold);line-height:1;}
+.merch-card-price .was{font-size:0.78rem;color:rgba(240,237,232,0.35);text-decoration:line-through;font-style:italic;}
+.merch-loading-row,.merch-error-row{grid-column:1/-1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(240,237,232,0.5);padding:40px 20px;border:1px dashed var(--border);}
+@media(max-width:980px){
+  .merch-bundle{grid-template-columns:1fr;}
+  .bundle-image{aspect-ratio:16/9;border-right:none;border-bottom:1px solid var(--border);}
+  .bundle-body{padding:36px 32px 38px;}
+  .bundle-price{font-size:2.4rem;}
+}
+@media(max-width:680px){
+  .merch-section{padding:70px 24px 80px;}
+  .merch-head{margin-bottom:36px;}
+  .merch-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .merch-grid{grid-template-columns:1fr;}
+  .bundle-cta{width:100%;justify-content:center;}
+}
 .about-strip{padding:80px 60px;background:var(--dark);border-top:1px solid rgba(255,255,255,0.03);}
 .about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
 .about-card{background:var(--card);padding:48px 36px;position:relative;overflow:hidden;transition:background 0.3s;}
@@ -417,6 +472,47 @@ button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;
       </div>
     </article>
 
+  </div>
+</section>
+
+<!-- ══ MERCH — Take iSlay home ══ -->
+<section class="merch-section" id="merch" aria-label="iSlay Studios products — shampoo, conditioner, beard oil, and the trio bundle">
+  <div class="merch-head reveal">
+    <div class="merch-head-text">
+      <div class="sec-eyebrow">The Shelf</div>
+      <h2 class="sec-h2">Take iSlay <em>Home</em></h2>
+      <p class="merch-head-sub">Salon-grade product crafted at the shop — for the days you can't make it into the chair.</p>
+    </div>
+    <div class="merch-head-cta">
+      <a href="/merch" class="btn-gold">Shop All →</a>
+    </div>
+  </div>
+
+  <!-- Bundle card (featured) — content sourced from portal merch_products at page load. -->
+  <article class="merch-bundle reveal d2" id="merch-bundle" style="display:none;">
+    <div class="bundle-image" id="bundle-image">
+      <div class="bundle-image-placeholder">iS</div>
+    </div>
+    <div class="bundle-body">
+      <span class="bundle-badge"><span class="pulse"></span><span id="bundle-badge-text">Limited Time</span></span>
+      <h3 class="bundle-name" id="bundle-name">iSlay Studios <em>Trio Bundle</em></h3>
+      <p class="bundle-desc" id="bundle-desc">All three iSlay essentials at a single bundled price.</p>
+      <div class="bundle-price-row">
+        <div class="bundle-price" id="bundle-price">$44.99</div>
+        <div class="bundle-price-was" id="bundle-price-was" style="display:none;"></div>
+      </div>
+      <div class="bundle-savings" id="bundle-savings" style="display:none;"></div>
+      <div class="bundle-cta-row">
+        <button type="button" class="bundle-cta" id="bundle-cta">Buy the Bundle →</button>
+        <a href="/merch" class="btn-ghost">See All Products</a>
+      </div>
+      <div class="bundle-cta-err" id="bundle-cta-err"></div>
+    </div>
+  </article>
+
+  <!-- Individual products — populated from portal API; cards link straight to /merch where checkout happens. -->
+  <div class="merch-grid reveal d3" id="merch-grid">
+    <div class="merch-loading-row">Loading the shelf…</div>
   </div>
 </section>
 
@@ -882,6 +978,190 @@ function handleLeadSubmit(e) {
       closePromo(true);
     }, 2500);
   });
+})();
+</script>
+
+<!-- ══ MERCH SECTION — fetch catalog + wire bundle Buy button ══ -->
+<script>
+(function() {
+  // Same public endpoint /merch reads from — Nate edits prices and
+  // images in the portal merch tab and they show up here on the next
+  // page load. No deploy required.
+  var PRODUCTS_URL = 'https://portal.goelev8.ai/api/external/products?slug=islay-studios';
+  var CHECKOUT_URL = 'https://portal.goelev8.ai/api/external/checkout';
+  var CLIENT_SLUG  = 'islay-studios';
+
+  // Which product_keys the homepage shelf renders, in display order.
+  // Anything else in the portal catalog stays /merch-only.
+  var SHELF_KEYS = ['shampoo', 'conditioner', 'beard-oil'];
+  // The bundle key Nate stored — verbose, includes spaces.
+  var BUNDLE_KEY = 'Shampoo, conditioner and beard oil';
+
+  function fmtPrice(cents) {
+    if (cents == null) return '';
+    return '$' + (cents / 100).toFixed(2);
+  }
+
+  function renderBundle(p) {
+    if (!p) return;
+    var card = document.getElementById('merch-bundle');
+    document.getElementById('bundle-name').textContent = p.name || 'iSlay Studios Trio Bundle';
+    if (p.description) document.getElementById('bundle-desc').textContent = p.description;
+    document.getElementById('bundle-price').textContent = fmtPrice(p.price_cents);
+
+    if (p.compare_at_price_cents && p.compare_at_price_cents > (p.price_cents || 0)) {
+      var was = document.getElementById('bundle-price-was');
+      was.textContent = fmtPrice(p.compare_at_price_cents);
+      was.style.display = '';
+      var savingsCents = p.compare_at_price_cents - p.price_cents;
+      var savingsEl = document.getElementById('bundle-savings');
+      savingsEl.textContent = 'Save ' + fmtPrice(savingsCents) + ' — limited time';
+      savingsEl.style.display = '';
+    }
+
+    if (p.image_url) {
+      var img = document.getElementById('bundle-image');
+      img.innerHTML = '';
+      var i = document.createElement('img');
+      i.src = p.image_url;
+      i.alt = p.name || 'iSlay Studios bundle';
+      i.loading = 'lazy';
+      img.appendChild(i);
+    }
+
+    card.style.display = '';
+
+    var btn = document.getElementById('bundle-cta');
+    var errSlot = document.getElementById('bundle-cta-err');
+    btn.addEventListener('click', function() {
+      buyBundle(p, btn, errSlot);
+    });
+  }
+
+  function renderProductCard(p) {
+    var card = document.createElement('a');
+    card.className = 'merch-card';
+    // Tapping a homepage card sends the visitor to /merch where the
+    // real checkout flow lives — keeps the homepage section a teaser
+    // and reuses the full product page for purchase.
+    card.href = '/merch';
+    card.setAttribute('aria-label', 'Shop ' + (p.name || 'product'));
+
+    var imageWrap = document.createElement('div');
+    imageWrap.className = 'merch-card-image';
+    if (p.image_url) {
+      var img = document.createElement('img');
+      img.src = p.image_url;
+      img.alt = p.name || 'iSlay Studios product';
+      img.loading = 'lazy';
+      imageWrap.appendChild(img);
+    } else {
+      var ph = document.createElement('div');
+      ph.className = 'merch-card-ph';
+      var letter = (p.name || '').replace(/^iSlay\s+Studios?\s+/i, '').trim().charAt(0).toUpperCase() || '✦';
+      ph.textContent = letter;
+      imageWrap.appendChild(ph);
+    }
+    card.appendChild(imageWrap);
+
+    var body = document.createElement('div');
+    body.className = 'merch-card-body';
+
+    var name = document.createElement('div');
+    name.className = 'merch-card-name';
+    name.textContent = p.name || 'Untitled';
+    body.appendChild(name);
+
+    var priceRow = document.createElement('div');
+    priceRow.className = 'merch-card-price';
+    var now = document.createElement('span');
+    now.className = 'now';
+    now.textContent = fmtPrice(p.price_cents);
+    priceRow.appendChild(now);
+    if (p.compare_at_price_cents && p.compare_at_price_cents > (p.price_cents || 0)) {
+      var was = document.createElement('span');
+      was.className = 'was';
+      was.textContent = fmtPrice(p.compare_at_price_cents);
+      priceRow.appendChild(was);
+    }
+    body.appendChild(priceRow);
+
+    card.appendChild(body);
+    return card;
+  }
+
+  function renderShelf(products) {
+    var grid = document.getElementById('merch-grid');
+    grid.innerHTML = '';
+    products.forEach(function(p) { grid.appendChild(renderProductCard(p)); });
+  }
+
+  function showShelfError() {
+    var grid = document.getElementById('merch-grid');
+    grid.innerHTML = '<div class="merch-error-row">Couldn\'t load the shelf right now — <a href="/merch" style="color:var(--gold);">visit /merch</a> to shop.</div>';
+  }
+
+  function buyBundle(p, btn, errSlot) {
+    if (btn.disabled) return;
+    var original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Loading…';
+    errSlot.classList.remove('show');
+    errSlot.textContent = '';
+
+    fetch(CHECKOUT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        slug:        CLIENT_SLUG,
+        product_key: BUNDLE_KEY,
+        quantity:    1,
+        success_url: location.origin + '/thank-you?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url:  location.origin + '/#merch'
+      })
+    })
+    .then(function(res) {
+      return res.json().catch(function() { return {}; }).then(function(data) {
+        return { ok: res.ok, data: data };
+      });
+    })
+    .then(function(r) {
+      if (r.ok && r.data && r.data.url) {
+        location.href = r.data.url;
+        return;
+      }
+      errSlot.textContent = (r.data && (r.data.message || r.data.error))
+        || 'Checkout unavailable. Please try again.';
+      errSlot.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = original;
+    })
+    .catch(function() {
+      errSlot.textContent = 'Network error. Please try again.';
+      errSlot.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = original;
+    });
+  }
+
+  fetch(PRODUCTS_URL, { headers: { 'Accept': 'application/json' }})
+    .then(function(res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function(json) {
+      var list = (json && json.products) || [];
+      var byKey = {};
+      list.forEach(function(p) { byKey[p.key] = p; });
+
+      var bundle = byKey[BUNDLE_KEY];
+      if (bundle) renderBundle(bundle);
+
+      var shelf = SHELF_KEYS.map(function(k) { return byKey[k]; }).filter(Boolean);
+      if (shelf.length) renderShelf(shelf);
+      else showShelfError();
+    })
+    .catch(showShelfError);
 })();
 </script>
 
