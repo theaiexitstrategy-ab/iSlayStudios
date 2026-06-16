@@ -150,6 +150,54 @@ section.next{
 }
 .step p strong{color:var(--gold);font-weight:600;}
 
+/* Two-col variant for the pickup pair (Where + When) */
+.steps.two-col{grid-template-columns:repeat(2,1fr);}
+
+/* Pickup-specific helpers reuse .step styling for visual consistency */
+.pickup-addr{
+  font-size:0.95rem;color:var(--text);
+  line-height:1.55;letter-spacing:0.3px;
+  margin-bottom:14px;
+}
+.pickup-addr strong{color:var(--white);font-weight:600;}
+.pickup-link{
+  display:inline-block;margin-top:4px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.58rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  transition:color 0.2s;
+}
+.pickup-link:hover{color:var(--gold-light);}
+
+dl.hours{margin:0;}
+dl.hours .row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:9px 0;
+  border-bottom:1px dashed rgba(201,168,76,0.12);
+  font-size:0.85rem;letter-spacing:0.2px;
+}
+dl.hours .row:last-child{border-bottom:none;}
+dl.hours dt{color:var(--white);font-weight:500;}
+dl.hours dd{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1rem;
+  color:var(--gold);margin:0;
+}
+dl.hours dd.closed{color:var(--muted);font-style:italic;}
+
+/* Subtle divider that splits the two paths */
+.path-divider{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  max-width:520px;margin:46px auto 28px;
+}
+.path-divider span{flex:1;height:1px;background:var(--gold-dim);}
+.path-divider em{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);white-space:nowrap;
+}
+
 /* ── HEADS UP CALLOUT (SMS) ── */
 .heads-up{
   max-width:680px;margin:46px auto 0;
@@ -230,6 +278,7 @@ footer{
 /* ── RESPONSIVE ── */
 @media(max-width:780px){
   .steps{grid-template-columns:1fr;gap:16px;}
+  .steps.two-col{grid-template-columns:1fr;}
 }
 @media(max-width:560px){
   .hero{padding:90px 22px 50px;}
@@ -261,8 +310,11 @@ footer{
   <div class="next-inner">
     <div class="next-header">
       <span class="small-eyebrow">What Happens Next</span>
-      <h2>From the <em>Shop</em> to Your Door</h2>
+      <h2>From the <em>Shop</em> to Your Hands</h2>
     </div>
+
+    <!-- Path A: shipping. Customer chose a shipping address at checkout. -->
+    <div class="path-divider"><span></span><em>If we're shipping it</em><span></span></div>
 
     <div class="steps">
       <article class="step">
@@ -287,10 +339,41 @@ footer{
       </article>
     </div>
 
+    <!-- Path B: in-shop pickup. Same page layout, different content. -->
+    <div class="path-divider"><span></span><em>Or pick up at the shop</em><span></span></div>
+
+    <div class="steps two-col">
+      <article class="step">
+        <span class="step-num">A</span>
+        <div class="step-icon">📍</div>
+        <h3>Where to Come</h3>
+        <p class="pickup-addr">
+          <strong>iSlay Studios</strong><br>
+          11726 St Charles Rock Rd, Apt F<br>
+          Bridgeton, MO 63044
+        </p>
+        <a class="pickup-link" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=iSlay%20Studios%2011726%20St%20Charles%20Rock%20Rd%20Apt%20F%2C%20Bridgeton%2C%20MO%2063044">
+          Open in Maps →
+        </a>
+      </article>
+
+      <article class="step">
+        <span class="step-num">B</span>
+        <div class="step-icon">🕒</div>
+        <h3>When to Come</h3>
+        <dl class="hours">
+          <div class="row"><dt>Tue – Fri</dt><dd>9am – 7pm</dd></div>
+          <div class="row"><dt>Saturday</dt><dd>9am – 5pm</dd></div>
+          <div class="row"><dt>Sun &amp; Mon</dt><dd class="closed">Closed</dd></div>
+        </dl>
+      </article>
+    </div>
+
     <div class="heads-up">
       <div class="heads-up-icon">💬</div>
       <div class="heads-up-text">
-        <strong>Heads up:</strong> we just texted you a confirmation from the iSlay Studios number. If anything goes sideways with your order — wrong address, never arrived, swapped item — just <strong>reply to that text</strong>. It goes straight to the shop and we'll sort it out.
+        <strong>Heads up:</strong> we just texted you a confirmation from the iSlay Studios number. If anything goes sideways — wrong item, never arrived, can't make pickup hours, address change — just <strong>reply to that text</strong>. It goes straight to the shop and we'll sort it out.
       </div>
     </div>
 
