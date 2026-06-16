@@ -352,6 +352,15 @@ footer{
   .merch-body{padding:24px 22px;}
 }
 </style>
+
+<!-- ── GOELEV8 TRACKER ──
+     Config block must run before the loader so window.GoElev8 exists
+     when track.js initializes. Replace the placeholder secret with
+     the real value when secret-validation goes live on the portal. -->
+<script>
+  window.GoElev8 = { slug: "islay-studios", secret: "REPLACE_WITH_GOELEV8_SECRET" };
+</script>
+<script src="https://portal.goelev8.ai/embed/track.js" async></script>
 </head>
 <body>
 
