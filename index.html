@@ -55,7 +55,124 @@ body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--tex
 body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.4;mix-blend-mode:overlay;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
+/* ── ANNIVERSARY CELEBRATION (one-shot per session, DOM built in JS) ── */
+.celebration-overlay{
+  position:fixed;inset:0;z-index:10000;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  background:radial-gradient(ellipse at center, rgba(6,6,6,0.85) 0%, rgba(6,6,6,0.5) 100%);
+  backdrop-filter:blur(4px);
+  animation:cel-back 3200ms ease forwards;
+  pointer-events:auto;
+  overflow:hidden;
+}
+@keyframes cel-back{
+  0%{opacity:0}
+  8%{opacity:1}
+  75%{opacity:1}
+  100%{opacity:0;pointer-events:none;}
+}
+.celebration-num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(9rem, 22vw, 15rem);
+  font-weight:500;color:var(--gold);
+  line-height:.9;letter-spacing:-.05em;
+  text-shadow:0 0 60px rgba(201,168,76,0.6),0 0 120px rgba(201,168,76,0.3);
+  transform:scale(.4);opacity:0;
+  animation:cel-num 3200ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+@keyframes cel-num{
+  0%{transform:scale(.4);opacity:0;}
+  15%{transform:scale(1.05);opacity:1;}
+  22%{transform:scale(1);opacity:1;}
+  75%{transform:scale(1);opacity:1;}
+  100%{transform:scale(1.15);opacity:0;}
+}
+.celebration-sub{
+  margin-top:16px;
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(0.7rem,1.4vw,0.95rem);
+  font-weight:700;letter-spacing:8px;text-transform:uppercase;
+  color:var(--white);
+  opacity:0;
+  animation:cel-sub 3200ms ease forwards;
+}
+@keyframes cel-sub{
+  0%,20%{opacity:0;transform:translateY(10px);}
+  30%{opacity:1;transform:translateY(0);}
+  75%{opacity:1;transform:translateY(0);}
+  100%{opacity:0;transform:translateY(-6px);}
+}
+.celebration-sub em{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-weight:400;text-transform:none;letter-spacing:1px;
+  color:var(--gold);font-size:1.1em;
+  margin:0 6px;
+}
+.confetti-piece{
+  position:absolute;bottom:-20px;
+  color:var(--gold);
+  font-size:1.4rem;
+  pointer-events:none;
+  will-change:transform,opacity;
+  text-shadow:0 0 12px rgba(201,168,76,0.6);
+  opacity:0;
+  animation-name:confetti-rise;
+  animation-timing-function:cubic-bezier(.35,.1,.25,1);
+  animation-fill-mode:forwards;
+}
+@keyframes confetti-rise{
+  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:1;}
+  100%{transform:translate3d(var(--dx,0), -110vh, 0) rotate(var(--rot,720deg));opacity:0;}
+}
+@media (prefers-reduced-motion: reduce){
+  .celebration-overlay{display:none;}
+}
+
+/* ── ANNIVERSARY BANNER (fixed at very top; nav sits below it) ── */
+.anniversary-banner{
+  position:fixed;top:0;left:0;right:0;
+  height:34px;z-index:600;
+  background:linear-gradient(90deg, var(--gold) 0%, #E8CC7A 50%, var(--gold) 100%);
+  color:var(--black);
+  overflow:hidden;
+  display:flex;align-items:center;
+  border-bottom:1px solid rgba(0,0,0,0.2);
+  pointer-events:none;
+}
+.anniversary-track{
+  display:inline-flex;
+  white-space:nowrap;
+  animation:anniversary-scroll 36s linear infinite;
+  will-change:transform;
+}
+.anniversary-track .pill{
+  font-family:'Montserrat',sans-serif;
+  font-size:0.6rem;font-weight:700;
+  letter-spacing:5px;text-transform:uppercase;
+  padding:0 34px;
+  display:inline-flex;align-items:center;gap:14px;
+}
+.anniversary-track .pill em{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.82rem;font-weight:600;
+  letter-spacing:1px;text-transform:none;
+  color:var(--black);
+}
+.anniversary-track .pill .sep{
+  font-size:0.7rem;color:rgba(6,6,6,0.55);letter-spacing:0;
+}
+@keyframes anniversary-scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion: reduce){
+  .anniversary-track{animation:none;justify-content:center;width:100%;}
+}
+
+nav{position:fixed;top:34px;left:0;right:0;z-index:500;padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
 nav.scrolled{background:rgba(6,6,6,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 60px;}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;letter-spacing:4px;color:var(--white);text-decoration:none;text-transform:uppercase;}
 .nav-logo em{font-style:italic;color:var(--gold);}
@@ -199,6 +316,17 @@ nav.scrolled{background:rgba(6,6,6,0.96);backdrop-filter:blur(16px);border-botto
   font-size:0.86rem;color:var(--text);line-height:1.45;letter-spacing:0.2px;
 }
 .hiring-option-val strong{color:var(--white);font-weight:600;}
+.hiring-option-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:8px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.52rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border-bottom:1px solid rgba(201,168,76,0.4);
+  padding-bottom:3px;align-self:flex-start;
+  transition:color 0.2s,border-color 0.2s;
+}
+.hiring-option-cta:hover{color:var(--gold-light);border-bottom-color:var(--gold);}
 .hiring-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
 @media(max-width:820px){
   .hiring-section{padding:56px 24px 30px;}
@@ -430,6 +558,18 @@ button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;
 </head>
 <body>
 
+<!-- ══ ANNIVERSARY BANNER — 2 Years of iSlay Studios ══ -->
+<div class="anniversary-banner" role="status" aria-label="iSlay Studios anniversary notice">
+  <div class="anniversary-track" aria-hidden="true">
+    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
+    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
+    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
+    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
+    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
+    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
+  </div>
+</div>
+
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <a href="/" class="nav-logo-img" aria-label="iSlay Studios Home">
@@ -504,7 +644,8 @@ button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;
         </div>
         <div class="hiring-option">
           <span class="hiring-option-label">One-Day Rental <span class="new-chip">New</span></span>
-          <span class="hiring-option-val"><strong>Guest Artists</strong><br>Perfect for out-of-town chairs</span>
+          <span class="hiring-option-val">For guest artists passing through town.</span>
+          <a href="/apply" class="hiring-option-cta">Submit Application →</a>
         </div>
       </div>
 
@@ -1331,6 +1472,82 @@ function handleLeadSubmit(e) {
       else showShelfError();
     })
     .catch(showShelfError);
+})();
+</script>
+
+<!-- ══ 2-YEAR ANNIVERSARY CELEBRATION — one-shot per browser session ══
+     Fires a gold confetti burst + centered "2" flash the first time
+     a visitor lands on the homepage this session. Uses sessionStorage
+     so it doesn't re-fire on every internal navigation, but a fresh
+     tab / next-day visit still gets the moment. Skips entirely under
+     prefers-reduced-motion (CSS also hides the overlay for belt-and-
+     suspenders coverage). Fully self-contained; safe to delete this
+     block + the .celebration-* / .confetti-piece CSS when we retire
+     the anniversary campaign. -->
+<script>
+(function() {
+  try {
+    if (sessionStorage.getItem('islay_2yr_celebrated') === '1') return;
+  } catch (e) { /* private mode — proceed anyway; still one-shot per page load */ }
+
+  var mql = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mql && mql.matches) {
+    try { sessionStorage.setItem('islay_2yr_celebrated', '1'); } catch (e) {}
+    return;
+  }
+
+  function fire() {
+    // Overlay with big italic "2" + subline
+    var overlay = document.createElement('div');
+    overlay.className = 'celebration-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    var num = document.createElement('div');
+    num.className = 'celebration-num';
+    num.textContent = '2';
+    overlay.appendChild(num);
+
+    var sub = document.createElement('div');
+    sub.className = 'celebration-sub';
+    sub.innerHTML = 'Two Years of <em>iSlay Studios</em>';
+    overlay.appendChild(sub);
+
+    // Confetti — gold ✦/★/◆ glyphs rising from the bottom
+    var glyphs = ['✦', '★', '◆', '✧'];
+    var count = 70;
+    var vw = window.innerWidth;
+    for (var i = 0; i < count; i++) {
+      var piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+      piece.textContent = glyphs[i % glyphs.length];
+      piece.style.left = (Math.random() * vw) + 'px';
+      piece.style.fontSize = (0.9 + Math.random() * 1.6).toFixed(2) + 'rem';
+      // Horizontal drift + rotation randomized per piece via custom props
+      piece.style.setProperty('--dx', ((Math.random() * 260) - 130).toFixed(0) + 'px');
+      piece.style.setProperty('--rot', (Math.floor(Math.random() * 900) + 300) + 'deg');
+      piece.style.animationDuration = (2200 + Math.random() * 1400) + 'ms';
+      piece.style.animationDelay = (Math.random() * 700) + 'ms';
+      overlay.appendChild(piece);
+    }
+
+    document.body.appendChild(overlay);
+
+    // Cleanup — matches the longest cel-back / confetti duration
+    setTimeout(function() {
+      overlay.parentNode && overlay.parentNode.removeChild(overlay);
+    }, 4000);
+
+    try { sessionStorage.setItem('islay_2yr_celebrated', '1'); } catch (e) {}
+  }
+
+  // Wait for the browser to finish first paint so the animation
+  // doesn't fight the initial layout, but keep it snappy — most
+  // visitors will see the burst within ~250ms of the hero appearing.
+  if (document.readyState === 'complete') {
+    setTimeout(fire, 220);
+  } else {
+    window.addEventListener('load', function() { setTimeout(fire, 220); });
+  }
 })();
 </script>
 
