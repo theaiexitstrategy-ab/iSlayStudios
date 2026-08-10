@@ -226,6 +226,130 @@ nav.scrolled{background:rgba(6,6,6,0.96);backdrop-filter:blur(16px);border-botto
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── TEAM SECTION — this is the centerpiece ── */
+/* ── BACK TO SCHOOL EVENT (time-boxed; auto-hides post event via JS) ── */
+.b2s-section{padding:70px 60px 24px;max-width:1180px;margin:0 auto;}
+.b2s-card{
+  position:relative;
+  display:grid;grid-template-columns:280px 1fr;gap:0;
+  background:var(--card);
+  border:1px solid var(--gold);
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(201,168,76,0.16);
+}
+.b2s-card::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.b2s-datebox{
+  background:linear-gradient(160deg,rgba(201,168,76,0.16) 0%,rgba(107,33,168,0.14) 100%);
+  border-right:1px solid var(--gold);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 20px;text-align:center;position:relative;
+}
+.b2s-datebox::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 30%,rgba(201,168,76,0.15),transparent 65%);
+}
+.b2s-day{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.7rem;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px;position:relative;z-index:1;
+}
+.b2s-daynum{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5.5rem;font-weight:500;color:var(--white);
+  line-height:1;letter-spacing:-2px;position:relative;z-index:1;
+}
+.b2s-month{
+  font-family:'Montserrat',sans-serif;
+  font-size:0.72rem;font-weight:700;
+  letter-spacing:6px;text-transform:uppercase;
+  color:var(--gold);margin-top:6px;position:relative;z-index:1;
+}
+.b2s-time{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.9rem;color:rgba(240,237,232,0.7);
+  margin-top:14px;letter-spacing:0.5px;position:relative;z-index:1;
+}
+.b2s-body{padding:40px 44px 40px;display:flex;flex-direction:column;}
+.b2s-badge{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  padding:6px 14px;
+  background:rgba(201,168,76,0.14);border:1px solid var(--gold);
+  color:var(--gold);
+  font-size:0.5rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.b2s-badge .pulse{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+.b2s-eyebrow{
+  font-family:'Montserrat',sans-serif;
+  font-size:0.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+}
+.b2s-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,3.4vw,2.8rem);
+  font-weight:500;color:var(--white);
+  line-height:1.05;letter-spacing:-0.4px;margin-bottom:10px;
+}
+.b2s-title em{color:var(--gold);font-style:italic;font-weight:400;}
+.b2s-desc{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1rem;color:rgba(240,237,232,0.7);
+  line-height:1.55;margin-bottom:22px;max-width:640px;
+}
+.b2s-prices{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  margin-bottom:22px;
+}
+.b2s-price{
+  border:1px solid rgba(201,168,76,0.28);
+  background:rgba(6,6,6,0.4);
+  padding:16px 12px 14px;text-align:center;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.b2s-price:hover{border-color:var(--gold);transform:translateY(-2px);}
+.b2s-price-amt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem;font-weight:500;color:var(--gold);
+  line-height:1;margin-bottom:8px;letter-spacing:-0.5px;
+}
+.b2s-price-label{
+  font-size:0.5rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--white);font-weight:600;line-height:1.35;
+}
+.b2s-price-sub{
+  display:block;
+  font-size:0.44rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(240,237,232,0.4);font-weight:500;margin-top:4px;
+}
+.b2s-meta{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;
+  padding:18px 0 20px;
+  border-top:1px dashed rgba(201,168,76,0.18);
+  border-bottom:1px dashed rgba(201,168,76,0.18);
+  margin-bottom:22px;
+}
+.b2s-meta-item{display:flex;flex-direction:column;gap:4px;}
+.b2s-meta-label{
+  font-size:0.5rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);font-weight:700;
+}
+.b2s-meta-val{
+  font-size:0.82rem;color:var(--text);line-height:1.5;letter-spacing:0.2px;
+}
+.b2s-meta-val strong{color:var(--white);font-weight:600;}
+.b2s-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+@media(max-width:820px){
+  .b2s-section{padding:56px 24px 18px;}
+  .b2s-card{grid-template-columns:1fr;}
+  .b2s-datebox{border-right:none;border-bottom:1px solid var(--gold);padding:28px 20px;}
+  .b2s-daynum{font-size:4.2rem;}
+  .b2s-body{padding:32px 26px;}
+  .b2s-prices{grid-template-columns:1fr 1fr;}
+  .b2s-meta{grid-template-columns:1fr;gap:12px;}
+}
+
 /* ── HIRING CALLOUT ── */
 .hiring-section{padding:70px 60px 40px;max-width:1180px;margin:0 auto;}
 .hiring-card{
@@ -618,6 +742,78 @@ button.vapi-btn{opacity:0 !important;width:1px !important;height:1px !important;
     <span class="ti">iSlay Studios</span><span class="ti">✦</span><span class="ti">Bridgeton MO</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Precision Fades</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Beard Trims</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Braids & Locs</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Women's Styling</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Straight Razor Shaves</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Color & Highlights</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Kids Cuts</span><span class="ti">✦</span>
   </div>
 </div>
+
+<!-- ══ BACK TO SCHOOL EVENT — Aug 16, 2026 ══
+     Time-boxed. Auto-hides via inline JS after the event end time
+     (Aug 16, 2026 4 PM CDT = 21:00 UTC). When the JS check trips,
+     the entire section is removed from the DOM so the surrounding
+     layout snaps back to just the hiring callout — no redeploy
+     needed. To take down manually, delete this whole block. -->
+<section class="b2s-section reveal" id="islay-b2s" data-event-ends="2026-08-16T21:00:00Z" aria-label="iSlay Studios Back to School one-day event on August 16 2026">
+  <div class="b2s-card">
+    <div class="b2s-datebox">
+      <div class="b2s-day">Saturday</div>
+      <div class="b2s-daynum">16</div>
+      <div class="b2s-month">August 2026</div>
+      <div class="b2s-time">10 AM – 4 PM CT</div>
+    </div>
+    <div class="b2s-body">
+      <span class="b2s-badge"><span class="pulse"></span>One Day Only</span>
+      <div class="b2s-eyebrow">Back to School Event</div>
+      <h2 class="b2s-title">Get Fresh. <em>Look Fly.</em> Go Back with Confidence.</h2>
+      <p class="b2s-desc">Top artists from all over the city, one day only. Kids' cuts, ponytails, braids, and retwists at back-to-school pricing — level up your look before the first bell.</p>
+
+      <div class="b2s-prices">
+        <div class="b2s-price">
+          <div class="b2s-price-amt">$10</div>
+          <div class="b2s-price-label">Kids Cuts<span class="b2s-price-sub">For Boys</span></div>
+        </div>
+        <div class="b2s-price">
+          <div class="b2s-price-amt">$25</div>
+          <div class="b2s-price-label">Ponytails<span class="b2s-price-sub">For Girls</span></div>
+        </div>
+        <div class="b2s-price">
+          <div class="b2s-price-amt">$40</div>
+          <div class="b2s-price-label">8–10 Braids<span class="b2s-price-sub">Straight Back</span></div>
+        </div>
+        <div class="b2s-price">
+          <div class="b2s-price-amt">$60</div>
+          <div class="b2s-price-label">Full Retwist<span class="b2s-price-sub">Loc Refresh</span></div>
+        </div>
+      </div>
+
+      <div class="b2s-meta">
+        <div class="b2s-meta-item">
+          <span class="b2s-meta-label">Where</span>
+          <span class="b2s-meta-val"><strong>iSlay Studios</strong><br>11726 St Charles Rock Rd, Suite F<br>Bridgeton, MO 63044</span>
+        </div>
+        <div class="b2s-meta-item">
+          <span class="b2s-meta-label">Hosted By</span>
+          <span class="b2s-meta-val"><strong>A number of top artists</strong><br>From all over the city</span>
+        </div>
+      </div>
+
+      <div class="b2s-cta-row">
+        <a href="tel:+13142275264" class="btn-gold">Book Now · (314) 227-5264</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=iSlay%20Studios%2011726%20St%20Charles%20Rock%20Rd%20Suite%20F%2C%20Bridgeton%2C%20MO%2063044" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Time-boxed promo: yank the whole section from the DOM after
+    // the event end (Aug 16 2026 4 PM CDT). data-event-ends is a UTC
+    // ISO timestamp so the check is timezone-independent.
+    (function() {
+      var sec = document.getElementById('islay-b2s');
+      if (!sec) return;
+      var endsAt = new Date(sec.getAttribute('data-event-ends')).getTime();
+      if (isFinite(endsAt) && Date.now() > endsAt) {
+        sec.parentNode && sec.parentNode.removeChild(sec);
+      }
+    })();
+  </script>
+</section>
 
 <!-- ══ HIRING CALLOUT — Barbers, stylists, guest artists ══ -->
 <section class="hiring-section reveal" id="islay-hiring" aria-label="iSlay Studios is hiring barbers and stylists in Bridgeton MO">
