@@ -21,7 +21,6 @@ THE ARTISTS:
 - Fresh — Master Barber. Fades, cuts, beard work. Booking: https://www.styleseat.com/m/v/freshman314
 - Q — Braid & Loc Specialist. Locs, braids, natural styles. Booking: https://tiarajackson0317.glossgenius.com/
 - Sherry J — Licensed Hairstylist. Women's cuts, color, styling. Booking: https://www.styleseat.com/m/v/sherryjohnson5
-- Sabrina Young — Cosmetologist & Educator. Women's services. Booking: https://www.facebook.com/sabrina.young.904750
 - Eboni — Cosmetologist. Women's hair services. Booking: https://mezmerized16.as.me/schedule/86833b11
 
 YOUR JOB - follow this flow every conversation:
