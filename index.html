@@ -217,6 +217,8 @@ nav.scrolled{background:rgba(6,6,6,0.96);backdrop-filter:blur(16px);border-botto
 .hero-stats{display:flex;justify-content:center;gap:0;border-top:1px solid rgba(255,255,255,0.05);padding-top:40px;flex-wrap:wrap;}
 .hstat{padding:0 44px;text-align:center;border-right:1px solid rgba(255,255,255,0.05);}
 .hstat:last-child{border-right:none;}
+a.hstat-link{text-decoration:none;color:inherit;}
+a.hstat-link:hover .hstat-lbl,a.hstat-link:focus-visible .hstat-lbl{color:var(--gold);}
 .hstat-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px;}
 .hstat-lbl{font-size:0.48rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
 
@@ -775,6 +777,7 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
     <a href="#about">About</a>
     <a href="#location">Location</a>
     <a href="/recruitment">Join the Team</a>
+    <a href="/reviews">Reviews</a>
   </div>
   <a href="#team" class="nav-apply-btn">Book Now</a>
 </nav>
@@ -800,7 +803,7 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
     <div class="hero-stats reveal d5">
       <div class="hstat"><div class="hstat-num">6</div><div class="hstat-lbl">Master Artists</div></div>
       <div class="hstat"><div class="hstat-num">500+</div><div class="hstat-lbl">Monthly Clients</div></div>
-      <div class="hstat"><div class="hstat-num">5★</div><div class="hstat-lbl">Rated Studio</div></div>
+      <a class="hstat hstat-link" href="/reviews" aria-label="5-star rated studio. Read our reviews"><div class="hstat-num">5★</div><div class="hstat-lbl">Rated Studio</div></a>
       <div class="hstat"><div class="hstat-num">10+</div><div class="hstat-lbl">Years Running</div></div>
     </div>
   </div>
@@ -1127,6 +1130,7 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
     <a href="#about">About</a>
     <a href="#location">Location</a>
     <a href="/apply">Apply</a>
+    <a href="/reviews">Reviews</a>
     <a href="https://www.instagram.com/islaystudiosllc" target="_blank">Instagram</a>
     <a style="cursor:pointer;" onclick="openPromoGeneric()">Book with AI Now &rarr;</a>
   </div>
