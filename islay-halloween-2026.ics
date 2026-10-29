@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//iSlay Studios//Halloween Week 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:islay-halloween-2026@islaystudiosllc.com
+DTSTAMP:20261028T120000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261101
+SUMMARY:Free Candy & Snacks for the Kids! - iSlay Studios
+DESCRIPTION:Open Slots + Deals All Week: Haircuts\, Braids\, Locs\, Women
+ 's Styles. Bring the kids & come get styled! Book now: https://www.islays
+ tudiosllc.com/#team
+LOCATION:iSlay Studios\, 11726 St. Charles Rock Road\, Suite F\, Bridgeto
+ n\, MO 63044
+URL:https://www.islaystudiosllc.com/#islay-halloween
+END:VEVENT
+END:VCALENDAR

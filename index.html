@@ -707,6 +707,75 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
 @keyframes hw-bob{from{transform:translateY(-18px);}to{transform:translateY(18px);}}
 @keyframes hw-flap{from{transform:scaleY(1);}to{transform:scaleY(.45);}}
 @media (prefers-reduced-motion: reduce){.hw-bats{display:none;}}
+
+/* ── HALLOWEEN PROMO — "Free Candy & Snacks" week, Oct 28–31 2026 ──
+   html.hw-promo-bar swaps the top banner's ticker for a dismissible promo
+   bar; .hwe-* is the event card. Both are switched off by the head script
+   below after 11:59 PM Central on Oct 31. Colors are hardcoded because the
+   Halloween theme re-points --gold to orange and we want both. */
+.hwp-bar{display:none;}
+html.hw-promo-bar .anniversary-banner{height:46px;pointer-events:auto;background:#060606;border-bottom:1px solid #FF7A1A;box-shadow:0 2px 18px rgba(255,122,26,0.25);}
+html.hw-promo-bar .anniversary-track{display:none;}
+html.hw-promo-bar nav{top:46px;}
+html.hw-promo-bar .hwp-bar{display:flex;align-items:center;gap:10px;width:100%;padding:0 6px 0 14px;}
+.hwp-text{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#F0EDE8;}
+.hwp-text strong{color:#FF7A1A;font-weight:800;}
+.hwp-dates{color:#E2C068;margin-left:6px;}
+.hwp-full,.hwp-extra{display:none;}
+.hwp-book{flex-shrink:0;background:#FF7A1A;color:#060606;padding:8px 14px;font-size:0.56rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.hwp-book:hover{background:#FFA552;}
+.hwp-close{flex-shrink:0;width:34px;height:34px;background:none;border:none;color:rgba(240,237,232,0.6);font-size:0.9rem;cursor:pointer;}
+.hwp-close:hover{color:#E2C068;}
+@media(min-width:560px){.hwp-short{display:none;}.hwp-full{display:inline;}}
+@media(min-width:900px){.hwp-extra{display:inline;color:rgba(240,237,232,0.7);}.hwp-bar{justify-content:center;}.hwp-text{flex:0 1 auto;}}
+
+/* Event card — mobile-first (most traffic is Instagram), 2 columns from 821px */
+.hwe-section{padding:56px 16px 18px;max-width:1180px;margin:0 auto;}
+.hwe-card{position:relative;display:grid;grid-template-columns:1fr;background:#060606;border:1px solid #FF7A1A;overflow:hidden;box-shadow:0 0 60px rgba(255,122,26,0.18);}
+.hwe-card::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;z-index:1;background:linear-gradient(90deg,transparent,#E2C068,#FF7A1A,#E2C068,transparent);}
+.hwe-media{background:#000;border-bottom:1px solid #FF7A1A;display:flex;align-items:center;justify-content:center;}
+.hwe-media img{display:block;width:100%;max-width:520px;height:auto;}
+.hwe-media.has-img .hwe-datebox{display:none;}
+.hwe-datebox{width:100%;padding:32px 20px;text-align:center;background:radial-gradient(circle at 50% 25%,rgba(255,122,26,0.28),transparent 65%),linear-gradient(160deg,rgba(255,122,26,0.18) 0%,#060606 100%);}
+.hwe-day{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.75rem;letter-spacing:5px;text-transform:uppercase;color:#E2C068;margin-bottom:6px;}
+.hwe-daynum{font-family:'Cormorant Garamond',serif;font-size:4.2rem;font-weight:600;color:#FF7A1A;line-height:1;letter-spacing:-2px;text-shadow:0 0 30px rgba(255,122,26,0.45);}
+.hwe-month{font-size:0.72rem;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:#C9A84C;margin-top:8px;}
+.hwe-icons{margin-top:14px;font-size:1.3rem;letter-spacing:8px;}
+.hwe-body{padding:28px 20px;display:flex;flex-direction:column;}
+.hwe-badge{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:6px 14px;background:rgba(255,122,26,0.14);border:1px solid #FF7A1A;color:#FF7A1A;font-size:0.5rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.hwe-badge .pulse{width:5px;height:5px;background:#FF7A1A;border-radius:50%;animation:pulse 2s infinite;}
+.hwe-eyebrow{font-size:0.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E2C068;margin-bottom:8px;}
+.hwe-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,7vw,2.8rem);font-weight:600;color:#ffffff;line-height:1.05;letter-spacing:-0.4px;margin-bottom:10px;}
+.hwe-title em{color:#FF7A1A;font-style:italic;font-weight:500;}
+.hwe-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:rgba(240,237,232,0.8);line-height:1.5;margin-bottom:18px;}
+.hwe-desc span{color:#FF7A1A;font-style:normal;}
+.hwe-services{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.hwe-services li{border:1px solid rgba(201,168,76,0.45);background:rgba(255,122,26,0.06);color:#F0EDE8;padding:8px 12px;font-size:0.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.hwe-meta{display:grid;grid-template-columns:1fr;gap:14px;padding:18px 0;border-top:1px dashed rgba(255,122,26,0.3);border-bottom:1px dashed rgba(255,122,26,0.3);margin-bottom:22px;}
+.hwe-meta-item{display:flex;flex-direction:column;gap:4px;}
+.hwe-meta-label{font-size:0.5rem;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:700;}
+.hwe-meta-val{font-size:0.82rem;color:#F0EDE8;line-height:1.5;}
+.hwe-meta-val strong{color:#ffffff;font-weight:600;}
+.hwe-meta-val a{color:#FF7A1A;text-decoration:underline;text-underline-offset:3px;}
+.hwe-cta-row{display:flex;flex-direction:column;gap:10px;}
+.hwe-cta-row a{justify-content:center;text-align:center;}
+.hwe-cta-row .btn-gold{background:#FF7A1A;color:#060606;}
+.hwe-cta-row .btn-gold:hover{background:#FFA552;}
+.hwe-cta-row .btn-ghost{color:#E2C068;border-color:rgba(201,168,76,0.4);}
+.hwe-cta-row .btn-ghost:hover{color:#FF7A1A;border-color:#FF7A1A;}
+.hwe-gcal{margin-top:12px;font-size:0.6rem;letter-spacing:1px;color:rgba(240,237,232,0.5);text-align:center;}
+.hwe-gcal a{color:#E2C068;}
+@media(min-width:821px){
+  .hwe-section{padding:70px 60px 24px;}
+  .hwe-card{grid-template-columns:340px 1fr;}
+  .hwe-media{border-bottom:none;border-right:1px solid #FF7A1A;}
+  .hwe-datebox{align-self:stretch;display:flex;flex-direction:column;justify-content:center;}
+  .hwe-daynum{font-size:5.2rem;}
+  .hwe-body{padding:40px 44px;}
+  .hwe-meta{grid-template-columns:1fr 1fr;gap:12px 28px;}
+  .hwe-cta-row{flex-direction:row;flex-wrap:wrap;align-items:center;}
+  .hwe-gcal{text-align:left;}
+}
 </style>
 <script>
 /* HALLOWEEN — turns the theme on Oct 1–31 (visitor's local time).
@@ -716,6 +785,34 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
   if ((d.getMonth() === 9 || /[?&]theme=halloween\b/.test(q)) && !/[?&]theme=default\b/.test(q)) {
     document.documentElement.classList.add('halloween');
   }
+})();
+</script>
+<script>
+/* HALLOWEEN PROMO — live until 11:59 PM America/Chicago on Oct 31, 2026.
+   Sets window.islayHwPromoLive for the banner + event section in <body>.
+   Test expiry with ?promo_now=2026-11-01T00:00 (Chicago wall-clock time). */
+(function(){
+  var END = '2026-10-31T23:59';
+  function chicagoNow() {
+    var m = /[?&]promo_now=(\d{4}-\d\d-\d\dT\d\d:\d\d)/.exec(location.search);
+    if (m) return m[1];
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+      }).formatToParts(new Date()).forEach(function(x){ p[x.type] = x.value; });
+      return p.year + '-' + p.month + '-' + p.day + 'T' + p.hour + ':' + p.minute;
+    } catch (e) {
+      // No Intl time zone support: midnight CDT Nov 1 = 05:00 UTC.
+      return Date.now() >= Date.UTC(2026, 10, 1, 5, 0) ? '9999' : '0000';
+    }
+  }
+  var live = window.islayHwPromoLive = chicagoNow() <= END;
+  if (!live) return;
+  var closed = false;
+  try { closed = localStorage.getItem('islay_hw2026_bar_closed') === '1'; } catch (e) {}
+  if (!closed) document.documentElement.classList.add('hw-promo-bar');
 })();
 </script>
 </head>
@@ -731,7 +828,14 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
     <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
     <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
   </div>
+  <div class="hwp-bar">
+    <span class="hwp-text"><span aria-hidden="true">🎃</span> <strong><span class="hwp-short">Free Candy &amp; Snacks</span><span class="hwp-full">Free Candy &amp; Snacks for the Kids!</span></strong><span class="hwp-dates">Oct 28–31</span><span class="hwp-extra"> · Open Slots + Deals All Week</span></span>
+    <a href="#team" class="hwp-book" data-hw-book="banner">Book Now</a>
+    <button type="button" class="hwp-close" aria-label="Dismiss Halloween event banner">✕</button>
+  </div>
 </div>
+
+
 
 <!-- ══ HALLOWEEN — banner copy + flying bats (only when html.halloween) ══ -->
 <script>
@@ -764,6 +868,37 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
     layer.appendChild(el);
   });
   document.body.appendChild(layer);
+})();
+</script>
+
+<!-- ══ HALLOWEEN PROMO — banner dismiss + Book Now tracking (Oct 28–31, 2026) ══ -->
+<script>
+(function(){
+  var html = document.documentElement;
+  var bar = document.querySelector('.hwp-bar');
+  if (!window.islayHwPromoLive) {
+    if (bar && bar.parentNode) bar.parentNode.removeChild(bar);
+    return;
+  }
+  var banner = bar && bar.parentNode;
+  var prevRole = banner.getAttribute('role'), prevLabel = banner.getAttribute('aria-label');
+  if (html.classList.contains('hw-promo-bar')) {
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', 'Halloween event: free candy and snacks for the kids, October 28 to 31');
+  }
+  bar.querySelector('.hwp-close').addEventListener('click', function() {
+    // Drop back to the regular seasonal ticker; the banner slot stays so the nav doesn't jump.
+    html.classList.remove('hw-promo-bar');
+    banner.setAttribute('role', prevRole);
+    banner.setAttribute('aria-label', prevLabel);
+    try { localStorage.setItem('islay_hw2026_bar_closed', '1'); } catch (e) {}
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('[data-hw-book]');
+    if (link && typeof gtag === 'function') {
+      gtag('event', 'halloween_promo_book', { placement: link.getAttribute('data-hw-book') });
+    }
+  });
 })();
 </script>
 
@@ -816,6 +951,105 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
     <span class="ti">iSlay Studios</span><span class="ti">✦</span><span class="ti">Bridgeton MO</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Precision Fades</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Beard Trims</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Braids & Locs</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Women's Styling</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Straight Razor Shaves</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Color & Highlights</span><span class="ti">✦</span><span class="ti ti-service" onclick="openVapi()" style="cursor:pointer;">Kids Cuts</span><span class="ti">✦</span>
   </div>
 </div>
+
+<!-- ══ HALLOWEEN PROMO EVENT — Oct 28–31, 2026 ══
+     Time-boxed like the Back to School block below: the inline script
+     removes this section (JSON-LD included) once window.islayHwPromoLive
+     goes false after 11:59 PM America/Chicago on Oct 31 — set in <head>.
+     Flyer lives at /islay-halloween-2026.png; if it's missing, the styled
+     date panel shows instead. To take down manually, delete this block,
+     the HALLOWEEN PROMO CSS/head script, and the banner's .hwp-bar. -->
+<section class="hwe-section reveal" id="islay-halloween" aria-labelledby="hwe-title">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Free Candy & Snacks for the Kids! — iSlay Studios Halloween Week",
+    "description": "Free candy and snacks for the kids, plus open slots and deals all week on haircuts, braids, locs, and women's styles. Bring the kids & come get styled!",
+    "startDate": "2026-10-28",
+    "endDate": "2026-10-31",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": ["https://www.islaystudiosllc.com/islay-halloween-2026.png"],
+    "url": "https://www.islaystudiosllc.com/#islay-halloween",
+    "location": {
+      "@type": "HairSalon",
+      "name": "iSlay Studios",
+      "url": "https://www.islaystudiosllc.com",
+      "telephone": "+1-314-227-5264",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "11726 St. Charles Rock Road, Suite F",
+        "addressLocality": "Bridgeton",
+        "addressRegion": "MO",
+        "postalCode": "63044",
+        "addressCountry": "US"
+      }
+    },
+    "organizer": { "@type": "Organization", "name": "iSlay Studios", "url": "https://www.islaystudiosllc.com" },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-10-28",
+      "url": "https://www.islaystudiosllc.com/#team"
+    }
+  }
+  </script>
+  <div class="hwe-card">
+    <div class="hwe-media has-img">
+      <img src="/islay-halloween-2026.png" alt="iSlay Studios Halloween flyer: Free candy and snacks for the kids, October 28 to 31, 2026. Open slots and deals all week on haircuts, braids, locs, and women's styles at 11726 St. Charles Rock Road, Suite F, Bridgeton, MO 63044." onerror="this.parentNode.classList.remove('has-img');this.parentNode.removeChild(this);">
+      <div class="hwe-datebox">
+        <div class="hwe-day">Wed – Sat</div>
+        <div class="hwe-daynum">28–31</div>
+        <div class="hwe-month">October 2026</div>
+        <div class="hwe-icons" aria-hidden="true">🎃🍬🦇</div>
+      </div>
+    </div>
+    <div class="hwe-body">
+      <span class="hwe-badge"><span class="pulse"></span>Halloween Week</span>
+      <div class="hwe-eyebrow">Open Slots + Deals All Week</div>
+      <h2 class="hwe-title" id="hwe-title">Free Candy &amp; Snacks <em>for the Kids!</em></h2>
+      <p class="hwe-desc">Bring the kids &amp; come get styled! <span aria-hidden="true">♥</span></p>
+
+      <ul class="hwe-services" aria-label="Services">
+        <li>Haircuts</li>
+        <li>Braids</li>
+        <li>Locs</li>
+        <li>Women's Styles</li>
+      </ul>
+
+      <div class="hwe-meta">
+        <div class="hwe-meta-item">
+          <span class="hwe-meta-label">When</span>
+          <span class="hwe-meta-val"><strong>Wednesday, Oct 28 – Saturday, Oct 31</strong><br>2026</span>
+        </div>
+        <div class="hwe-meta-item">
+          <span class="hwe-meta-label">Where</span>
+          <span class="hwe-meta-val"><strong>iSlay Studios</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=iSlay%20Studios%2011726%20St.%20Charles%20Rock%20Road%20Suite%20F%2C%20Bridgeton%2C%20MO%2063044" target="_blank" rel="noopener">11726 St. Charles Rock Road, Suite F<br>Bridgeton, MO 63044</a></span>
+        </div>
+      </div>
+
+      <div class="hwe-cta-row">
+        <a href="#team" class="btn-gold" data-hw-book="event-card">Book Now →</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=iSlay%20Studios%2011726%20St.%20Charles%20Rock%20Road%20Suite%20F%2C%20Bridgeton%2C%20MO%2063044" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+        <a href="/islay-halloween-2026.ics" class="btn-ghost">Add to Calendar</a>
+      </div>
+      <p class="hwe-gcal">On Android? <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Free%20Candy%20%26%20Snacks%20for%20the%20Kids!%20%E2%80%94%20iSlay%20Studios&amp;dates=20261028/20261101&amp;location=iSlay%20Studios%2C%2011726%20St.%20Charles%20Rock%20Road%2C%20Suite%20F%2C%20Bridgeton%2C%20MO%2063044&amp;details=Open%20slots%20%2B%20deals%20all%20week%3A%20haircuts%2C%20braids%2C%20locs%2C%20women%27s%20styles.%20Bring%20the%20kids%20%26%20come%20get%20styled!%20Book%3A%20https%3A%2F%2Fwww.islaystudiosllc.com%2F%23team" target="_blank" rel="noopener">Add to Google Calendar</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Time-boxed promo: yank the whole section once the head check says
+    // the event is over (after 11:59 PM Central, Oct 31 2026).
+    (function() {
+      if (window.islayHwPromoLive) return;
+      var sec = document.getElementById('islay-halloween');
+      sec && sec.parentNode && sec.parentNode.removeChild(sec);
+    })();
+  </script>
+</section>
 
 <!-- ══ BACK TO SCHOOL EVENT — Aug 16, 2026 ══
      Time-boxed. Auto-hides via inline JS after the event end time
