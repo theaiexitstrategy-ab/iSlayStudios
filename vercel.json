@@ -9,5 +9,8 @@
     { "source": "/merch", "destination": "/merch.html" },
     { "source": "/thank-you", "destination": "/thank-you.html" },
     { "source": "/reviews", "destination": "/reviews.html" }
+  ],
+  "headers": [
+    { "source": "/(.*)\\.ics", "headers": [{ "key": "Content-Type", "value": "text/calendar; charset=utf-8" }] }
   ]
 }
