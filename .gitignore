@@ -21,3 +21,8 @@
 !.gitattributes
 !islay-halloween-2026.ics
 !islay-halloween-2026.png
+!js/
+!js/*.js
+!images/
+!images/**/
+!images/**/*

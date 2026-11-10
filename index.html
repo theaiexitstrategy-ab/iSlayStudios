@@ -12,20 +12,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iSlay Studios | Luxury Barbershop & Hair Salon in Bridgeton, MO</title>
-<meta name="description" content="iSlay Studios — Bridgeton's premier luxury barbershop and hair salon. 6 master barbers and stylists. Expert fades, braids, women's styling & more. Meet the team and book online.">
+<meta name="description" content="iSlay Studios — Bridgeton's premier luxury barbershop and hair salon. 7 master barbers and stylists. Expert fades, braids, women's styling & more. Meet the team and book online.">
 <meta name="keywords" content="barbershop Bridgeton MO, barber Bridgeton Missouri, hair salon Bridgeton MO, fades St. Louis, women hair stylist Bridgeton, braids Bridgeton, iSlay Studios, luxury barbershop Missouri">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.islaystudiosllc.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="iSlay Studios | Bridgeton, MO — Meet the Team">
-<meta property="og:description" content="6 master barbers and stylists. Find your artist, ask our AI concierge, and book in seconds.">
+<meta property="og:description" content="7 master barbers and stylists. Find your artist, ask our AI concierge, and book in seconds.">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HairSalon",
   "name": "iSlay Studios",
-  "description": "Bridgeton, Missouri's premier luxury barbershop and hair salon. 6 master barbers and stylists.",
+  "description": "Bridgeton, Missouri's premier luxury barbershop and hair salon. 7 master barbers and stylists.",
   "url": "https://www.islaystudiosllc.com",
   "address": { "@type": "PostalAddress", "addressLocality": "Bridgeton", "addressRegion": "MO", "addressCountry": "US" },
   "priceRange": "$$",
@@ -55,85 +55,9 @@ html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--text);overflow-x:hidden;}
 body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.4;mix-blend-mode:overlay;}
 
-/* ── NAV ── */
-/* ── ANNIVERSARY CELEBRATION (one-shot per session, DOM built in JS) ── */
-.celebration-overlay{
-  position:fixed;inset:0;z-index:10000;
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;
-  background:radial-gradient(ellipse at center, rgba(6,6,6,0.85) 0%, rgba(6,6,6,0.5) 100%);
-  backdrop-filter:blur(4px);
-  animation:cel-back 3200ms ease forwards;
-  pointer-events:auto;
-  overflow:hidden;
-}
-@keyframes cel-back{
-  0%{opacity:0}
-  8%{opacity:1}
-  75%{opacity:1}
-  100%{opacity:0;pointer-events:none;}
-}
-.celebration-num{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:clamp(9rem, 22vw, 15rem);
-  font-weight:500;color:var(--gold);
-  line-height:.9;letter-spacing:-.05em;
-  text-shadow:0 0 60px rgba(var(--gold-rgb),0.6),0 0 120px rgba(var(--gold-rgb),0.3);
-  transform:scale(.4);opacity:0;
-  animation:cel-num 3200ms cubic-bezier(.2,.9,.3,1) forwards;
-}
-@keyframes cel-num{
-  0%{transform:scale(.4);opacity:0;}
-  15%{transform:scale(1.05);opacity:1;}
-  22%{transform:scale(1);opacity:1;}
-  75%{transform:scale(1);opacity:1;}
-  100%{transform:scale(1.15);opacity:0;}
-}
-.celebration-sub{
-  margin-top:16px;
-  font-family:'Montserrat',sans-serif;
-  font-size:clamp(0.7rem,1.4vw,0.95rem);
-  font-weight:700;letter-spacing:8px;text-transform:uppercase;
-  color:var(--white);
-  opacity:0;
-  animation:cel-sub 3200ms ease forwards;
-}
-@keyframes cel-sub{
-  0%,20%{opacity:0;transform:translateY(10px);}
-  30%{opacity:1;transform:translateY(0);}
-  75%{opacity:1;transform:translateY(0);}
-  100%{opacity:0;transform:translateY(-6px);}
-}
-.celebration-sub em{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-weight:400;text-transform:none;letter-spacing:1px;
-  color:var(--gold);font-size:1.1em;
-  margin:0 6px;
-}
-.confetti-piece{
-  position:absolute;bottom:-20px;
-  color:var(--gold);
-  font-size:1.4rem;
-  pointer-events:none;
-  will-change:transform,opacity;
-  text-shadow:0 0 12px rgba(var(--gold-rgb),0.6);
-  opacity:0;
-  animation-name:confetti-rise;
-  animation-timing-function:cubic-bezier(.35,.1,.25,1);
-  animation-fill-mode:forwards;
-}
-@keyframes confetti-rise{
-  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0;}
-  10%{opacity:1;}
-  90%{opacity:1;}
-  100%{transform:translate3d(var(--dx,0), -110vh, 0) rotate(var(--rot,720deg));opacity:0;}
-}
-@media (prefers-reduced-motion: reduce){
-  .celebration-overlay{display:none;}
-}
-
-/* ── ANNIVERSARY BANNER (fixed at very top; nav sits below it) ── */
-.anniversary-banner{
+/* ── SITE BANNER (fixed at very top; nav sits below it). Ticker copy and
+   visibility come from the active promo — see js/promo-config.js. ── */
+.site-banner{
   position:fixed;top:0;left:0;right:0;
   height:34px;z-index:600;
   background:linear-gradient(90deg, var(--gold) 0%, #E8CC7A 50%, var(--gold) 100%);
@@ -143,36 +67,153 @@ body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;b
   border-bottom:1px solid rgba(0,0,0,0.2);
   pointer-events:none;
 }
-.anniversary-track{
+.site-banner-track{
   display:inline-flex;
   white-space:nowrap;
-  animation:anniversary-scroll 36s linear infinite;
+  animation:site-banner-scroll 36s linear infinite;
   will-change:transform;
 }
-.anniversary-track .pill{
+.site-banner-track .pill{
   font-family:'Montserrat',sans-serif;
   font-size:0.6rem;font-weight:700;
   letter-spacing:5px;text-transform:uppercase;
   padding:0 34px;
   display:inline-flex;align-items:center;gap:14px;
 }
-.anniversary-track .pill em{
+.site-banner-track .pill em{
   font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:0.82rem;font-weight:600;
   letter-spacing:1px;text-transform:none;
   color:var(--black);
 }
-.anniversary-track .pill .sep{
+.site-banner-track .pill .sep{
   font-size:0.7rem;color:rgba(6,6,6,0.55);letter-spacing:0;
 }
-@keyframes anniversary-scroll{
+@keyframes site-banner-scroll{
   from{transform:translateX(0);}
   to{transform:translateX(-50%);}
 }
 @media (prefers-reduced-motion: reduce){
-  .anniversary-track{animation:none;justify-content:center;width:100%;}
+  .site-banner-track{animation:none;justify-content:center;width:100%;}
 }
+html.no-site-banner .site-banner{display:none;}
+html.no-site-banner nav{top:0;}
 
+/* ── PROMO INTRO — first-load overlay, once per browser session. Built by
+   js/promos.js from the active promo's `intro` in js/promo-config.js.
+   Variants (.promo-intro--<variant>) only re-point the accent variables. ── */
+.promo-intro{
+  --pi-accent:var(--gold);--pi-accent-rgb:var(--gold-rgb);--pi-chrome:var(--gold-light);
+  position:fixed;inset:0;z-index:10000;
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;
+  background:radial-gradient(ellipse at center, rgba(6,6,6,0.9) 0%, rgba(6,6,6,0.62) 100%);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  overflow:hidden;
+  animation:pi-back-in 420ms ease both;
+}
+.promo-intro.is-leaving{animation:pi-back-out 320ms ease forwards;pointer-events:none;}
+@keyframes pi-back-in{from{opacity:0}to{opacity:1}}
+@keyframes pi-back-out{from{opacity:1}to{opacity:0}}
+.pi-card{
+  position:relative;z-index:1;
+  width:100%;max-width:430px;
+  max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;
+  background:#060606;
+  border:1px solid var(--pi-accent);
+  box-shadow:0 0 70px rgba(var(--pi-accent-rgb),0.35);
+  padding:42px 24px 26px;
+  text-align:center;
+  animation:pi-pop 720ms cubic-bezier(.2,.9,.3,1) both;
+}
+.pi-card::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--pi-chrome),var(--pi-accent),var(--pi-chrome),transparent);
+}
+.pi-card > :not(.pi-close){animation:pi-rise 600ms ease both;animation-delay:300ms;}
+.promo-intro.is-leaving .pi-card{animation:pi-pop-out 320ms ease forwards;}
+@keyframes pi-pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.04);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes pi-pop-out{to{transform:scale(1.08);opacity:0}}
+@keyframes pi-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pi-close{
+  position:absolute;top:6px;right:6px;width:44px;height:44px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(240,237,232,0.55);font-size:1.1rem;
+  transition:color 0.2s;
+}
+.pi-close:hover,.pi-close:focus-visible{color:var(--pi-chrome);}
+.pi-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;margin-bottom:20px;
+  background:rgba(var(--pi-accent-rgb),0.14);border:1px solid var(--pi-accent);
+  color:var(--pi-accent);
+  font-size:0.56rem;font-weight:800;letter-spacing:4px;text-transform:uppercase;
+}
+.pi-eyebrow .pulse{width:6px;height:6px;border-radius:50%;background:var(--pi-accent);animation:pulse 2s infinite;}
+.pi-avatar{
+  display:block;width:130px;height:130px;margin:0 auto 18px;
+  border-radius:50%;overflow:hidden;
+  border:2px solid var(--pi-accent);
+  box-shadow:0 0 0 4px rgba(var(--pi-accent-rgb),0.12),0 0 40px rgba(var(--pi-accent-rgb),0.45);
+}
+.pi-avatar img{display:block;width:100%;height:100%;object-fit:cover;}
+.pi-hero{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(3.4rem,16vw,5.2rem);font-weight:600;
+  line-height:.95;letter-spacing:-.03em;
+  color:var(--pi-accent);
+  text-shadow:0 0 50px rgba(var(--pi-accent-rgb),0.5);
+  margin-bottom:12px;
+}
+.pi-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,8.5vw,2.8rem);font-weight:700;
+  color:var(--white);line-height:1.05;letter-spacing:-0.3px;
+  margin-bottom:10px;
+}
+.pi-sub{font-size:0.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,237,232,0.72);line-height:1.8;margin-bottom:10px;}
+.pi-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem;color:var(--pi-chrome);line-height:1.4;margin-bottom:8px;}
+.pi-handle{display:inline-block;padding:8px 4px;margin-bottom:16px;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:var(--pi-accent);text-decoration:none;}
+.pi-handle:hover,.pi-handle:focus-visible{text-decoration:underline;text-underline-offset:4px;}
+.pi-ctas{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.pi-ctas .btn-gold,.pi-ctas .btn-ghost{width:100%;justify-content:center;text-align:center;padding:16px 18px;}
+.pi-note{margin-top:16px;font-size:0.62rem;letter-spacing:1px;line-height:1.6;}
+.pi-note a{color:var(--pi-chrome);text-underline-offset:3px;}
+.pi-confetti{position:absolute;inset:0;pointer-events:none;}
+.pi-piece{
+  position:absolute;pointer-events:none;opacity:0;
+  will-change:transform,opacity;
+  animation-fill-mode:forwards;
+  animation-timing-function:cubic-bezier(.35,.1,.25,1);
+}
+.pi-piece svg{display:block;width:100%;height:100%;fill:currentColor;}
+.pi-piece--rise{bottom:-24px;color:var(--pi-accent);text-shadow:0 0 12px rgba(var(--pi-accent-rgb),0.6);animation-name:pi-confetti-rise;}
+.pi-piece--fall{top:-40px;animation-name:pi-confetti-fall;animation-timing-function:linear;}
+@keyframes pi-confetti-rise{
+  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0;}
+  10%{opacity:1;} 90%{opacity:1;}
+  100%{transform:translate3d(var(--dx,0),-110vh,0) rotate(var(--rot,720deg));opacity:0;}
+}
+@keyframes pi-confetti-fall{
+  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0;}
+  10%{opacity:.9;} 85%{opacity:.9;}
+  100%{transform:translate3d(var(--dx,0),112vh,0) rotate(var(--rot,540deg));opacity:0;}
+}
+/* Reduced motion: the intro still shows (it carries real info now), just without movement. */
+.promo-intro.is-static,.promo-intro.is-static *{animation:none !important;}
+@media(min-width:600px){
+  .pi-card{padding:48px 40px 32px;max-width:460px;}
+  .pi-avatar{width:150px;height:150px;}
+}
+/* New Barber Alert uses the base gold intro styles (no overrides). */
+/* Thanksgiving — burnt orange accent on harvest gold, deep brown card */
+.promo-intro--thanksgiving{--pi-accent:#D2691E;--pi-accent-rgb:210,105,30;--pi-chrome:#ECC172;}
+.promo-intro--thanksgiving .pi-card{background:linear-gradient(170deg,#1E120A 0%,#0A0706 70%);}
+.promo-intro--thanksgiving .pi-hero{background:linear-gradient(135deg,#ECC172 0%,#D9A441 35%,#D2691E 75%,#B8561A 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 24px rgba(210,105,30,0.35));}
+.promo-intro--thanksgiving .btn-ghost{color:#ECC172;border-color:rgba(236,193,114,0.3);}
+.promo-intro--thanksgiving .btn-ghost:hover{color:#D2691E;border-color:#D2691E;}
+
+/* ── NAV ── */
 nav{position:fixed;top:34px;left:0;right:0;z-index:500;padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
 nav.scrolled{background:rgba(6,6,6,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 60px;}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;letter-spacing:4px;color:var(--white);text-decoration:none;text-transform:uppercase;}
@@ -697,7 +738,7 @@ html.halloween{
 }
 html.halloween body{background:radial-gradient(ellipse 120% 60% at 50% 0%,#1C0B2B 0%,var(--black) 70%) fixed,var(--black);}
 html.halloween .hero-wordmark{background:linear-gradient(135deg,#FFC07A 0%,#FF7A1A 40%,#B8410A 70%,#FF7A1A 100%);-webkit-background-clip:text;background-clip:text;}
-html.halloween .anniversary-banner{background:linear-gradient(90deg,#FF7A1A 0%,#FFB067 50%,#FF7A1A 100%);}
+html.halloween .site-banner{background:linear-gradient(90deg,#FF7A1A 0%,#FFB067 50%,#FF7A1A 100%);}
 html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
 .hw-bats{position:fixed;inset:0;z-index:450;pointer-events:none;overflow:hidden;}
 .hw-bat{position:absolute;left:0;animation:hw-fly linear infinite;}
@@ -714,8 +755,8 @@ html.halloween nav.scrolled{background:rgba(10,6,16,0.96);}
    below after 11:59 PM Central on Oct 31. Colors are hardcoded because the
    Halloween theme re-points --gold to orange and we want both. */
 .hwp-bar{display:none;}
-html.hw-promo-bar .anniversary-banner{height:46px;pointer-events:auto;background:#060606;border-bottom:1px solid #FF7A1A;box-shadow:0 2px 18px rgba(255,122,26,0.25);}
-html.hw-promo-bar .anniversary-track{display:none;}
+html.hw-promo-bar .site-banner{height:46px;pointer-events:auto;background:#060606;border-bottom:1px solid #FF7A1A;box-shadow:0 2px 18px rgba(255,122,26,0.25);}
+html.hw-promo-bar .site-banner-track{display:none;}
 html.hw-promo-bar nav{top:46px;}
 html.hw-promo-bar .hwp-bar{display:flex;align-items:center;gap:10px;width:100%;padding:0 6px 0 14px;}
 .hwp-text{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#F0EDE8;}
@@ -776,6 +817,142 @@ html.hw-promo-bar .hwp-bar{display:flex;align-items:center;gap:10px;width:100%;p
   .hwe-cta-row{flex-direction:row;flex-wrap:wrap;align-items:center;}
   .hwe-gcal{text-align:left;}
 }
+
+/* ── JAASLYCEZZ — "New" chip on her team card + profile panel (#jaaslycezz).
+   Uses the site gold via --jz-accent. Permanent — not tied to any promo window. ── */
+.ac-new-badge{
+  position:absolute;top:12px;left:12px;z-index:2;
+  background:var(--gold);color:#060606;
+  font-size:0.42rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  padding:4px 10px;
+  box-shadow:0 0 18px rgba(var(--gold-rgb),0.5);
+  transition:opacity 0.3s;
+}
+.artist-card.expanded .ac-new-badge{opacity:0;}
+.jz-profile{
+  --jz-accent:var(--gold);--jz-accent-rgb:var(--gold-rgb);--jz-accent-light:var(--gold-light);
+  position:relative;margin-top:40px;
+  display:grid;grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"hero" "body" "gallery";
+  background:var(--card);
+  border:1px solid rgba(var(--jz-accent-rgb),0.55);
+  box-shadow:0 0 60px rgba(var(--jz-accent-rgb),0.12);
+  scroll-margin-top:96px;
+}
+.jz-profile:focus{outline:none;}
+.jz-profile::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:2px;z-index:1;
+  background:linear-gradient(90deg,transparent,var(--jz-accent-light),var(--jz-accent),var(--jz-accent-light),transparent);
+}
+.jz-hero{grid-area:hero;background:#000;border-bottom:1px solid rgba(var(--jz-accent-rgb),0.4);}
+.jz-hero img{display:block;width:100%;height:auto;}
+.jz-body{grid-area:body;min-width:0;padding:28px 20px 26px;display:flex;flex-direction:column;}
+.jz-badge{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  padding:6px 14px;margin-bottom:18px;
+  background:rgba(var(--jz-accent-rgb),0.14);border:1px solid var(--jz-accent);
+  color:var(--jz-accent);
+  font-size:0.5rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+}
+.jz-badge .pulse{width:5px;height:5px;background:var(--jz-accent);border-radius:50%;animation:pulse 2s infinite;}
+.jz-id{display:flex;align-items:center;gap:16px;margin-bottom:14px;}
+.jz-avatar{
+  flex-shrink:0;display:block;width:72px;height:72px;
+  border-radius:50%;overflow:hidden;
+  border:2px solid var(--jz-accent);
+  box-shadow:0 0 0 3px rgba(var(--gold-rgb),0.12),0 0 24px rgba(var(--jz-accent-rgb),0.35);
+}
+.jz-avatar img{display:block;width:100%;height:100%;object-fit:cover;}
+.jz-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,8vw,2.8rem);font-weight:700;color:var(--white);line-height:1;letter-spacing:-0.4px;}
+.jz-role{margin-top:7px;font-size:0.52rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--jz-accent-light);}
+.jz-role span{display:block;margin-top:4px;color:rgba(240,237,232,0.5);font-weight:500;letter-spacing:1.5px;text-transform:none;}
+.jz-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:rgba(240,237,232,0.82);line-height:1.5;margin-bottom:18px;}
+.jz-notice{
+  margin-bottom:20px;padding:12px 14px;
+  background:rgba(var(--gold-rgb),0.07);
+  border:1px solid rgba(var(--gold-rgb),0.45);border-left:3px solid var(--gold);
+}
+.jz-notice-title{font-size:0.52rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.jz-notice p{font-size:0.78rem;line-height:1.55;color:var(--text);}
+.jz-notice strong{color:var(--white);font-weight:600;}
+.jz-label{font-size:0.5rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--jz-accent);margin-bottom:10px;}
+.jz-services{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+.jz-services li{
+  border:1px solid rgba(var(--jz-accent-rgb),0.4);background:rgba(var(--jz-accent-rgb),0.06);
+  color:var(--text);padding:8px 11px;
+  font-size:0.54rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+}
+.jz-meta{
+  display:grid;grid-template-columns:1fr;gap:14px;
+  padding:18px 0;margin-bottom:22px;
+  border-top:1px dashed rgba(var(--jz-accent-rgb),0.3);
+  border-bottom:1px dashed rgba(var(--jz-accent-rgb),0.3);
+}
+.jz-meta-item{display:flex;flex-direction:column;gap:4px;}
+.jz-meta-label{font-size:0.5rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--jz-accent);}
+.jz-meta-val{font-size:0.82rem;color:var(--text);line-height:1.55;}
+.jz-meta-val strong{color:var(--white);font-weight:600;}
+.jz-meta-val a{color:var(--jz-accent-light);text-decoration:underline;text-underline-offset:3px;}
+.jz-cta-row{display:flex;flex-direction:column;gap:10px;}
+.jz-cta-row .btn-gold,.jz-cta-row .btn-ghost,.jz-soon{justify-content:center;text-align:center;}
+.jz-cta-row .btn-gold{background:var(--jz-accent);color:#060606;}
+.jz-cta-row .btn-gold:hover{background:var(--gold-light);box-shadow:0 8px 30px rgba(var(--jz-accent-rgb),0.35);}
+.jz-cta-row .btn-ghost{color:var(--jz-accent-light);border-color:rgba(var(--gold-rgb),0.28);}
+.jz-cta-row .btn-ghost:hover{color:var(--jz-accent);border-color:var(--jz-accent);}
+.jz-soon{
+  padding:14px 32px;
+  font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  background:transparent;color:rgba(240,237,232,0.5);
+  border:1px dashed rgba(240,237,232,0.25);
+  cursor:not-allowed;
+}
+.jz-gallery{grid-area:gallery;padding:0 20px 26px;}
+.jz-shot{display:block;max-width:260px;border:1px solid rgba(var(--jz-accent-rgb),0.35);transition:border-color 0.2s,transform 0.2s;}
+.jz-shot:hover{border-color:var(--jz-accent);transform:translateY(-2px);}
+.jz-shot img{display:block;width:100%;height:auto;}
+.jz-shot-cap{display:block;margin-top:8px;font-size:0.55rem;letter-spacing:1px;color:rgba(240,237,232,0.5);}
+@media(min-width:900px){
+  .jz-profile{
+    grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+    grid-template-areas:"hero body" "gallery body";
+    grid-template-rows:auto 1fr;
+  }
+  .jz-hero{border-bottom:none;border-right:1px solid rgba(var(--jz-accent-rgb),0.4);}
+  .jz-gallery{border-right:1px solid rgba(var(--jz-accent-rgb),0.4);padding:26px 28px;}
+  .jz-body{padding:40px 44px;}
+  .jz-meta{grid-template-columns:1fr 1fr;gap:14px 28px;}
+  .jz-cta-row{flex-direction:row;flex-wrap:wrap;align-items:center;}
+}
+
+/* ── THEME: thanksgiving — html.theme-thanksgiving, set by js/promos.js for
+   the "thanksgiving-2026" window (Nov 16–30, 2026 Central). Warms the gold
+   and deepens the blacks toward brown; burnt orange is an accent only, so
+   the black + gold brand still reads. ── */
+html.theme-thanksgiving{
+  --gold:#D9A441;
+  --gold-rgb:217,164,65;
+  --gold-light:#ECC172;
+  --black:#0A0706;
+  --dark:#120C08;
+  --card:#150F0A;
+  --card2:#1C140E;
+  --muted:#80705F;
+  --tg-orange:#D2691E;
+  --tg-orange-rgb:210,105,30;
+}
+html.theme-thanksgiving body{background:radial-gradient(ellipse 120% 55% at 50% 0%,#2A160A 0%,var(--black) 70%) fixed,var(--black);}
+html.theme-thanksgiving .hero-bg{background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(var(--tg-orange-rgb),0.12) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 50% 100%,rgba(var(--gold-rgb),0.05) 0%,transparent 60%),#0B0705;}
+html.theme-thanksgiving .site-banner{background:linear-gradient(90deg,#C8601E 0%,#E2B25A 50%,#C8601E 100%);}
+html.theme-thanksgiving .ticker{background:linear-gradient(90deg,#D9A441 0%,#D2691E 50%,#D9A441 100%);}
+html.theme-thanksgiving .sec-eyebrow::before{background:var(--tg-orange);}
+html.theme-thanksgiving nav.scrolled{background:rgba(12,8,5,0.96);}
+.tg-leaves{position:fixed;inset:0;z-index:450;pointer-events:none;overflow:hidden;}
+.tg-leaf{position:absolute;top:-40px;opacity:0;animation:tg-fall linear infinite;}
+.tg-leaf-sway{opacity:.4;animation:tg-sway ease-in-out infinite alternate;}
+.tg-leaf-sway svg{display:block;width:100%;height:100%;fill:currentColor;}
+@keyframes tg-fall{0%{transform:translateY(0);opacity:0;}8%{opacity:1;}92%{opacity:1;}100%{transform:translateY(calc(100vh + 80px));opacity:0;}}
+@keyframes tg-sway{from{transform:translateX(-22px) rotate(-35deg);}to{transform:translateX(22px) rotate(40deg);}}
+@media (prefers-reduced-motion: reduce){.tg-leaves{display:none;}}
 </style>
 <script>
 /* HALLOWEEN — turns the theme on Oct 1–31 (visitor's local time).
@@ -815,19 +992,16 @@ html.hw-promo-bar .hwp-bar{display:flex;align-items:center;gap:10px;width:100%;p
   if (!closed) document.documentElement.classList.add('hw-promo-bar');
 })();
 </script>
+<!-- Seasonal promos (intro, top banner, theme) — schedule lives in js/promo-config.js -->
+<script src="js/promo-config.js"></script>
+<script src="js/promos.js"></script>
 </head>
 <body>
 
-<!-- ══ ANNIVERSARY BANNER — 2 Years of iSlay Studios ══ -->
-<div class="anniversary-banner" role="status" aria-label="iSlay Studios anniversary notice">
-  <div class="anniversary-track" aria-hidden="true">
-    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
-    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
-    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
-    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
-    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
-    <span class="pill"><em>Celebrating 2 Years of iSlay Studios</em> <span class="sep">✦</span> Est. August 2024</span>
-  </div>
+<!-- ══ SITE BANNER — ticker copy comes from the active promo in js/promo-config.js;
+     hidden entirely (html.no-site-banner) when no promo defines a banner ══ -->
+<div class="site-banner" role="status" aria-label="iSlay Studios announcements">
+  <div class="site-banner-track" aria-hidden="true"></div>
   <div class="hwp-bar">
     <span class="hwp-text"><span aria-hidden="true">🎃</span> <strong><span class="hwp-short">Free Candy &amp; Snacks</span><span class="hwp-full">Free Candy &amp; Snacks for the Kids!</span></strong><span class="hwp-dates">Oct 28–31</span><span class="hwp-extra"> · Open Slots + Deals All Week</span></span>
     <a href="#team" class="hwp-book" data-hw-book="banner">Book Now</a>
@@ -841,8 +1015,8 @@ html.hw-promo-bar .hwp-bar{display:flex;align-items:center;gap:10px;width:100%;p
 <script>
 (function(){
   if (!document.documentElement.classList.contains('halloween')) return;
-  var track = document.querySelector('.anniversary-track');
-  var banner = document.querySelector('.anniversary-banner');
+  var track = document.querySelector('.site-banner-track');
+  var banner = document.querySelector('.site-banner');
   if (banner) banner.setAttribute('aria-label', 'Happy Halloween from iSlay Studios');
   if (track) {
     var pill = '<span class="pill"><em>Happy Halloween from iSlay Studios</em> <span class="sep">🎃</span> Book Your Spooky Season Slay <span class="sep">🦇</span></span>';
@@ -936,7 +1110,7 @@ html.hw-promo-bar .hwp-bar{display:flex;align-items:center;gap:10px;width:100%;p
       <a href="/recruitment" class="btn-ghost">Join the Team</a>
     </div>
     <div class="hero-stats reveal d5">
-      <div class="hstat"><div class="hstat-num">6</div><div class="hstat-lbl">Master Artists</div></div>
+      <div class="hstat"><div class="hstat-num">7</div><div class="hstat-lbl">Master Artists</div></div>
       <div class="hstat"><div class="hstat-num">500+</div><div class="hstat-lbl">Monthly Clients</div></div>
       <a class="hstat hstat-link" href="/reviews" aria-label="5-star rated studio. Read our reviews"><div class="hstat-num">5★</div><div class="hstat-lbl">Rated Studio</div></a>
       <div class="hstat"><div class="hstat-num">10+</div><div class="hstat-lbl">Years Running</div></div>
@@ -1269,7 +1443,110 @@ html.hw-promo-bar .hwp-bar{display:flex;align-items:center;gap:10px;width:100%;p
       </div>
     </article>
 
+    <!-- JAASLYCEZZ — Professional Barber (she/her). Joined Nov 2026. Full profile
+         sits below the grid at #jaaslycezz. No online booking yet, so her card
+         links to the profile instead of a booking page (data-no-intercept skips
+         the membership promo modal that wraps the other Book buttons). -->
+    <article class="artist-card reveal d9" id="jaaslycezz-card" aria-label="Jaaslycezz - Professional Barber at iSlay Studios">
+      <div class="ac-img">
+        <picture>
+          <source type="image/webp" srcset="images/barbers/jaaslycezz/headshot-card-360.webp 360w, images/barbers/jaaslycezz/headshot-card-660.webp 660w" sizes="(max-width: 1024px) 50vw, 340px">
+          <img src="images/barbers/jaaslycezz/headshot-card-660.jpg" srcset="images/barbers/jaaslycezz/headshot-card-360.jpg 360w, images/barbers/jaaslycezz/headshot-card-660.jpg 660w" sizes="(max-width: 1024px) 50vw, 340px" width="660" height="880" loading="lazy" decoding="async" alt="Jaaslycezz, professional barber at iSlay Studios specializing in fades, razor lineups, beard trims and loc retwists in Bridgeton MO">
+        </picture>
+        <span class="ac-new-badge">New</span>
+        <div class="ac-overlay"></div>
+        <div class="ac-info">
+          <div class="ac-tag">Professional Barber</div>
+          <div class="ac-name">Jaaslycezz</div>
+          <div class="ac-services">Fades &middot; Lineups &middot; Beard Trims &middot; Loc Retwists</div>
+          <p class="ac-bio">Sharp cuts, clean fades, precision grooming. Walk-ins welcome.</p>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <a href="#jaaslycezz" class="ac-book" data-no-intercept>Profile &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
   </div>
+
+  <!-- JAASLYCEZZ — profile panel (permanent). The New Barber Alert intro's
+       "Meet Jaaslycezz" button scrolls here. The price notice removes itself
+       after 11:59 PM Central on Nov 22, 2026 via data-show-until (js/promos.js). -->
+  <article class="jz-profile reveal" id="jaaslycezz" aria-labelledby="jz-name">
+    <div class="jz-hero">
+      <picture>
+        <source type="image/webp" srcset="images/barbers/jaaslycezz/banner-800.webp 800w, images/barbers/jaaslycezz/banner-1456.webp 1456w" sizes="(min-width: 1400px) 670px, (min-width: 900px) 52vw, 100vw">
+        <img src="images/barbers/jaaslycezz/banner-800.jpg" srcset="images/barbers/jaaslycezz/banner-800.jpg 800w, images/barbers/jaaslycezz/banner-1456.jpg 1456w" sizes="(min-width: 1400px) 670px, (min-width: 900px) 52vw, 100vw" width="1456" height="832" loading="lazy" decoding="async" alt="Jaaslycezz professional barber banner: sharp cuts, clean fades, precision grooming. Instagram @jaaslycezz, phone 636-673-4864. Appointments and walk-ins welcome.">
+      </picture>
+    </div>
+
+    <div class="jz-body">
+      <span class="jz-badge"><span class="pulse"></span>New to iSlay</span>
+      <div class="jz-id">
+        <picture class="jz-avatar">
+          <source type="image/webp" srcset="images/barbers/jaaslycezz/headshot-avatar-160.webp 160w, images/barbers/jaaslycezz/headshot-avatar-360.webp 360w" sizes="72px">
+          <img src="images/barbers/jaaslycezz/headshot-avatar-160.jpg" srcset="images/barbers/jaaslycezz/headshot-avatar-160.jpg 160w, images/barbers/jaaslycezz/headshot-avatar-360.jpg 360w" sizes="72px" width="160" height="160" loading="lazy" decoding="async" alt="">
+        </picture>
+        <div>
+          <h3 class="jz-name" id="jz-name">Jaaslycezz</h3>
+          <div class="jz-role">Professional Barber <span>she/her</span></div>
+        </div>
+      </div>
+      <p class="jz-tagline">Sharp Cuts &bull; Clean Fades &bull; Precision Grooming</p>
+
+      <div class="jz-notice" role="note" data-show-until="2026-11-22T23:59">
+        <div class="jz-notice-title">Price Increase Notice</div>
+        <p>New service pricing takes effect <strong>November 23, 2026</strong>. Get in before then to lock in current prices.</p>
+      </div>
+
+      <div class="jz-label">Services</div>
+      <ul class="jz-services" aria-label="Services">
+        <li>Haircuts &amp; Fades</li>
+        <li>Razor Lineups &amp; Beard Trims</li>
+        <li>Luxury Facials &amp; Skincare</li>
+        <li>Hot Towels &amp; Steam Treatments</li>
+        <li>Braids &amp; Straightbacks</li>
+        <li>Loc Retwists</li>
+        <li>Enhancements &amp; More</li>
+      </ul>
+
+      <div class="jz-meta">
+        <div class="jz-meta-item">
+          <span class="jz-meta-label">Availability</span>
+          <span class="jz-meta-val"><strong>Early mornings, overnight &amp; after-hours</strong><br>The shop has 24/7 access</span>
+        </div>
+        <div class="jz-meta-item">
+          <span class="jz-meta-label">Walk-Ins</span>
+          <span class="jz-meta-val"><strong>Walk-ins welcome</strong><br>Online booking coming soon</span>
+        </div>
+        <div class="jz-meta-item">
+          <span class="jz-meta-label">Where</span>
+          <span class="jz-meta-val"><strong>iSlay Studios</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=iSlay%20Studios%2011726%20St.%20Charles%20Rock%20Road%20Suite%20F%2C%20Bridgeton%2C%20MO%2063044" target="_blank" rel="noopener">11726 St. Charles Rock Road, Suite F<br>Bridgeton, MO 63044</a></span>
+        </div>
+        <div class="jz-meta-item">
+          <span class="jz-meta-label">Contact</span>
+          <span class="jz-meta-val"><a href="tel:+16366734864">(636) 673-4864</a><br><a href="https://instagram.com/jaaslycezz" target="_blank" rel="noopener">@jaaslycezz</a></span>
+        </div>
+      </div>
+
+      <div class="jz-cta-row">
+        <a href="tel:+16366734864" class="btn-gold">Call &middot; (636) 673-4864</a>
+        <a href="https://instagram.com/jaaslycezz" target="_blank" rel="noopener" class="btn-ghost">@jaaslycezz on IG</a>
+        <button type="button" class="jz-soon" disabled>Booking Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="jz-gallery">
+      <div class="jz-label">Gallery</div>
+      <a href="images/barbers/jaaslycezz/flyer-islay-1080.jpg" target="_blank" rel="noopener" class="jz-shot">
+        <picture>
+          <source type="image/webp" srcset="images/barbers/jaaslycezz/flyer-islay-540.webp 540w, images/barbers/jaaslycezz/flyer-islay-1080.webp 1080w" sizes="260px">
+          <img src="images/barbers/jaaslycezz/flyer-islay-540.jpg" srcset="images/barbers/jaaslycezz/flyer-islay-540.jpg 540w, images/barbers/jaaslycezz/flyer-islay-1080.jpg 1080w" sizes="260px" width="1080" height="1350" loading="lazy" decoding="async" alt="iSlay Studios flyer welcoming Jaaslycezz, professional barber, now in the chair. Services: haircuts and fades, razor lineups and beard trims, luxury facials and skincare, hot towels and steam, braids and straightbacks, loc retwists, enhancements and more. Walk-ins welcome, early mornings, overnight and after-hours. Call (636) 673-4864, Instagram @jaaslycezz, 11726 St. Charles Rock Rd, Suite F, Bridgeton, MO 63044.">
+        </picture>
+      </a>
+      <span class="jz-shot-cap">Tap to view the full flyer</span>
+    </div>
+  </article>
 </section>
 
 <!-- ══ MERCH — Take iSlay home ══ -->
@@ -1695,7 +1972,7 @@ function handleLeadSubmit(e) {
   // Intercept all ac-book links
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a.ac-book');
-    if (!link) return;
+    if (!link || link.hasAttribute('data-no-intercept')) return;
     e.preventDefault();
     var btnText = link.textContent.trim();
     promoArtist = parseArtistFromText(btnText);
@@ -1959,84 +2236,6 @@ function handleLeadSubmit(e) {
       else showShelfError();
     })
     .catch(showShelfError);
-})();
-</script>
-
-<!-- ══ 2-YEAR ANNIVERSARY CELEBRATION — one-shot per browser session ══
-     Fires a gold confetti burst + centered "2" flash the first time
-     a visitor lands on the homepage this session. Uses sessionStorage
-     so it doesn't re-fire on every internal navigation, but a fresh
-     tab / next-day visit still gets the moment. Skips entirely under
-     prefers-reduced-motion (CSS also hides the overlay for belt-and-
-     suspenders coverage). Fully self-contained; safe to delete this
-     block + the .celebration-* / .confetti-piece CSS when we retire
-     the anniversary campaign. -->
-<script>
-(function() {
-  var spooky = document.documentElement.classList.contains('halloween');
-  var seenKey = spooky ? 'islay_halloween_celebrated' : 'islay_2yr_celebrated';
-  try {
-    if (sessionStorage.getItem(seenKey) === '1') return;
-  } catch (e) { /* private mode — proceed anyway; still one-shot per page load */ }
-
-  var mql = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (mql && mql.matches) {
-    try { sessionStorage.setItem(seenKey, '1'); } catch (e) {}
-    return;
-  }
-
-  function fire() {
-    // Overlay with big italic "2" + subline
-    var overlay = document.createElement('div');
-    overlay.className = 'celebration-overlay';
-    overlay.setAttribute('aria-hidden', 'true');
-
-    var num = document.createElement('div');
-    num.className = 'celebration-num';
-    num.textContent = spooky ? 'Boo!' : '2';
-    overlay.appendChild(num);
-
-    var sub = document.createElement('div');
-    sub.className = 'celebration-sub';
-    sub.innerHTML = spooky ? 'Happy Halloween from <em>iSlay Studios</em>' : 'Two Years of <em>iSlay Studios</em>';
-    overlay.appendChild(sub);
-
-    // Confetti — gold ✦/★/◆ glyphs rising from the bottom
-    var glyphs = spooky ? ['🎃', '🦇', '👻', '🕸️'] : ['✦', '★', '◆', '✧'];
-    var count = 70;
-    var vw = window.innerWidth;
-    for (var i = 0; i < count; i++) {
-      var piece = document.createElement('span');
-      piece.className = 'confetti-piece';
-      piece.textContent = glyphs[i % glyphs.length];
-      piece.style.left = (Math.random() * vw) + 'px';
-      piece.style.fontSize = (0.9 + Math.random() * 1.6).toFixed(2) + 'rem';
-      // Horizontal drift + rotation randomized per piece via custom props
-      piece.style.setProperty('--dx', ((Math.random() * 260) - 130).toFixed(0) + 'px');
-      piece.style.setProperty('--rot', (Math.floor(Math.random() * 900) + 300) + 'deg');
-      piece.style.animationDuration = (2200 + Math.random() * 1400) + 'ms';
-      piece.style.animationDelay = (Math.random() * 700) + 'ms';
-      overlay.appendChild(piece);
-    }
-
-    document.body.appendChild(overlay);
-
-    // Cleanup — matches the longest cel-back / confetti duration
-    setTimeout(function() {
-      overlay.parentNode && overlay.parentNode.removeChild(overlay);
-    }, 4000);
-
-    try { sessionStorage.setItem(seenKey, '1'); } catch (e) {}
-  }
-
-  // Wait for the browser to finish first paint so the animation
-  // doesn't fight the initial layout, but keep it snappy — most
-  // visitors will see the burst within ~250ms of the hero appearing.
-  if (document.readyState === 'complete') {
-    setTimeout(fire, 220);
-  } else {
-    window.addEventListener('load', function() { setTimeout(fire, 220); });
-  }
 })();
 </script>
 
