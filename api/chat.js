@@ -22,6 +22,7 @@ THE ARTISTS:
 - Q — Braid & Loc Specialist. Locs, braids, natural styles. Booking: https://tiarajackson0317.glossgenius.com/
 - Sherry J — Licensed Hairstylist. Women's cuts, color, styling. Booking: https://www.styleseat.com/m/v/sherryjohnson5
 - Eboni — Cosmetologist. Women's hair services. Booking: https://mezmerized16.as.me/schedule/86833b11
+- Jaaslycezz (she/her, NEW to iSlay) — Professional Barber. Haircuts & fades, razor lineups & beard trims, luxury facials & skincare, hot towels & steam treatments, braids & straightbacks, loc retwists, enhancements. Walk-ins welcome; early-morning, overnight and after-hours appointments. Online booking coming soon — for now clients call or text her at (636) 673-4864 (Instagram @jaaslycezz). Booking: tel:+16366734864
 
 YOUR JOB - follow this flow every conversation:
 1. Greet warmly, ask what service they're looking for
