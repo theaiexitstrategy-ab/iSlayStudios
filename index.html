@@ -1336,6 +1336,16 @@ html.theme-thanksgiving nav.scrolled{background:rgba(12,8,5,0.96);}
 </section>
 
 <!-- ══ TEAM — The real hero of this page ══ -->
+<section class="team-section" id="events" data-events-section style="display:none;" aria-label="Upcoming events at iSlay Studios">
+  <div class="team-header">
+    <div>
+      <div class="sec-eyebrow">What's Happening</div>
+      <h2 class="sec-h2">Upcoming <em>Events</em></h2>
+    </div>
+  </div>
+  <div data-goelev8-events="islay-studios" data-title="" data-accent="var(--gold)" data-theme="dark"></div>
+</section>
+
 <section class="team-section" id="team" aria-label="iSlay Studios Barbers and Stylists in Bridgeton MO">
   <div class="team-header reveal">
     <div>
@@ -2237,5 +2247,14 @@ function handleLeadSubmit(e) {
 })();
 </script>
 
+<!-- GoElev8 events: published from the portal (Bookings → Events).
+     The section stays hidden until there's at least one upcoming event. -->
+<script>
+  document.addEventListener('goelev8:events', function (e) {
+    var s = e.target.closest('[data-events-section]');
+    if (s && e.detail && e.detail.count) s.style.display = '';
+  });
+</script>
+<script src="https://portal.goelev8.ai/embed/events.js" async></script>
 </body>
 </html>
